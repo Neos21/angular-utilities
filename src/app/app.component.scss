@@ -1,0 +1,157 @@
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+
+// 変数
+// --------------------------------------------------------------------------------
+
+$theme-bg-color: #223;
+$theme-color: #fff;
+
+$header-height: 60px;
+$menu-width: 270px;
+
+$menu-transition: .3s;
+
+// 全体
+// --------------------------------------------------------------------------------
+
+a {
+  color: darken($theme-color, 12%);
+  text-decoration: none;
+  
+  &:hover {
+    color: $theme-color;
+  }
+}
+
+
+// ヘッダ
+// --------------------------------------------------------------------------------
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height;
+  background: $theme-bg-color;
+  
+  // ハンバーガメニュー
+  .hamburger {
+    position: absolute;
+    width: auto;
+    top: 0;
+    left: 0;
+    height: $header-height;
+    padding: 0 15px;
+    border: 0;
+    background: $theme-bg-color;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity $menu-transition, visibility $menu-transition;
+    
+    // 幅が広い時は非表示にする
+    @media (min-width: $screen-lg-min) {
+      & {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    
+    &:hover,
+    &:focus,
+    &:active {
+      .icon-bar {
+        background: $theme-color;
+      }
+    }
+    
+    .icon-bar {
+      display: block;
+      width: 22px;
+      height: 2px;
+      border-radius: 1px;
+      background: darken($theme-color, 12%);
+    }
+    
+    .icon-bar + .icon-bar {
+      margin-top: 4px;
+    }
+  }
+  
+  .title {
+    margin: 0;
+    text-align: center;
+    
+    a {
+      font-size: $font-size-large;
+      font-weight: bold;
+      line-height: $header-height;
+    }
+  }
+}
+
+
+// メニュー
+// --------------------------------------------------------------------------------
+
+.menu {
+  position: fixed;
+  top: $header-height;
+  left: -$menu-width;  // メニューの幅の分だけネガティブ指定して画面外に出しておく
+  width: $menu-width;
+  height: calc( 100% - #{$header-height} );  // SCSS 変数と CSS3 calc() を併用する
+  background: $theme-bg-color;
+  transition: left $menu-transition;
+  
+  ul {
+    margin: 15px 0 0;
+    padding: 0;
+    list-style: none;
+    
+    a {
+      display: block;
+      padding: 15px;
+      color: darken($theme-color, 20%);
+    }
+    
+    .active a,
+    a:hover {
+      color: $theme-color;
+    }
+  }
+}
+
+// ハンバーガメニューが表示される時はメニューを閉じておく
+@media (min-width: $screen-lg-min) {
+  .menu {
+    left: 0;
+  }
+}
+
+// 本コンポーネントより親の要素 (body 要素) に .show-menu が付与された時にメニューを表示するようにする
+:host-context(.show-menu) .menu {
+  left: 0;
+}
+
+
+// コンテンツ
+// --------------------------------------------------------------------------------
+
+.contents {
+  margin-top: $header-height;
+  margin-left: 0;  // メニュー非表示時のコンテンツ表示状態にする
+  padding: 15px;
+  transition: margin-left $menu-transition;
+  
+  // メニュー表示時はメニュー幅分の余白を開ける
+  @media (min-width: $screen-lg-min) {
+    & {
+      margin-left: $menu-width;
+    }
+  }
+}
+
+// 画面幅が狭い時にメニューを表示したらスライドさせる
+:host-context(.show-menu) .contents {
+  margin-left: $menu-width;
+}

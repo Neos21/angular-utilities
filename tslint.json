@@ -154,8 +154,8 @@
     "no-conditional-assignment": true,
     // 空行が2行以上続かないこと (true)
     "no-consecutive-blank-lines": true,
-    // console の指定メソッドを使用していないこと (true) : console の全てのメソッドを Ban する
-    "no-console": true,
+    // console の指定メソッドを使用していないこと : true で全メソッドを Ban する
+    "no-console": false,
     // String・Number・Boolean のコンストラクタを呼んでいないこと (true)
     "no-construct": true,
     // debugger を呼んでいないこと (true)
@@ -215,8 +215,8 @@
     "no-null-keyword": false,
     // 型リテラルが型アサーション式に書かれるのを禁止する (true)
     "no-object-literal-type-assertion": true,
-    // クラス・コンストラクタでのパラメータ・プロパティを禁止する (true)
-    "no-parameter-properties": true,
+    // クラス・コンストラクタでのパラメータ・プロパティを禁止しない (false)
+    "no-parameter-properties": false,
     // 引数への代入を許可しない (true)
     "no-parameter-reassignment": true,
     // reference コメントによる import を禁止する (true) : ES2015 形式の import 構文を使う
@@ -402,8 +402,8 @@
     // 変数名をチェックする (true)
     "variable-name": [
       true,
-      // ロウワーキャメルケースかアッパースネークケースのみ許容する
-      "check-format",
+      // ロウワーキャメルケースかアッパースネークケースのみ許容する ("check-format")・そのうち先頭がアンダースコアで始まるものも許容する
+      "allow-leading-underscore",
       // 予約語の使用を禁止する
       "ban-keywords"
     ],
