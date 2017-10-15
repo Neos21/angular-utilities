@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+// Bootstrap-Sass
+// --------------------------------------------------------------------------------
+
+// Glyphicon のフォントファイルのパスを修正する
+$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/" !default;
+// Bootstrap-Sass を読み込む
+@import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
+
+
+// Custom
+// --------------------------------------------------------------------------------
+
+// Windows 用 Medium 指定の游ゴシック
+@font-face {
+  font-family: "Yu Gothic M";
+  src: local("Yu Gothic Medium");
+}
+
+// 太字の時は通常どおり Bold 書体を使わせる
+@font-face {
+  font-family: "Yu Gothic M";
+  src: local("Yu Gothic Bold");
+  font-weight: bold;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;  // 縦スクロールバーを常に表示する
+  -webkit-overflow-scrolling: touch;  // スマホ向け慣性スクロール
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, HelveticaNeue, "Helvetica Neue", "Segoe UI", "游ゴシック体", YuGothic, "Yu Gothic M", "游ゴシック Medium", "Yu Gothic Medium", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN W3", HiraKakuProN-W3, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;  // ゴシック体フォント
+  word-wrap: break-word;  // 折り返させる
+  cursor: default;
+}
+
+// 等幅フォント
+pre, code, kbd, samp, var {
+  font-family: MeiryoKe_Gothic, "Ricty Diminished", "Courier New", Courier, Consolas, Monaco, Menlo, "Osaka－等幅", "Osaka-等幅", Osaka-mono, "ＭＳ ゴシック", "MS Gothic", monospace;
+}
