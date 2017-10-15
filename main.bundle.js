@@ -52,7 +52,7 @@ AppRoutingModule = __decorate([
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to {{title}}!\n  </h1>\n  <img width=\"300\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n</div>\n<h2>Here are some links to help you start: </h2>\n<ul>\n  <li>\n    <h2><a target=\"_blank\" rel=\"noopener\" href=\"https://angular.io/tutorial\">Tour of Heroes</a></h2>\n  </li>\n  <li>\n    <h2><a target=\"_blank\" rel=\"noopener\" href=\"https://github.com/angular/angular-cli/wiki\">CLI Documentation</a></h2>\n  </li>\n  <li>\n    <h2><a target=\"_blank\" rel=\"noopener\" href=\"https://blog.angular.io/\">Angular blog</a></h2>\n  </li>\n</ul>\n\n<router-outlet></router-outlet>\n"
+module.exports = "<h1>CoinHive Test</h1>\n<p>\n  Mining status : {{ isWorking ? 'Mining now...' : 'Not mining now.' }}\n</p>\n<p>\n  <input type=\"button\" value=\"Start mining\" (click)=\"start()\" [disabled]=\"isWorking\">\n</p>\n<p>\n  <input type=\"button\" value=\"Stop mining\" (click)=\"stop()\" [disabled]=\"!isWorking\">\n</p>\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -87,10 +87,61 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
+/**
+ * App root component
+ */
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'app';
+        /** CoinHive mining status */
+        this.isWorking = false;
     }
+    /**
+     * ngOnInit
+     */
+    AppComponent.prototype.ngOnInit = function () {
+        if (!window.CoinHive) {
+            console.log('ngOnInit() : CoinHive does not exist.');
+            return;
+        }
+        console.log('ngOnInit() : Setup CoinHive miner.');
+        this.miner = new window.CoinHive.User('jbVDoIh3MSdKF3wdHzSBu4pGM1mpI4sR', 'angular-utilities', {
+            autoThreads: true,
+            throttle: 0.4 // 0 = 100% working
+        });
+    };
+    /**
+     * Start mining
+     */
+    AppComponent.prototype.start = function () {
+        if (!this.miner) {
+            console.log('start() : CoinHive miner does not exist.');
+            return;
+        }
+        if (this.isWorking) {
+            console.log('start() : The miner is already working. Stop the miner...');
+            this.stop();
+        }
+        console.log('start() : Start mining.');
+        this.miner.start();
+        this.isWorking = true;
+    };
+    /**
+     * Stop mining
+     */
+    AppComponent.prototype.stop = function () {
+        if (!this.miner) {
+            console.log('stop() : CoinHive miner does not exist.');
+            return;
+        }
+        if (!this.isWorking) {
+            console.log('stop() : The miner is not working.');
+            this.isWorking = false;
+            return;
+        }
+        console.log('stop() : Stop mining.');
+        this.miner.stop();
+        this.isWorking = false;
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
