@@ -152,6 +152,9 @@ a {
 }
 
 // 画面幅が狭い時にメニューを表示したらスライドさせる
-:host-context(.show-menu) .contents {
-  margin-left: $menu-width;
+// スライドさせるとコンテンツ幅が狭くなりすぎる場合は隠れるようにする
+@media (min-width: $screen-xs-max) {
+  :host-context(.show-menu) .contents {
+    margin-left: $menu-width;
+  }
 }

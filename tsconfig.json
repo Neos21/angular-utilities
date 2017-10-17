@@ -124,7 +124,7 @@
     // Generics の型の互換性チェックをしない (true) : 破壊的変更であるため有効化するかは要チェック
     "noStrictGenericChecks": true,
     // 使っていないローカル変数をエラーにする (true)
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     // 使っていない仮引数をエラーにしない (false) : true にしても引数名の先頭にアンダースコアを付けると回避できる
     "noUnusedParameters": false,
     // デフォルトライブラリの型宣言ファイルの型チェックをスキップしない (false)
