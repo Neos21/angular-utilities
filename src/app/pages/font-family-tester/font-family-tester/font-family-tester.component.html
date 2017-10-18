@@ -1,1 +1,45 @@
 <h2>Font Family Tester</h2>
+
+<ul [ngStyle]="{ 'font-family': fontList.join(', ') }">
+  <li>Text Test テキストのテスト。</li>
+  <li>font-family : {{ fontList.join(', ') }} ;</li>
+</ul>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h3>font-family</h3>
+    <div dnd-sortable-container [sortableData]="fontList" [dropZones]="['fonts-zone']" class="list-group-container">
+      <ul class="list-group">
+        <li *ngFor="let font of fontList; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{ font }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <h3>Fonts Stock</h3>
+    <accordion>
+      <accordion-group heading="sans-serif" [panelClass]="'panel-primary'" [isOpen]="true">
+        <div dnd-sortable-container [sortableData]="stockSansSerif" [dropZones]="['fonts-zone']" class="list-group-container">
+          <ul class="list-group">
+            <li *ngFor="let font of stockSansSerif; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{ font }}</li>
+          </ul>
+        </div>
+      </accordion-group>
+      <accordion-group heading="serif" [panelClass]="'panel-info'" [isOpen]="false">
+        <div dnd-sortable-container [sortableData]="stockSerif" [dropZones]="['fonts-zone']" class="list-group-container">
+          <ul class="list-group">
+            <li *ngFor="let font of stockSerif; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{ font }}</li>
+          </ul>
+        </div>
+      </accordion-group>
+      <accordion-group heading="monospace" [panelClass]="'panel-success'" [isOpen]="false">
+        <div dnd-sortable-container [sortableData]="stockMonospace" [dropZones]="['fonts-zone']" class="list-group-container">
+          <ul class="list-group">
+            <li *ngFor="let font of stockMonospace; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{ font }}</li>
+          </ul>
+        </div>
+      </accordion-group>
+    </accordion>
+  </div>
+</div>

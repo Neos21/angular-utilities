@@ -1,0 +1,17 @@
+.list-group-container {
+  // リストが1つもなくなった時のプレースホルダ用スタイル
+  min-height: 42px;
+  border-radius: 4px;
+  background: #ddd;
+  
+  // リスト
+  .list-group {
+    margin: 0;
+    background: #fff;
+    
+    // ドラッグ中の要素
+    .dnd-sortable-drag {
+      background: #ffc;
+    }
+  }
+}
