@@ -31,7 +31,14 @@ $font-family-monospace: MeiryoKe_Gothic, "Ricty Diminished", "Courier New", Cour
 @import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
 
 
-// Custom
+// Other Libraries
+// --------------------------------------------------------------------------------
+
+// ng2-dnd
+@import '../node_modules/ng2-dnd/style.css';
+
+
+// Page
 // --------------------------------------------------------------------------------
 
 html {

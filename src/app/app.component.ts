@@ -41,7 +41,7 @@ export class AppComponent {
    */
   toggleMenu(isShown?: boolean): void {
     // 引数が指定されていれば引数に従って操作、そうでなければ現在の状態を反転させる
-    this.isShownMenu = isShown || !this.isShownMenu;
+    this.isShownMenu = typeof isShown !== 'undefined' ? isShown : !this.isShownMenu;
     this.renderer.setElementClass(this.document.body, 'show-menu', this.isShownMenu);
   }
 }

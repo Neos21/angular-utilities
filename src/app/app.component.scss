@@ -34,6 +34,7 @@ a {
   width: 100%;
   height: $header-height;
   background: $theme-bg-color;
+  z-index: 99999;
   
   // ハンバーガメニュー
   .hamburger {
@@ -102,6 +103,7 @@ a {
   height: calc( 100% - #{$header-height} );  // SCSS 変数と CSS3 calc() を併用する
   background: $theme-bg-color;
   transition: left $menu-transition;
+  z-index: 99999;
   
   ul {
     margin: 15px 0 0;
@@ -142,6 +144,7 @@ a {
   margin-left: 0;  // メニュー非表示時のコンテンツ表示状態にする
   padding: 15px;
   transition: margin-left $menu-transition;
+  z-index: 1;
   
   // メニュー表示時はメニュー幅分の余白を開ける
   @media (min-width: $screen-lg-min) {
