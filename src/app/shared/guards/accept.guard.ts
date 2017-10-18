@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../../environments/environment';
 import { CoinHiveService } from '../services/coin-hive.service';
 
 /**
@@ -27,10 +28,16 @@ export class AcceptGuard implements CanActivate {
     _state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
       console.log(`AcceptGuard#canActivate() : ${this.coinHiveService.isWorking}`);
-      if(this.coinHiveService.isWorking) {
+      if(!environment.production) {
+        // 開発中は true にしておく
+        return true;
+      }
+      else if(this.coinHiveService.isWorking) {
+        // マイニング中なら OK
         return true;
       }
       else {
+        // マイニングしていなければ Index に戻す
         this.router.navigate(['/index']);
         
         return false;

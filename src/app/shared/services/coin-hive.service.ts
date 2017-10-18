@@ -17,8 +17,6 @@ export class CoinHiveService {
    * コンストラクタ
    */
   constructor() {
-    console.log('CoinHiveService#constructor()');
-    
     this.isWorking = false;
     this.createMiner();
   }
