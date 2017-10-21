@@ -31,6 +31,16 @@ $font-family-monospace: MeiryoKe_Gothic, "Ricty Diminished", "Courier New", Cour
 @import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
 
 
+// Font-Awesome
+// --------------------------------------------------------------------------------
+
+// フォントファイルのパスを修正する
+$fa-font-path: '../node_modules/font-awesome/fonts';
+
+// Font-Awesome を読み込む
+@import '../node_modules/font-awesome/scss/font-awesome';
+
+
 // Other Libraries
 // --------------------------------------------------------------------------------
 

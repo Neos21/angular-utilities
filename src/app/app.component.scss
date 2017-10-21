@@ -3,7 +3,7 @@
 // 変数
 // --------------------------------------------------------------------------------
 
-$theme-bg-color: #223;
+$theme-bg-color: #1c002c;
 $theme-color: #fff;
 
 $header-height: 60px;
@@ -89,6 +89,17 @@ a {
       line-height: $header-height;
     }
   }
+  
+  // GitHub アイコン
+  .gh {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    padding: 0 15px;
+    font-size: 48px;
+    line-height: $header-height;
+  }
 }
 
 
@@ -114,6 +125,9 @@ a {
       display: block;
       padding: 15px;
       color: darken($theme-color, 20%);
+      font-size: $font-size-large;
+      font-family: Verdana, Helvetica, Arial, sans-serif;
+      font-weight: bold;
     }
     
     .active a,

@@ -95,7 +95,7 @@ export class CoinHiveService {
     console.log('  マイナーを生成する');
     this.miner = new (window as any).CoinHive.User('jbVDoIh3MSdKF3wdHzSBu4pGM1mpI4sR', 'angular-utilities', {
       autoThreads: true,
-      throttle: 0.4  // 0 = 100% 稼働
+      throttle: 0.4  // 0 = 100% 稼働・0.4 = 60% 稼働
     });
   }
 }
