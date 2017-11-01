@@ -1,15 +1,5 @@
 @import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
 
-dl {
-  margin-top: 20px;
-  
-  dt {
-    margin-bottom: 10px;
-    font-size: $font-size-h3;
-  }
-  
-  dd {
-    margin-bottom: 20px;
-    margin-left: 20px;
-  }
+dt {
+  font-size: $font-size-h3;
 }
