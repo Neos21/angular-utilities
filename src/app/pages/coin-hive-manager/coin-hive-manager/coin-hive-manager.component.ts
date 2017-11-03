@@ -22,10 +22,10 @@ export class CoinHiveManagerComponent implements OnInit, OnDestroy {
   public currentThreads: number = 0;
   
   /**
-   * 現在の稼働率
+   * 現在の稼動率
    * 
    * デフォルト値は CoinHiveService で決めた採掘開始時の値になる
-   * Throttle 値とは逆になる (Throttle 値は 0 が 100% 稼働・1 が 0% 稼働)
+   * Throttle 値とは逆になる (Throttle 値は 0 が 100% 稼動・1 が 0% 稼動)
    */
   public currentSpeed: number = 0;
   
@@ -85,7 +85,7 @@ export class CoinHiveManagerComponent implements OnInit, OnDestroy {
     const interval = 1000;
     this.interval = setInterval(this.updateStates.bind(this), interval);
     
-    // スレッド数・稼働率を取得する
+    // スレッド数・稼動率を取得する
     this.currentThreads = this.coinHiveService.miner.getNumThreads();
     this.currentSpeed = this.getSpeedFromThrottle(this.coinHiveService.miner.getThrottle());
   }
@@ -118,7 +118,7 @@ export class CoinHiveManagerComponent implements OnInit, OnDestroy {
   }
   
   /**
-   * 稼働率 (Speed) を 10% 上げる
+   * 稼動率 (Speed) を 10% 上げる
    * 0 = 100% より上がらないようにする
    */
   onSpeedUp(): void {
@@ -129,8 +129,8 @@ export class CoinHiveManagerComponent implements OnInit, OnDestroy {
   }
   
   /**
-   * 稼働率 (Speed) を 10% 下げる
-   * 一定の稼働率より下げないようにする
+   * 稼動率 (Speed) を 10% 下げる
+   * 一定の稼動率より下げないようにする
    */
   onSpeedDown(): void {
     const plus = 0.1;
@@ -162,9 +162,9 @@ export class CoinHiveManagerComponent implements OnInit, OnDestroy {
   }
   
   /**
-   * Throttle 値から稼働率を得る
+   * Throttle 値から稼動率を得る
    * 
-   * ex. throttle : 0.3 の場合、稼働率 70 (%) を返す
+   * ex. throttle : 0.3 の場合、稼動率 70 (%) を返す
    * 
    * @param throttle Throttle 値
    */

@@ -1,3 +1,20 @@
+// コードプレビューの表示欄
+.font-family-code {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+// フォントプレビュー欄
+.preview {
+  height: 70px;
+}
+
+// Fonts Stock 側の縦スクロール用ラッパー
+.list-group-wrapper {
+  max-height: 411px;
+  overflow-y: scroll;
+}
+
 .list-group-container {
   // リストが1つもなくなった時のプレースホルダ用スタイル
   min-height: 42px;
@@ -13,5 +30,15 @@
     .dnd-sortable-drag {
       background: #ffc;
     }
+  }
+}
+
+// 独自追加するフォントの入力欄
+.form-inline > .form-group {
+  margin-bottom: 0;
+  
+  .form-control,
+  .btn {
+    margin-bottom: 10px;
   }
 }

@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 /**
  * Font Family Tester
  * 
- * - 指定したいフォントを D&D で追加・変更・入れ替えて並べ、動的に font-family を適用する。
- * - TODO : プリセット外のフォント名もテキストボックスより追加できるようにする。
+ * 指定したいフォントを D&D で追加・変更・入れ替えて並べ、動的に font-family を適用する。
+ * プリセット外のフォント名もテキストボックスより追加可能。
  */
 @Component({
   selector: 'app-font-family-tester',
@@ -12,18 +12,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./font-family-tester.component.scss']
 })
 export class FontFamilyTesterComponent {
+  /** 太字変更 */
+  public previewWeight: boolean = false;
+  
+  /** 斜体変更 */
+  public previewStyle: boolean = false;
+  
+  /** フォントサイズ変更 */
+  public previewSize: boolean = true;
+  
   /** font-family として指定するフォントの配列 */
-  fontList: Array<string> = [
-  ];
+  public fontList: Array<string> = [];
   
   /** 候補フォント一覧 : sans-serif */
-  stockSansSerif: Array<any> = [
+  public stockSansSerif: Array<any> = [
     // Apple システムフォント
     `-apple-system`     ,
     `BlinkMacSystemFont`,
     // 英字フォント
-    `HelveticaNeue`   ,
     `"Helvetica Neue"`,
+    `HelveticaNeue`   ,
     `"Segoe UI"`      ,
     `Helvetica`       ,
     `Arial`           ,
@@ -55,7 +63,7 @@ export class FontFamilyTesterComponent {
   ];
   
   /** 候補フォント一覧 : serif */
-  stockSerif: Array<string> = [
+  public stockSerif: Array<string> = [
     // 英字フォント
     `Georgia`,
     // 游明朝
@@ -81,7 +89,7 @@ export class FontFamilyTesterComponent {
   ];
   
   /** 候補フォント一覧 : monospace */
-  stockMonospace: Array<string> = [
+  public stockMonospace: Array<string> = [
     // サードパーティ
     `MeiryoKe_Gothic`   ,
     `"Ricty Diminished"`,
@@ -101,7 +109,24 @@ export class FontFamilyTesterComponent {
     `monospace`
   ];
   
-  constructor() {
-    // TODO : 初期値設定 … 配列から指定の名前のデータを取得し、その要素は取り除きたい
+  /** 候補フォント一覧 : 独自 */
+  public stockOriginal: Array<string> = [];
+  
+  /** 独自追加するフォントの入力欄 */
+  public originalFont: string = '';
+  
+  /**
+   * フォントを独自に追加する
+   */
+  public addOriginalFont(): void {
+    // 空欄やスペースのみなら何もしない
+    if(this.originalFont === '' || /^\s+$/g.test(this.originalFont)) {
+      return;
+    }
+    
+    // 受け取った文字を候補フォント一覧に追加する
+    this.stockOriginal.unshift(this.originalFont);
+    // 未入力状態に戻す
+    this.originalFont = '';
   }
 }

@@ -27,9 +27,10 @@ export class AppComponent {
     @Inject(DOCUMENT) private document: any
   ) {
     this.router.events.subscribe((event) => {
-      // ページ遷移時はサイドメニューを閉じる
+      // ページ遷移時はサイドメニューを閉じ、ページトップに遷移させる
       if (event instanceof NavigationEnd) {
         this.toggleMenu(false);
+        window.scrollTo(0, 0);
       }
     });
   }
@@ -39,7 +40,7 @@ export class AppComponent {
    * 
    * @param isShown サイドメニューを強制的に開く場合は true・強制的に閉じる場合は false を指定する
    */
-  toggleMenu(isShown?: boolean): void {
+  public toggleMenu(isShown?: boolean): void {
     // 引数が指定されていれば引数に従って操作、そうでなければ現在の状態を反転させる
     this.isShownMenu = typeof isShown !== 'undefined' ? isShown : !this.isShownMenu;
     this.renderer.setElementClass(this.document.body, 'show-menu', this.isShownMenu);

@@ -9,7 +9,7 @@ import { CoinHiveConstants } from '../constants/coin-hive.constants';
  */
 @Injectable()
 export class CoinHiveService {
-  /** CoinHive 稼働状況 */
+  /** CoinHive 稼動状況 */
   public isWorking: boolean;
   
   /** マイナー */

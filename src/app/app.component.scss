@@ -154,9 +154,8 @@ a {
 // --------------------------------------------------------------------------------
 
 .contents {
-  margin-top: $header-height;
   margin-left: 0;  // メニュー非表示時のコンテンツ表示状態にする
-  padding: 15px;
+  padding: calc( #{$header-height} + 15px ) 15px 15px;
   transition: margin-left $menu-transition;
   z-index: 1;
   
