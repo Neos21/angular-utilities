@@ -3,15 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AcceptGuard } from '../../shared/guards/accept.guard';
 
-import { HomeComponent } from './home/home.component';
+import { CoinHiveManagerComponent } from './coin-hive-manager/coin-hive-manager.component';
 
 const routes: Routes = [
-  // AcceptGuard によるガードを設定する
-  { path: 'home', component: HomeComponent, canActivate: [AcceptGuard] }
+  { path: 'coin-hive-manager', component: CoinHiveManagerComponent, canActivate: [AcceptGuard] }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule { }
+export class CoinHiveManagerRoutingModule { }

@@ -1,0 +1,47 @@
+<h2>CoinHive Manager</h2>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h4>Hashes / S</h4>
+    <div class="text-right">{{ hashesPerSecond }}</div>
+  </div>
+  <div class="col-xs-6">
+    <h4>Total</h4>
+    <div class="text-right">{{ hashesTotal }}</div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <h4>Threads</h4>
+    <div class="text-right">
+      {{ currentThreads }}
+      <button class="btn btn-info" (click)="onAddThreads()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </button>
+      <button class="btn btn-info" (click)="onRemoveThreads()">
+        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <h4>Speed</h4>
+    <div class="text-right">
+      {{ currentSpeed }}
+      <button class="btn btn-info" (click)="onSpeedUp()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </button>
+      <button class="btn btn-info" (click)="onSpeedDown()">
+        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>  
+</div>
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <div class="hash-graph-wrapper">
+      <div class="hash-graph-container" *ngFor="let hash of hashGraphList">
+        <div class="hash-graph" [ngStyle]="{ 'height': hash + 'px' }"></div>
+      </div>
+    </div>
+  </div>
+</div>

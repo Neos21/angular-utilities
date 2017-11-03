@@ -1,0 +1,42 @@
+.row {
+  // カラムの最大幅
+  $maxColWidth: 160px;
+  
+  margin-bottom: 10px;
+  user-select: none;
+  
+  .col-xs-6 {
+    max-width: $maxColWidth;
+  }
+  
+  .col-xs-12 {
+    max-width: calc( #{$maxColWidth} * 2 );
+  }
+}
+
+// ハッシュのグラフを描画するラッパー : 要素を下揃えで表示させる
+.hash-graph-wrapper {
+  // グラフ棒の高さ
+  $hashGraphHeight: 100px;
+  
+  display: inline-block;
+  border: 1px solid #999;
+  padding: 5px 5px 0;
+  height: calc( #{$hashGraphHeight} + 12px );
+  
+  // グラフ1本を囲むコンテナ : 横並びになるようにし余白を付ける
+  .hash-graph-container {
+    width: 25px;
+    display: inline-block;
+    
+    &:last-child {
+      width: 20px;
+    }
+    
+    // グラフ1本 : 高さは配列の要素から拾い ngStyle で指定する
+    .hash-graph {
+      width: 20px;
+      background: #999;
+    }
+  }
+}

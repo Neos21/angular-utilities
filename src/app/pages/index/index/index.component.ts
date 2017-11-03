@@ -31,7 +31,6 @@ export class IndexComponent {
    * CoinHive 採掘を開始し、Home に移動する
    */
   accept(): void {
-    console.log(`IndexComponent#accept() : ${this.coinHiveService.isWorking}`);
     this.coinHiveService.start();
     this.router.navigate(['/home']);
   }

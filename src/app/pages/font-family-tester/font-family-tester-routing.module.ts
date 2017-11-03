@@ -6,8 +6,7 @@ import { AcceptGuard } from '../../shared/guards/accept.guard';
 import { FontFamilyTesterComponent } from './font-family-tester/font-family-tester.component';
 
 const routes: Routes = [
-  // 「/font-family-tester」
-  { path: '', component: FontFamilyTesterComponent, canActivate: [AcceptGuard] }
+  { path: 'font-family-tester', component: FontFamilyTesterComponent, canActivate: [AcceptGuard] }
 ];
 
 @NgModule({

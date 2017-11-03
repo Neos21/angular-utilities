@@ -27,7 +27,6 @@ export class AcceptGuard implements CanActivate {
     _next: ActivatedRouteSnapshot,
     _state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-      console.log(`AcceptGuard#canActivate() : ${this.coinHiveService.isWorking}`);
       if(!environment.production) {
         // 開発中は true にしておく
         return true;
