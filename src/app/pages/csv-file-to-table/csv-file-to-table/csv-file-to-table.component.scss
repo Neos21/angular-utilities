@@ -1,0 +1,56 @@
+@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+
+.col-sm-4 {
+  margin-top: 10px;
+}
+
+// input[type="file"] がはみ出ないようにする
+.file-input {
+  overflow: hidden;
+}
+
+// ドラッグ & ドロップのみ対応するエリア
+.dnd-zone {
+  overflow: hidden;
+  width: 100%;
+  height: 300px;
+  border: 5px dashed #ccc;
+  color: #ccc;
+  font-size: $font-size-h2;
+  font-weight: bold;
+  text-align: center;
+  line-height: 300px;
+  white-space: nowrap;
+}
+
+// ドラッグ & ドロップとクリックに対応するエリア
+// 実態は input[type="file"] へのドラッグ & ドロップとクリックの挙動に任せている
+.dnd-zone-wrapper {
+  position: relative;
+  
+  .dnd-file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    opacity: 0;
+    cursor: pointer;
+  }  
+}
+
+// 出力するテーブル
+.table {
+  margin-top: 15px;
+  
+  // .table-striped 風の.table-hover にする
+  & > tbody > tr:nth-of-type(2n + 1) {
+    & > td {
+      background: #f0f0f0;
+    }
+  
+    &:hover > td {
+      background: #e8e8e8;
+    }
+  }
+}

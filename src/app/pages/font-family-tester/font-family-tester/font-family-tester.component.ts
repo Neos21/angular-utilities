@@ -118,7 +118,7 @@ export class FontFamilyTesterComponent {
   /**
    * フォントを独自に追加する
    */
-  public addOriginalFont(): void {
+  addOriginalFont(): void {
     // 空欄やスペースのみなら何もしない
     if(this.originalFont === '' || /^\s+$/g.test(this.originalFont)) {
       return;

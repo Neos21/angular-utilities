@@ -1,0 +1,32 @@
+<h2>CSV File To Table</h2>
+
+<p>CSV ファイルを選択するかドラッグ &amp; ドロップすると、HTML テーブル形式で出力します。</p>
+
+<div class="row">
+  <div class="col-sm-4">
+    <div class="file-input">
+      <input type="file" (change)="onSelectFile($event)">
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="dnd-zone" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+      Drop Here
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="dnd-zone-wrapper">
+      <label class="dnd-zone">
+        Drop or Click Here
+        <input type="file" class="dnd-file" (change)="onSelectFile($event)">
+      </label>
+    </div>
+  </div>
+</div>
+
+<table class="table table-bordered table-hover" *ngIf="tableData.length !== 0">
+  <tbody>
+    <tr class="active" *ngFor="let row of tableData">
+      <td *ngFor="let col of row">{{ col }}</td>
+    </tr>
+  </tbody>
+</table>

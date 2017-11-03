@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { CoinHiveService } from '../../../shared/services/coin-hive.service';
 
 /**
- * Index コンポーネント
+ * Index
  * 
  * 起動時に表示させるトップページ。
  * ユーザに CoinHive 採掘を行う承認を得る画面を表示する。

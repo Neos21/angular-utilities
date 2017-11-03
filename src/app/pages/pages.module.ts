@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 
 import { CoinHiveManagerModule } from './coin-hive-manager/coin-hive-manager.module';
+import { CsvFileToTableModule } from './csv-file-to-table/csv-file-to-table.module';
 import { FontFamilyTesterModule } from './font-family-tester/font-family-tester.module';
 import { HomeModule } from './home/home.module';
 import { IndexModule } from './index/index.module';
@@ -15,8 +16,8 @@ import { IndexModule } from './index/index.module';
     IndexModule,
     HomeModule,
     FontFamilyTesterModule,
-    CoinHiveManagerModule
-  ],
-  declarations: []
+    CoinHiveManagerModule,
+    CsvFileToTableModule
+  ]
 })
 export class PagesModule { }

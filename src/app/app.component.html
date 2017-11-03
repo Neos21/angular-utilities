@@ -13,8 +13,11 @@
 <div class="menu">
   <ul>
     <li [routerLinkActive]="['active']"><a [routerLink]="['/home']">Home</a></li>
-    <li [routerLinkActive]="['active']"><a [routerLink]="['/font-family-tester']">Font Family Tester</a></li>
-    <li [routerLinkActive]="['active']"><a [routerLink]="['/coin-hive-manager']">Coin Hive Manager</a></li>
+    <ng-container *ngIf="isShownList()">
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/font-family-tester']">Font Family Tester</a></li>
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/coin-hive-manager']">Coin Hive Manager</a></li>
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/csv-file-to-table']">CSV File To Table</a></li>
+    </ng-container>
   </ul>
 </div>
 

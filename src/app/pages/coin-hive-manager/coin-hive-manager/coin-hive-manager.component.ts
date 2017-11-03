@@ -6,7 +6,9 @@ import { CoinHiveConstants } from '../../../shared/constants/coin-hive.constants
 import { CoinHiveService } from '../../../shared/services/coin-hive.service';
 
 /**
- * Coin Hive の動作状況を管理するコンポーネント
+ * Coin Hive Manager
+ * 
+ * Coin Hive の動作状況を管理するコンポーネント。
  */
 @Component({
   selector: 'app-coin-hive-manager',
