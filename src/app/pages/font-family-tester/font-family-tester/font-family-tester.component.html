@@ -1,59 +1,83 @@
 <h2>Font Family Tester</h2>
 
 <ul>
-  <li>右側の「Fonts Stock」より適用したいフォントを探し、左側の「font-family」にドラッグ &amp; ドロップしてください。下のテキストエリアにフォントが適用されます。</li>
-  <li>「font-family」欄内でフォントの適用順を変更できます。どのような <code>font-family</code> が適用されているかは下のコードブロックで確認できます。</li>
+  <li>右側の「Fonts Stock」よりフォント名をクリックすると、左側の「font-family」に選択したフォントが追加されます。「font-family」欄内で矢印アイコンを使用して適用順を入れ替えられます。</li>
+  <li>「font-family」欄に追加したフォントが、下のプレビュー欄に適用されます。どのような <code>font-family</code> になっているかは下のコードブロックで確認できます。</li>
   <li><code>"Yu Gothic M"</code> は、<code>@font-face</code> で「Yu Gothic Medium」を指定した Windows 環境向けのフォントです。</li>
 </ul>
 
-<pre class="font-family-code">font-family : {{ fontList.join(', ') }} ;</pre>
+<pre class="font-family-code">font-family : {{ getFontList() }} ;</pre>
 
 <p>
   <textarea class="form-control preview"
             placeholder="Please enter the text that you want to check font-family. フォント変更を確認するテキストを入力してください。"
             [ngStyle]="{
-              'font-family': fontList.join(', '),
-              'font-weight': previewWeight ? 'bold'   : 'normal',
-              'font-style' : previewStyle  ? 'italic' : 'normal',
-              'font-size'  : previewSize   ? '150%'   : '100%'
+              'font-family': getFontList(),
+              'font-weight': previewTextSpec.weight ? 'bold'   : 'normal',
+              'font-style' : previewTextSpec.italic ? 'italic' : 'normal',
+              'font-size'  : previewTextSpec.size   ? '150%'   : '100%'
             }"></textarea>
 </p>
 
 <ul class="list-inline">
-  <li><label><input type="checkbox" [(ngModel)]="previewWeight"> 太字</label></li>
-  <li><label><input type="checkbox" [(ngModel)]="previewStyle" > 斜体</label></li>
-  <li><label><input type="checkbox" [(ngModel)]="previewSize"  > サイズ</label></li>
+  <li><label><input type="checkbox" [(ngModel)]="previewTextSpec.weight"> 太字</label></li>
+  <li><label><input type="checkbox" [(ngModel)]="previewTextSpec.italic"> 斜体</label></li>
+  <li><label><input type="checkbox" [(ngModel)]="previewTextSpec.size"> サイズ</label></li>
 </ul>
 
 <div class="row">
+  
   <div class="col-xs-6">
     <h3>font-family</h3>
-    <div dnd-sortable-container [sortableData]="fontList" [dropZones]="['fonts-zone']" class="list-group-container">
-      <ul class="list-group">
-        <li *ngFor="let font of fontList; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{ font }}</li>
-      </ul>
+    <div class="list-group-wrapper">
+      <div class="list-group-container">
+        <ul class="list-group">
+          <li *ngFor="let font of previewFontList; let i = index" class="list-group-item">
+            <div class="pull-right">
+              <button type="button" class="btn btn-icon btn-icon-info" aria-label="Up" (click)="upFont(i)" [disabled]="i === 0">
+                <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-icon btn-icon-warning" aria-label="Down" (click)="downFont(i)" [disabled]="i === previewFontList.length - 1">
+                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-icon btn-icon-danger" aria-label="Remove" (click)="removeFont(i)">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </button>
+            </div>
+            {{ font.name }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   
   <div class="col-xs-6">
     <h3>Fonts Stock</h3>
-    
     <accordion>
-      <accordion-group heading="sans-serif : ゴシック体" [panelClass]="'panel-primary'" [isOpen]="true">
+      
+      <accordion-group heading="sans-serif : ゴシック体" panelClass="panel-primary" [isOpen]="true">
         <div class="list-group-wrapper">
-          <div dnd-sortable-container [sortableData]="stockSansSerif" [dropZones]="['fonts-zone']" class="list-group-container">
+          <div class="list-group-container">
             <ul class="list-group">
-              <li *ngFor="let font of stockSansSerif; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{ font }}</li>
+              <ng-container *ngFor="let font of stockFontList; let i = index">
+                <ng-container *ngIf="font.type ==='sans-serif'">
+                  <li class="list-group-item pointer" (click)="addPreviewFontList(i)">{{ font.name }}</li>
+                </ng-container>
+              </ng-container>
             </ul>
           </div>
         </div>
       </accordion-group>
       
-      <accordion-group heading="serif : 明朝体" [panelClass]="'panel-info'" [isOpen]="false">
+      <accordion-group heading="serif : 明朝体" panelClass="panel-info" [isOpen]="false">
         <div class="list-group-wrapper">
-          <div dnd-sortable-container [sortableData]="stockSerif" [dropZones]="['fonts-zone']" class="list-group-container">
+          <div class="list-group-container">
             <ul class="list-group">
-              <li *ngFor="let font of stockSerif; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{ font }}</li>
+              <ng-container *ngFor="let font of stockFontList; let i = index">
+                <ng-container *ngIf="font.type ==='serif'">
+                  <li class="list-group-item pointer" (click)="addPreviewFontList(i)">{{ font.name }}</li>
+                </ng-container>
+              </ng-container>
             </ul>
           </div>
         </div>
@@ -61,9 +85,13 @@
       
       <accordion-group heading="monospace : 等幅" [panelClass]="'panel-success'" [isOpen]="false">
         <div class="list-group-wrapper">
-          <div dnd-sortable-container [sortableData]="stockMonospace" [dropZones]="['fonts-zone']" class="list-group-container">
+          <div class="list-group-container">
             <ul class="list-group">
-              <li *ngFor="let font of stockMonospace; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{ font }}</li>
+              <ng-container *ngFor="let font of stockFontList; let i = index">
+                <ng-container *ngIf="font.type ==='monospace'">
+                  <li class="list-group-item pointer" (click)="addPreviewFontList(i)">{{ font.name }}</li>
+                </ng-container>
+              </ng-container>
             </ul>
           </div>
         </div>
@@ -77,13 +105,20 @@
           </div>
         </div>
         <div class="list-group-wrapper">
-          <div dnd-sortable-container [sortableData]="stockOriginal" [dropZones]="['fonts-zone']" class="list-group-container">
+          <div class="list-group-container">
             <ul class="list-group">
-              <li *ngFor="let font of stockOriginal; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{ font }}</li>
+              <ng-container *ngFor="let font of stockFontList; let i = index">
+                <!-- 用意した区分ではない要素のみ表示させる -->
+                <ng-container *ngIf="['sans-serif', 'serif', 'monospace'].indexOf(font.type) < 0">
+                  <li class="list-group-item pointer" (click)="addPreviewFontList(i)">{{ font.name }}</li>
+                </ng-container>
+              </ng-container>
             </ul>
           </div>
         </div>
       </accordion-group>
+      
     </accordion>
   </div>
+  
 </div>

@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { DndModule } from 'ng2-dnd';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 import { SharedModule } from '../../shared/shared.module';
@@ -14,7 +13,6 @@ import { FontFamilyTesterComponent } from './font-family-tester/font-family-test
   imports: [
     CommonModule,
     FormsModule,
-    DndModule.forRoot(),
     AccordionModule.forRoot(),
     SharedModule,
     FontFamilyTesterRoutingModule

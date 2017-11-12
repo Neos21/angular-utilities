@@ -1,3 +1,39 @@
+@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+
+/* .btn-icon の mixin : .close チックに Glyphicon を組み合わせる想定のボタン用 */
+@mixin btn-icon($color: $gray) {
+  color: $color;
+  &:hover {
+    color: darken($color, 15%);
+  }
+}
+// ベース
+.btn-icon {
+  padding: 0;
+  border: 0;
+  font-size: $font-size-large;
+  line-height: 1;
+  vertical-align: initial;  // .btn の middle 指定を解除
+  background: transparent;
+  @include btn-icon();
+}
+// ブランドカラー
+.btn-icon-primary {
+  @include btn-icon($brand-primary);
+}
+.btn-icon-success {
+  @include btn-icon($brand-success);
+}
+.btn-icon-info {
+  @include btn-icon($brand-info);
+}
+.btn-icon-warning {
+  @include btn-icon($brand-warning);
+}
+.btn-icon-danger {
+  @include btn-icon($brand-danger);
+}
+
 // コードプレビューの表示欄
 .font-family-code {
   overflow-x: scroll;
@@ -9,26 +45,49 @@
   height: 70px;
 }
 
-// Fonts Stock 側の縦スクロール用ラッパー
+// フォント一覧部分の間の余白を縮める
+.row {
+  .col-xs-6 {
+    &:first-child {
+      padding-right: 7.5px;
+    }
+    &:last-child {
+      padding-left: 7.5px;
+    }
+  }
+}
+
+// 縦スクロール用ラッパー
 .list-group-wrapper {
   max-height: 411px;
   overflow-y: scroll;
-}
-
-.list-group-container {
-  // リストが1つもなくなった時のプレースホルダ用スタイル
-  min-height: 42px;
-  border-radius: 4px;
-  background: #ddd;
   
-  // リスト
-  .list-group {
-    margin: 0;
-    background: #fff;
+  // リストが1つもなくなった時のプレースホルダを持つためのコンテナ
+  .list-group-container {
+    min-height: 42px;
+    border-radius: 4px;
+    background: #ddd;
     
-    // ドラッグ中の要素
-    .dnd-sortable-drag {
-      background: #ffc;
+    // リスト
+    .list-group {
+      margin: 0;
+      background: #fff;
+      
+      // リストの1要素
+      .list-group-item {
+        &:hover {
+          background: #eee;
+        }
+        
+        // クリック可能な要素
+        &.pointer {
+          cursor: pointer;
+        }
+        
+        .pull-right > button:nth-child(2) {
+          margin: 0 4px;
+        }
+      }
     }
   }
 }

@@ -25,7 +25,7 @@ $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Helvetica Neue", He
 // 明朝体
 $font-family-serif: Georgia, "游明朝体", "YuMincho", "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN W3", HiraMinProN-W3, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", "MS PMincho", serif !default;
 // 等幅
-$font-family-monospace: MeiryoKe_Gothic, "Ricty Diminished", "Courier New", Courier, Consolas, Monaco, Menlo, "Osaka－等幅", "Osaka-等幅", Osaka-mono, "ＭＳ ゴシック", "MS Gothic", monospace !default;
+$font-family-monospace: MeiryoKe_Gothic, "Ricty Diminished", "Courier New", Courier, Monaco, Menlo, Consolas, "Lucida Console", "Osaka－等幅", "Osaka-等幅", Osaka-mono, "ＭＳ ゴシック", "MS Gothic", monospace !default;
 
 // Bootstrap-Sass を読み込む
 @import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
@@ -39,13 +39,6 @@ $fa-font-path: '../node_modules/font-awesome/fonts';
 
 // Font-Awesome を読み込む
 @import '../node_modules/font-awesome/scss/font-awesome';
-
-
-// Other Libraries
-// --------------------------------------------------------------------------------
-
-// ng2-dnd
-@import '../node_modules/ng2-dnd/style.css';
 
 
 // Page
