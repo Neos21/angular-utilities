@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
 })
 export class FontFamilyTesterComponent {
   /** プレビューの表示仕様 */
-  public previewTextSpec: object = {
+  public previewTextSpec: any = {
     /** 太字 */
     weight: false,
     /** 斜体 */
@@ -23,10 +23,10 @@ export class FontFamilyTesterComponent {
   };
   
   /** プレビューに適用するフォントの配列 */
-  public previewFontList: Array<object> = [];
+  public previewFontList: Array<any> = [];
   
   /** 候補フォント一覧 */
-  public stockFontList: Array<object> = [
+  public stockFontList: Array<any> = [
     // sans-serif
     { type: 'sans-serif', name: `-apple-system`                  },  // Apple システムフォント
     { type: 'sans-serif', name: `BlinkMacSystemFont`             },
