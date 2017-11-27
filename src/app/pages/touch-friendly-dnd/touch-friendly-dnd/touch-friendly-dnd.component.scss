@@ -1,26 +1,34 @@
-.droppable {
-  position: relative;
-  padding: 0;
-  list-style: none;
+.item-droppable {
+  margin: 1rem 0;
+  border: 1px solid #00f;
+  padding: 1rem;
   
-  .draggable {
-    position: relative;
-    padding: .5rem;
-    border: 1px solid #ccc;
-    
-    &:not(:first-child) {
-      margin-top: -1px;
+  
+  // ドラッグ前
+  &:not(.gu-over) {
+    .item-draggable:hover {
+      border-color: #f00;
+      cursor: grab;
     }
+    .item-draggable:active {
+      border-color: #f0f;
+      cursor: grabbing;
+    }
+  }
+  
+  // ドラッグ中
+  &.gu-over {
+    color: blue;
   }
 }
 
-.dnd-dragging {
-  color: red;
-  cursor: move;
-}
-
-.dnd-drag-image {
-  cursor: move;
-  color: blue;
-  background: yellow;
+// 単体でスタイルを効かせるためネストしない
+.item-draggable {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  
+  &.gu-transit {
+    color: red;
+  }
 }

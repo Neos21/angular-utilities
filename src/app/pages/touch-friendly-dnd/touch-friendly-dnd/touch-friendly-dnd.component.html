@@ -1,7 +1,7 @@
-<ul appDndDroppable [containerData]="items" class="droppable">
-  <li *ngFor="let item of items; let i = index" appDndDraggable [containerIndex]="i" class="draggable">{{ item }}</li>
-</ul>
+<div ngxDroppable="drop-zone" class="item-droppable">
+  <div *ngFor="let item of items" ngxDraggable class="item-draggable">{{ item }}</div>
+</div>
 
-<ol appDndDroppable [containerData]="dataList" class="droppable">
-  <li *ngFor="let data of dataList; let i = index" appDndDraggable [containerIndex]="i" class="draggable">{{ data }}</li>
-</ol>
+<div ngxDroppable="drop-zone" class="item-droppable">
+  <div *ngFor="let data of dataList" ngxDraggable class="item-draggable">{{ data }}</div>
+</div>
