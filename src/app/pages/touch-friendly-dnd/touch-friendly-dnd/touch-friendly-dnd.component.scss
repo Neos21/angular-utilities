@@ -1,0 +1,26 @@
+.droppable {
+  position: relative;
+  padding: 0;
+  list-style: none;
+  
+  .draggable {
+    position: relative;
+    padding: .5rem;
+    border: 1px solid #ccc;
+    
+    &:not(:first-child) {
+      margin-top: -1px;
+    }
+  }
+}
+
+.dnd-dragging {
+  color: red;
+  cursor: move;
+}
+
+.dnd-drag-image {
+  cursor: move;
+  color: blue;
+  background: yellow;
+}
