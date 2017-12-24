@@ -23,7 +23,6 @@
   },
   "private": true,
   "license": "MIT",
-  "keywords": [],
   "dependencies": {
     "@angular/animations": "4.4.5",
     "@angular/common": "4.4.5",
