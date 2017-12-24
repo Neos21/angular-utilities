@@ -20,12 +20,17 @@
 
 // Glyphicon のフォントファイルのパスを修正する
 $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/" !default;
+// デフォルトフォントサイズを 16px にする
+$font-size-base: 16px !default;
+// 行間を広めに
+$line-height-base: 1.6 !default;
+
 // ゴシック体
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Helvetica Neue", HelveticaNeue, "Segoe UI", "游ゴシック体", YuGothic, "Yu Gothic M", "游ゴシック Medium", "Yu Gothic Medium", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN W3", HiraKakuProN-W3, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "游ゴシック体", YuGothic, "Yu Gothic M", "游ゴシック Medium", "Yu Gothic Medium", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN W3", HiraKakuProN-W3, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif !default;
 // 明朝体
-$font-family-serif: Georgia, "游明朝体", "YuMincho", "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN W3", HiraMinProN-W3, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", "MS PMincho", serif !default;
+$font-family-serif: "游明朝体", "YuMincho", "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN W3", HiraMinProN-W3, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", "MS PMincho", serif !default;
 // 等幅
-$font-family-monospace: MeiryoKe_Gothic, "Ricty Diminished", "Courier New", Courier, Monaco, Menlo, Consolas, "Lucida Console", "Osaka－等幅", "Osaka-等幅", Osaka-mono, "ＭＳ ゴシック", "MS Gothic", monospace !default;
+$font-family-monospace: MeiryoKe_Gothic, "Ricty Diminished", "Osaka－等幅", "Osaka-等幅", Osaka-mono, "ＭＳ ゴシック", "MS Gothic", "Courier New", Courier, Monaco, Menlo, Consolas, "Lucida Console", monospace !default;
 
 // Bootstrap-Sass を読み込む
 @import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
@@ -39,6 +44,34 @@ $fa-font-path: '../node_modules/font-awesome/fonts';
 
 // Font-Awesome を読み込む
 @import '../node_modules/font-awesome/scss/font-awesome';
+
+
+// Dragula (@swimlane/ngx-dnd)
+// --------------------------------------------------------------------------------
+
+// Mirror of Dragging Item
+.gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: .8;
+}
+
+// Necessary to Grab
+.gu-hide {
+  display: none !important;
+}
+
+// body : Disable text selection
+.gu-unselectable {
+  user-select: none !important;
+  cursor: grabbing;  // ドラッグ中のカーソル状態
+}
+
+// Selected Item
+.gu-transit {
+  opacity: .5;
+}
 
 
 // Page
@@ -70,31 +103,4 @@ dl {
     margin-bottom: 20px;
     margin-left: 20px;
   }
-}
-
-
-// Dragula
-
-// Mirror of Dragging Item
-.gu-mirror {
-  position: fixed !important;
-  margin: 0 !important;
-  z-index: 9999 !important;
-  opacity: .8;
-}
-
-// Necessary to Grab
-.gu-hide {
-  display: none !important;
-}
-
-// body : Disable text selection
-.gu-unselectable {
-  user-select: none !important;
-  cursor: grabbing;  // ドラッグ中のカーソル状態
-}
-
-// Selected Item
-.gu-transit {
-  opacity: .5;
 }

@@ -1,7 +1,11 @@
+<h2>Touch Friendly DnD</h2>
+
+<p>PC でもスマホでもドラッグ操作ができるライブラリは <code>@swimlane/ngx-dnd</code> (内部的には Dragula を使用) が良かった。</p>
+
 <div ngxDroppable="drop-zone" class="item-droppable">
-  <div *ngFor="let item of items" ngxDraggable class="item-draggable">{{ item }}</div>
+  <div *ngFor="let item of items1" ngxDraggable class="item-draggable">{{ item }}</div>
 </div>
 
 <div ngxDroppable="drop-zone" class="item-droppable">
-  <div *ngFor="let data of dataList" ngxDraggable class="item-draggable">{{ data }}</div>
+  <div *ngFor="let item of items2" ngxDraggable class="item-draggable">{{ item }}</div>
 </div>

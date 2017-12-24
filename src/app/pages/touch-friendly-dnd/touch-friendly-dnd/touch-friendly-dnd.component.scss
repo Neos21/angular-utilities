@@ -1,24 +1,26 @@
+// ドロップ領域
 .item-droppable {
   margin: 1rem 0;
-  border: 1px solid #00f;
   padding: 1rem;
-  
+  border: 1px solid #ccc;
+  border-radius: 4px;
   
   // ドラッグ前
   &:not(.gu-over) {
     .item-draggable:hover {
-      border-color: #f00;
+      border-color: #f09;
       cursor: grab;
     }
+    
     .item-draggable:active {
-      border-color: #f0f;
+      border-color: #08f;
       cursor: grabbing;
     }
   }
   
-  // ドラッグ中
+  // ドラッグ中の重ねられている要素
   &.gu-over {
-    color: blue;
+    color: #08f;
   }
 }
 
@@ -26,9 +28,17 @@
 .item-draggable {
   margin: 1rem;
   padding: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid #999;
+  border-radius: 4px;
   
+  // ドラッグ中のマウスに追随する要素
+  &.gu-mirror {
+    color: #fff;
+    background: #f09;
+  }
+  
+  // ドラッグされている元要素
   &.gu-transit {
-    color: red;
+    background: #ffc;
   }
 }
