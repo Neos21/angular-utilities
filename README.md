@@ -3,7 +3,7 @@
 The Utilities Made With Angular4.
 
 
-__[Enter This Website.](https://neos21github.github.io/angular-utilities/)__
+__[Enter This Website.](https://neos21.github.io/angular-utilities/)__
 
 
 ## Author
@@ -18,4 +18,4 @@ __[Enter This Website.](https://neos21github.github.io/angular-utilities/)__
 - [Murga](http://neos21.hatenablog.jp/)
 - [El Mylar](http://neos21.hateblo.jp/)
 - [Bit-Archer](http://bit-archer.hatenablog.com/)
-- [GitHub - Neos21GitHub](https://github.com/Neos21GitHub/)
+- [GitHub - Neos21](https://github.com/Neos21/)
