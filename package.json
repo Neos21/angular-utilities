@@ -1,10 +1,10 @@
 {
   "name": "angular-utilities",
   "version": "0.0.0",
-  "description": "The Utilities Made With Angular4",
+  "description": "The Utilities Made With Angular",
   "author": "Neos21 <neos21@gmail.com> (http://neo.s21.xrea.com/)",
   "scripts": {
-    "?info": "?echo Show npm-scripts info.",
+    "?info": "echo Show npm-scripts info.",
     "info": "npm-scripts-info",
     "?ng": "echo Angular CLI.",
     "ng": "ng",

@@ -5,20 +5,17 @@
     <span class="icon-bar"></span>
   </button>
   <h1 class="title">
-    <a [routerLink]="['/home']">Angular Utilities</a>
+    <a [routerLink]="['/index']">Angular Utilities</a>
   </h1>
   <a class="gh" target="_blank" href="https://github.com/Neos21/angular-utilities" title="View on GitHub"><i class="fa fa-github" aria-hidden="true"></i></a>
 </div>
 
 <div class="menu">
   <ul>
-    <li [routerLinkActive]="['active']"><a [routerLink]="['/home']">Home</a></li>
-    <ng-container *ngIf="isShownList()">
-      <li [routerLinkActive]="['active']"><a [routerLink]="['/font-family-tester']">Font Family Tester</a></li>
-      <li [routerLinkActive]="['active']"><a [routerLink]="['/coin-hive-manager']">Coin Hive Manager</a></li>
-      <li [routerLinkActive]="['active']"><a [routerLink]="['/csv-file-to-table']">CSV File To Table</a></li>
-      <li [routerLinkActive]="['active']"><a [routerLink]="['/touch-friendly-dnd']">Touch Friendly DnD</a></li>
-    </ng-container>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['/index']">Index</a></li>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['/font-family-tester']">Font Family Tester</a></li>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['/csv-file-to-table']">CSV File To Table</a></li>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['/touch-friendly-dnd']">Touch Friendly DnD</a></li>
   </ul>
 </div>
 

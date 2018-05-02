@@ -1,12 +1,30 @@
 <h2>Index</h2>
 
-<p>Angular4 を利用したユーティリティを提供するサイトです。</p>
-
-<h3>お断り</h3>
-
-<p>このサイトでは、作者 Neo の趣味で CoinHive を導入しています。</p>
-<p>以下の「Enter」ボタンをクリックすると採掘が始まり、閲覧端末の CPU パワーを一部利用して XMR マイニングをさせていただきます。ご同意いただけない方は「Enter」ボタンをクリックせずご退場ください。</p>
-<p>ご同意いただける方は、以下の「Enter」ボタンをクリックしてメニューに進んでください。</p>
-<p class="text-center">
-  <button class="btn btn-primary btn-lg active" (click)="accept()">Enter</button>
-</p>
+<dl>
+  <dt><a [routerLink]="['/font-family-tester']">Font Family Tester</a></dt>
+  <dd>
+    <p><code>font-family</code> に指定するフォントを動的に追加・変更・削除してフォントの適用具合を確認できるツール。</p>
+  </dd>
+  <dt><a [routerLink]="['/csv-file-to-table']">CSV File To Table</a></dt>
+  <dd>
+    <p>CSV ファイルを HTML テーブル形式で表示するサンプル。ファイルのドラッグ &amp; ドロップに対応。</p>
+  </dd>
+  <dt><a [routerLink]="['/touch-friendly-dnd']">Touch Friendly DnD</a></dt>
+  <dd>
+    <p>PC でもスマホでも使える <abbr title="Drag &amp; Drop">DnD</abbr> を検証。</p>
+  </dd>
+  <dt>About</dt>
+  <dd>
+    <p>どうも Neo です。</p>
+    <ul>
+      <li><a target="_blank" href="http://neo.s21.xrea.com/">Neo's World</a></li>
+      <li><a target="_blank" href="http://neos21.hatenablog.com/">Corredor</a></li>
+      <li><a target="_blank" href="http://neos21.hatenablog.jp/">Murga</a></li>
+      <li><a target="_blank" href="http://neos21.hateblo.jp/">El Mylar</a></li>
+      <li><a target="_blank" href="http://bit-archer.hatenablog.com/">Bit-Archer</a></li>
+      <li><a target="_blank" href="https://twitter.com/Neos21"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter - @Neos21</a></li>
+      <li><a target="_blank" href="https://github.com/Neos21"><i class="fa fa-github" aria-hidden="true"></i> GitHub - Neos21</a></li>
+      <li><a target="_blank" href="https://github.com/Neos21/angular-utilities"><i class="fa fa-github" aria-hidden="true"></i> GitHub - Neos21 - angular-utilities</a></li>
+    </ul>
+  </dd>
+</dl>
