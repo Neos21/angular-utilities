@@ -1,8 +1,6 @@
 {
   "name": "angular-utilities",
-  "version": "0.0.0",
   "description": "The Utilities Made With Angular",
-  "author": "Neos21 <neos21@gmail.com> (http://neo.s21.xrea.com/)",
   "scripts": {
     "?info": "echo Show npm-scripts info.",
     "info": "npm-scripts-info",
@@ -21,8 +19,6 @@
     "?deploy": "echo Publish with GitHub Pages. `npm run build` must run before this script.",
     "deploy": "gh-pages -d dist"
   },
-  "private": true,
-  "license": "MIT",
   "dependencies": {
     "@angular/animations": "4.4.5",
     "@angular/common": "4.4.5",
@@ -64,5 +60,16 @@
     "ts-node": "3.3.0",
     "tslint": "5.7.0",
     "typescript": "2.3.4"
-  }
+  },
+  "private": true,
+  "license": "MIT",
+  "author": "Neos21 <neos21@gmail.com> (http://neo.s21.xrea.com/)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neos21/angular-utilities.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Neos21/angular-utilities/issues"
+  },
+  "homepage": "https://neos21.github.io/angular-utilities/"
 }
