@@ -1,7 +1,6 @@
 # Angular Utilities
 
-The Utilities Made With Angular4.
-
+The Utilities Made With Angular.
 
 __[Enter This Website.](https://neos21.github.io/angular-utilities/)__
 
