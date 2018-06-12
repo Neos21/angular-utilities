@@ -15,7 +15,7 @@
     "?e2e": "echo Start E2E test.",
     "e2e": "ng e2e",
     "?build": "echo Production build.",
-    "build": "ng build --base-href ./ -prod",
+    "build": "ng build --base-href ./ --prod",
     "?deploy": "echo Publish with GitHub Pages. `npm run build` must run before this script.",
     "deploy": "gh-pages -d dist"
   },
