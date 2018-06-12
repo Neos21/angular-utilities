@@ -103,8 +103,8 @@
     "allowUnusedLabels": false,
     // use strict を自動付与する (true)
     "alwaysStrict": true,
-    // JavaScript ファイルの型整合性などをチェックする (true)
-    "checkJs": true,
+    // JavaScript ファイルの型整合性などをチェックしない (false)
+    "checkJs": false,
     // 大文字小文字を区別して参照を解決するようする (true) : Windows 向け
     "forceConsistentCasingInFileNames": true,
     // switch 文のフォールスルーに対してエラーを報告しない (false)
