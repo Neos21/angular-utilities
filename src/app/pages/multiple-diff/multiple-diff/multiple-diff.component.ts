@@ -35,10 +35,6 @@ export class MultipleDiffComponent implements OnInit {
       name: 'c.txt',
       raw: `{
   "private": true,
-  "private": true,
-  "private": true,
-  "private": true,
-  "private": true,
   "name": "project-c",
   "version": "0.0.2",
   "dependencies": {
@@ -132,6 +128,72 @@ export class MultipleDiffComponent implements OnInit {
   }
   
   protected group(): void {
+    const offsetLine = { isOffsetLine: true };
+    
+    const diffedList = this.texts.map((text) => {
+      return text.diffed;
+    });
+    
+    // 先に group プロパティを作っておく
+    this.texts.forEach((text) => {
+      text.group = [];
+    });
+    
+    // 1ファイル操作
+    diffedList.forEach((diffed, diffedIndex) => {
+      const group = this.texts[diffedIndex].group;
+      
+      const sameLines = diffed.filter((line) => {
+        return line.isDiffPrev === false || line.isDiffNext === false;
+      });
+      
+      // group に同じ行の配列を入れる
+      sameLines.forEach((sameLine) => {
+        group.push([sameLine]);
+      });
+      
+      // この時点で group の先頭の配列に、1行目でないデータが入っている場合は、group の先頭にデータを追加する
+      if(group[0] && group[0][0] && group[0][0].isOffsetLine === undefined && group[0][0].rawIndex !== 0) {
+        console.log(this.texts[diffedIndex].name, '1行目でない', group[0][0]);
+        group.unshift([diffed[0]]);
+        // 同様に別のグループの先頭に空行を入れる
+        this.texts.forEach((text, textIndex) => {
+          if(textIndex === diffedIndex) {
+            return;
+          }
+          
+          if(text.group.length === 0) {
+            text.group.push([offsetLine]);
+          }
+        });
+      }
+      
+      // 行を挿入する group の添字
+      let currentGroupIndex = 0;
+      diffed.forEach((line, lineIndex) => {
+        // グループのその添字の配列を取得する
+        const currentGroup = group[currentGroupIndex];
+        // 挿入する行が、配列の最初の要素と同じデータの場合は、同一行があるグループなので挿入しない
+        if(Object.is(line, currentGroup[0])) {
+          return;
+        }
+        
+        // 挿入する行が、次のグループの配列の最初の要素と同じだった場合は、挿入先となる添字をインクリメントし、その行は挿入せず終わる
+        const nextGroup = group[currentGroupIndex + 1];
+        if(nextGroup && Object.is(line, nextGroup[0])) {
+          currentGroupIndex++;
+          return;
+        }
+        
+      });
+      
+      console.log('終わり', group);
+    });
+    
+  }
+  
+  /*
+  protected group(): void {
     const offsetObj = { isOffset: true };
     
     const diffedList = this.texts.map((text) => {
@@ -183,6 +245,7 @@ export class MultipleDiffComponent implements OnInit {
       console.log(this.texts[includedOffsetIndex].name, groups);
     });
   }
+  */
 }
 
 /*

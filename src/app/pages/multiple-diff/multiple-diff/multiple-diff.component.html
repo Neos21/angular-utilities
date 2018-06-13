@@ -2,6 +2,31 @@
 
 <div class="table-responsive">
   <table class="table table-bordered">
+    <caption class="text-center">Group</caption>
+    <thead>
+      <tr>
+        <th *ngFor="let text of texts">{{ text.name }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let text of texts" class="cell-raw">
+          <ng-container *ngIf="text.group">
+            <div *ngFor="let lines of text.group" style="border:1px solid red; margin-bottom: 5px;">
+              <div *ngFor="let line of lines">
+                {{ line?.text }}
+              </div>
+            </div>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--
+<div class="table-responsive">
+  <table class="table table-bordered">
     <caption class="text-center">IncludedOffset</caption>
     <thead>
       <tr>
@@ -28,6 +53,7 @@
     </tbody>
   </table>
 </div>
+-->
 
 <div class="table-responsive">
   <table class="table table-bordered">
