@@ -1,0 +1,53 @@
+<h2>Multiple Diff</h2>
+
+<div class="row">
+  <div class="col-xs-3">
+    <button type="button" class="btn btn-sm btn-success" (click)="addColumn()">列追加</button>
+  </div>
+  <div class="col-xs-9 text-right">
+    <button type="button" class="btn btn-sm btn-info" (click)="dummy()">ダミーデータ</button>
+    <button type="button" class="btn btn-sm btn-danger" (click)="removeAll()">全削除</button>
+  </div>
+</div>
+
+<div class="multiple-diff-wrapper" *ngIf="texts.length > 0">
+  <table class="table-multiple-diff">
+    <thead>
+      <tr>
+        <th *ngFor="let text of texts; let i = index">
+          <button type="button" class="btn btn-icon btn-icon-danger" (click)="removeColumn(i)">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <input type="text" class="text-name" [(ngModel)]="text.name" placeholder="ファイル名">
+        </th>
+      </tr>
+      <tr>
+        <th *ngFor="let text of texts; let i = index">
+          <div class="file-wrapper">
+            <input type="file" (change)="loadFile($event, i)" *ngIf="!text.file">
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let text of texts" class="cell-textarea">
+          <textarea class="textarea" [(ngModel)]="text.raw" (input)="execDiff()"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td *ngFor="let text of texts; let i = index" class="cell-diff-result font-family-monospace">
+          <div *ngIf="text.diffResult" class="diff-result-wrapper" (scroll)="onScrollView($event, i)">
+            <ng-container *ngFor="let line of text.diffResult">
+              <div class="diff-line">
+                <div class="is-diff-next" *ngIf="line.isDiffNext" [ngStyle]="{ 'right': -text.scrollLeft + 'px' }"><span>&nbsp;</span></div>
+                <div class="is-diff-prev" *ngIf="line.isDiffPrev" [ngStyle]="{ 'left' :  text.scrollLeft + 'px' }"><span>&nbsp;</span></div>
+                <div class="diff-line-text">{{ line.text }}</div>
+              </div>
+            </ng-container>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

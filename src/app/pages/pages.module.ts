@@ -7,6 +7,7 @@ import { TouchFriendlyDndModule } from 'app/pages/touch-friendly-dnd/touch-frien
 import { CsvFileToTableModule } from './csv-file-to-table/csv-file-to-table.module';
 import { FontFamilyTesterModule } from './font-family-tester/font-family-tester.module';
 import { IndexModule } from './index/index.module';
+import { MultipleDiffModule } from './multiple-diff/multiple-diff.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { IndexModule } from './index/index.module';
     IndexModule,
     FontFamilyTesterModule,
     CsvFileToTableModule,
-    TouchFriendlyDndModule
+    TouchFriendlyDndModule,
+    MultipleDiffModule
   ]
 })
 export class PagesModule { }
