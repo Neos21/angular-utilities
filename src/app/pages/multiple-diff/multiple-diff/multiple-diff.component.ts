@@ -14,9 +14,7 @@ export class MultipleDiffComponent implements OnInit {
   /** 比較するデータ群 */
   public texts: any[] = [];
   
-  /**
-   * 初期表示時の処理
-   */
+  /** 初期表示時の処理 */
   public ngOnInit(): void {
     this.dummy();
   }
@@ -25,7 +23,8 @@ export class MultipleDiffComponent implements OnInit {
   public addColumn(): void {
     this.texts.push({
       name: '',
-      raw: ''
+      raw: '',
+      scrollLeft: 0
     });
     this.execDiff();
   }
@@ -41,7 +40,8 @@ export class MultipleDiffComponent implements OnInit {
   "dependencies": {
     "@neos21/neos21": "0.0.0"
   }
-}`
+}`,
+        scrollLeft: 0
       },
       {
         name: 'project-b/package.json',
@@ -53,7 +53,8 @@ export class MultipleDiffComponent implements OnInit {
     "@neos21/ccc": "0.0.1",
     "@neos21/neos21": "0.0.0"
   }
-}`
+}`,
+        scrollLeft: 0
       },
       {
         name: 'project-c/package.json',
@@ -64,7 +65,8 @@ export class MultipleDiffComponent implements OnInit {
   "dependencies": {
     "@neos21/neos21": "0.0.0"
   }
-}`
+}`,
+        scrollLeft: 0
       }
     ];
     
@@ -83,6 +85,7 @@ export class MultipleDiffComponent implements OnInit {
     this.execDiff();
   }
   
+  /** ファイルを読み込む */
   public loadFile(event: Event, index: number): void {
     // ファイルがない場合は何もしない
     if(!event || !event.target || !event.target['files'] || !event.target['files'].length) {
@@ -96,7 +99,6 @@ export class MultipleDiffComponent implements OnInit {
     }
     
     const file = event.target['files'][0];
-    console.log(file);
     
     // テキストでないファイルを除外する
     // 「text を含む」で判定すると .md ファイル (type なし) や .json (application/json) などが除外されてしまうため明らかに NG なファイルのみ除外する
@@ -128,9 +130,16 @@ export class MultipleDiffComponent implements OnInit {
     reader.readAsText(file);
   }
   
-  /**
-   * Diff を実行する
-   */
+  /** プレビューを横スクロールした時にカラーリング要素の配置を調整するため、横スクロール位置を控える */
+  public onScrollView(event: Event, index: number): void {
+    if(!event || !event.target || event.target['scrollLeft'] === undefined) {
+      return;
+    }
+    
+    this.texts[index].scrollLeft = event.target['scrollLeft'];
+  }
+  
+  /** Diff を実行する */
   public execDiff(): void {
     // Diff 結果をリセットする
     this.texts.forEach((text) => {

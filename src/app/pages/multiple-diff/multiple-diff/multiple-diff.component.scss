@@ -107,37 +107,41 @@
     
     // 差分行のみ色付けする
     .diff-line {
+      position: relative;
       padding: 0 .5em;
       white-space: pre;
-      position: relative;
       
-      span {
+      .diff-line-text {
         position: relative;
         z-index: 9999;
       }
       
-      &.is-diff-next::before {
-        content: "";
-        display: block;
-        z-index: 1;
+      // 右隣と差分がある行 : 右半分を赤くする
+      .is-diff-next {
         position: absolute;
         top: 0;
         right: 0;
+        z-index: 1;
         width: 55%;
-        height: 100%;
         background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 200, 200, 1) 30%);
+        
+        span {
+          visibility: hidden;
+        }
       }
       
-      &.is-diff-prev::after {
-        content: "";
-        display: block;
-        z-index: 1;
+      // 左隣と差分がある行 : 左半分を緑にする
+      .is-diff-prev {
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 1;
         width: 55%;
-        height: 100%;
         background: linear-gradient(to right, rgba(200, 255, 200, 1) 70%, rgba(255, 255, 255, 0));
+        
+        span {
+          visibility: hidden;
+        }
       }
     }
   }

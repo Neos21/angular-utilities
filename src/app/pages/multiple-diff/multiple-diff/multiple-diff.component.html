@@ -36,14 +36,13 @@
         </td>
       </tr>
       <tr>
-        <td *ngFor="let text of texts" class="cell-diff-result font-family-monospace">
-          <div *ngIf="text.diffResult" class="diff-result-wrapper">
+        <td *ngFor="let text of texts; let i = index" class="cell-diff-result font-family-monospace">
+          <div *ngIf="text.diffResult" class="diff-result-wrapper" (scroll)="onScrollView($event, i)">
             <ng-container *ngFor="let line of text.diffResult">
-              <div class="diff-line" [ngClass]="{
-                'is-diff-next': line.isDiffNext,
-                'is-diff-prev': line.isDiffPrev
-              }">
-                <span>{{ line.text }}</span>
+              <div class="diff-line">
+                <div class="is-diff-next" *ngIf="line.isDiffNext" [ngStyle]="{ 'right': -text.scrollLeft + 'px' }"><span>&nbsp;</span></div>
+                <div class="is-diff-prev" *ngIf="line.isDiffPrev" [ngStyle]="{ 'left' :  text.scrollLeft + 'px' }"><span>&nbsp;</span></div>
+                <div class="diff-line-text">{{ line.text }}</div>
               </div>
             </ng-container>
           </div>
