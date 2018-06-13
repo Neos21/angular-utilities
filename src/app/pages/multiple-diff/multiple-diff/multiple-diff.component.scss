@@ -1,0 +1,44 @@
+.raw-textarea {
+  height: 10em;
+}
+
+.cell-raw {
+  white-space: pre !important;
+}
+
+// 差分行のみ色付けする
+.diffed-test-row {
+  position: relative;
+  span {
+    position: relative;
+    z-index: 9999;
+  }
+  
+  &.is-diff-prev::after {
+    content: "";
+    display: block;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #cfc;
+  }
+  
+  &.is-diff-next::before {
+    content: "";
+    display: block;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: #fcc;
+  }
+  
+  &.offset-line {
+    background: #eee;
+  }
+}

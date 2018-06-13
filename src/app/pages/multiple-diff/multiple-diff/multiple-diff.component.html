@@ -1,0 +1,48 @@
+<h2>Multiple Diff</h2>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <caption class="text-center">IncludedOffset</caption>
+    <thead>
+      <tr>
+        <th *ngFor="let text of texts">{{ text.name }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let text of texts" class="cell-raw">
+          <ng-container *ngIf="text.includedOffset">
+            <ng-container *ngFor="let line of text.includedOffset">
+              <div *ngIf="line.isOffset" class="diffed-test-row offset-line">&nbsp;</div>
+              <div *ngIf="!line.isOffset" class="diffed-test-row" [ngClass]="{
+                'is-diff-next': line.isDiffNext,
+                'is-diff-prev': line.isDiffPrev
+              }"><span>{{ line.text }}</span></div>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="!text.includedOffset">
+            なし
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <caption class="text-center">Raw</caption>
+    <thead>
+      <tr>
+        <th *ngFor="let text of texts">{{ text.name }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let text of texts">
+          <textarea class="form-control raw-textarea" [(ngModel)]="text.raw" (input)="diff()"></textarea>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
