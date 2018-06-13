@@ -1,72 +1,52 @@
 <h2>Multiple Diff</h2>
 
-<div class="table-responsive">
-  <table class="table table-bordered">
-    <caption class="text-center">Group</caption>
-    <thead>
-      <tr>
-        <th *ngFor="let text of texts">{{ text.name }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td *ngFor="let text of texts" class="cell-raw">
-          <ng-container *ngIf="text.group">
-            <div *ngFor="let lines of text.group" style="border:1px solid red; margin-bottom: 5px;">
-              <div *ngFor="let line of lines">
-                {{ line?.text }}
-              </div>
-            </div>
-          </ng-container>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-xs-3">
+    <button type="button" class="btn btn-sm btn-success" (click)="addColumn()">列追加</button>
+  </div>
+  <div class="col-xs-9 text-right">
+    <button type="button" class="btn btn-sm btn-info" (click)="dummy()">ダミーデータ</button>
+    <button type="button" class="btn btn-sm btn-danger" (click)="removeAll()">全削除</button>
+  </div>
 </div>
 
-<!--
-<div class="table-responsive">
-  <table class="table table-bordered">
-    <caption class="text-center">IncludedOffset</caption>
+<div class="multiple-diff-wrapper" *ngIf="texts.length > 0">
+  <table class="table-multiple-diff">
     <thead>
       <tr>
-        <th *ngFor="let text of texts">{{ text.name }}</th>
+        <th *ngFor="let text of texts; let i = index">
+          <button type="button" class="btn btn-icon btn-icon-danger" (click)="removeColumn(i)">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <input type="text" class="text-name" [(ngModel)]="text.name" placeholder="ファイル名">
+        </th>
+      </tr>
+      <tr>
+        <th *ngFor="let text of texts; let i = index">
+          <div class="file-wrapper">
+            <input type="file" (change)="loadFile($event, i)" *ngIf="!text.file">
+          </div>
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td *ngFor="let text of texts" class="cell-raw">
-          <ng-container *ngIf="text.includedOffset">
-            <ng-container *ngFor="let line of text.includedOffset">
-              <div *ngIf="line.isOffset" class="diffed-test-row offset-line">&nbsp;</div>
-              <div *ngIf="!line.isOffset" class="diffed-test-row" [ngClass]="{
+        <td *ngFor="let text of texts" class="cell-textarea">
+          <textarea class="textarea" [(ngModel)]="text.raw" (input)="execDiff()"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td *ngFor="let text of texts" class="cell-diff-result font-family-monospace">
+          <div *ngIf="text.diffResult" class="diff-result-wrapper">
+            <ng-container *ngFor="let line of text.diffResult">
+              <div class="diff-line" [ngClass]="{
                 'is-diff-next': line.isDiffNext,
                 'is-diff-prev': line.isDiffPrev
-              }"><span>{{ line.text }}</span></div>
+              }">
+                <span>{{ line.text }}</span>
+              </div>
             </ng-container>
-          </ng-container>
-          <ng-container *ngIf="!text.includedOffset">
-            なし
-          </ng-container>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
--->
-
-<div class="table-responsive">
-  <table class="table table-bordered">
-    <caption class="text-center">Raw</caption>
-    <thead>
-      <tr>
-        <th *ngFor="let text of texts">{{ text.name }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td *ngFor="let text of texts">
-          <textarea class="form-control raw-textarea" [(ngModel)]="text.raw" (input)="diff()"></textarea>
+          </div>
         </td>
       </tr>
     </tbody>

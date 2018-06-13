@@ -1,44 +1,144 @@
-.raw-textarea {
-  height: 10em;
+@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+
+.btn.btn-danger {
+  margin-left: 6px;
 }
 
-.cell-raw {
-  white-space: pre !important;
+// テーブル全体の設定
+.multiple-diff-wrapper {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  overflow-x: scroll;
+  
+  .table-multiple-diff {
+    width: 100%;
+    height: 100%;  // セルの高さ 100% を有効にするため必要
+    table-layout: fixed;  // 幅を固定するため
+    
+    th, td {
+      border-right: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      width: 300px;
+      
+      &:last-child {
+        border-right-width: 0;
+      }
+    }
+    
+    th {
+      padding: .25em .5em;
+      background: #eff;
+    }
+    
+    thead tr:last-child th {
+      border-bottom-width: 2px;
+    }
+    
+    td {
+      vertical-align: top;
+    }
+  }
 }
 
-// 差分行のみ色付けする
-.diffed-test-row {
-  position: relative;
-  span {
-    position: relative;
-    z-index: 9999;
+// アイコンボタン
+.btn-icon {
+  float: right;
+  
+  padding: 0;
+  border: 0;
+  color: $brand-danger;
+  font-size: $font-size-large;
+  line-height: 1.6;
+  vertical-align: initial;  // .btn の middle 指定を解除
+  background: transparent;
+  
+  // ブランドカラー
+  &:hover {
+    color: darken($brand-danger, 15%);
   }
   
-  &.is-diff-prev::after {
-    content: "";
-    display: block;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
+  .glyphicon {
+    line-height: 1.4;
+  }
+}
+
+// ファイル名
+.text-name {
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  padding: 0 .25em;
+  width: calc(100% - 18px - .5em);
+  background: transparent;
+}
+
+// ファイルアップ欄
+.file-wrapper {
+  input[type="file"] {
+    width: 100%;
+  }
+}
+
+// テキスト編集欄
+.cell-textarea {
+  line-height: 1;  // textarea の下に隙間が出来るので指定
+  
+  .textarea {
+    width: 100%;
+    height: 10em;
+    min-height: 10em;
+    border-width: 0;
+    padding: .5em;
+    line-height: 1.6;
+    white-space: pre;
+    overflow: scroll;
+    resize: vertical;
+  }
+}
+
+// Diff 表示欄
+.cell-diff-result {
+  height: 100%;
+  
+  .diff-result-wrapper {
     height: 100%;
-    background: #cfc;
-  }
-  
-  &.is-diff-next::before {
-    content: "";
-    display: block;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    background: #fcc;
-  }
-  
-  &.offset-line {
-    background: #eee;
+    min-height: 100%;
+    padding: .5em 0;
+    overflow-x: scroll;
+    
+    // 差分行のみ色付けする
+    .diff-line {
+      padding: 0 .5em;
+      white-space: pre;
+      position: relative;
+      
+      span {
+        position: relative;
+        z-index: 9999;
+      }
+      
+      &.is-diff-next::before {
+        content: "";
+        display: block;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 55%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 200, 200, 1) 30%);
+      }
+      
+      &.is-diff-prev::after {
+        content: "";
+        display: block;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 55%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(200, 255, 200, 1) 70%, rgba(255, 255, 255, 0));
+      }
+    }
   }
 }
