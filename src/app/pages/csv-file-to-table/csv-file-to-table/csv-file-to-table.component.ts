@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 /**
  * CSV File To Table
@@ -12,10 +13,37 @@ import { Component } from '@angular/core';
   styleUrls: ['./csv-file-to-table.component.scss']
 })
 export class CsvFileToTableComponent {
-  /**
-   * パース後のテーブルデータ
-   */
+  /** パース後のテーブルデータ */
   public tableData: Array<string> = [];
+  /** サンプル CSV ファイルの URL (ダウンロード用) */
+  public exampleFileUrl: SafeUrl = '';
+  
+  /**
+   * コンストラクタ
+   * 
+   * @param domSanitizer サニタイザ
+   */
+  constructor(private domSanitizer: DomSanitizer) {}
+  
+  /**
+   * サンプル CSV ファイルを生成してダウンロードさせる
+   * 
+   * - 参考 :
+   *   - https://qiita.com/wadahiro/items/eb50ac6bbe2e18cf8813
+   *   - https://blog.makotoishida.com/2017/06/angularpdf.html
+   */
+  public onDownloadExampleFile(): void {
+    // tslint:disable-next-line:no-magic-numbers
+    const bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+    const content = '見出しA,見出しB,見出しC\nデータA1,データB1,データC1\nデータA2,データB2,データC2';
+    const blob = new Blob([bom, content], { type: 'text/csv' });
+    if(window.navigator.msSaveBlob) {
+      window.navigator.msSaveBlob(blob, 'example.csv');
+    }
+    else {
+      this.exampleFileUrl = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(blob));
+    }
+  }
   
   /**
    * ドラッグ & ドロップエリアにファイルがドラッグされた時のイベント
@@ -23,7 +51,7 @@ export class CsvFileToTableComponent {
    * 
    * @param event イベント
    */
-  onDragOver(event: any): void {
+  public onDragOver(event: any): void {
     // dragover イベント時に preventDefault() しておかないと、ブラウザがファイルを開こうとしてしまう
     // stopPropagation() は不要な様子
     event.preventDefault();
@@ -34,7 +62,7 @@ export class CsvFileToTableComponent {
    * 
    * @param event イベント
    */
-  onDrop(event: any): void {
+  public onDrop(event: any): void {
     // ファイルドロップ時の処理を中断
     event.preventDefault();
     
@@ -46,7 +74,7 @@ export class CsvFileToTableComponent {
    * 
    * @param event イベント
    */
-  onSelectFile(event: any): void {
+  public onSelectFile(event: any): void {
     this.parseFile(event.target.files[0]);
   }
   
@@ -56,6 +84,8 @@ export class CsvFileToTableComponent {
    * @param file ファイル
    */
   private parseFile(file: File): void {
+    this.tableData = [];
+    
     if(file.type !== 'text/csv') {
       alert('CSV ファイルを選択してください');
       
@@ -68,8 +98,8 @@ export class CsvFileToTableComponent {
     // ファイルを読み込んだらテーブルデータとして分割しセットする
     reader.onload = () => {
       const rows = reader.result.split('\n');
-      rows.forEach((row) => {
-        this.tableData.push(row.split(','));
+      this.tableData = rows.map((row) => {
+        return row.split(',');
       });
     };
     
