@@ -90,6 +90,7 @@
     padding: .5em;
     line-height: 1.6;
     white-space: pre;
+    word-wrap: normal;  // Edge でコレがないと折り返される
     overflow: scroll;
     resize: vertical;
   }
@@ -109,6 +110,7 @@
       position: relative;
       padding: 0 .5em;
       white-space: pre;
+      word-wrap: normal;  // Edge でコレがないと折り返される
       
       .diff-line-text {
         position: relative;
