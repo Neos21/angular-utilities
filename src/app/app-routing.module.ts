@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   // 空パスで Index にリダイレクトする
-  { path: '', redirectTo: '/index', pathMatch: 'full' },
+  { path: '', redirectTo: '/index', pathMatch: 'full' }
 ];
 
 @NgModule({

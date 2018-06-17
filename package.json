@@ -7,7 +7,7 @@
     "?ng": "echo Angular CLI.",
     "ng": "ng",
     "?start": "echo Start live-reload.",
-    "start": "ng serve --open",
+    "start": "ng serve --open --base-href /",
     "?test": "echo Test TypeScript files.",
     "test": "ng test",
     "?lint": "echo Lint TypeScript files.",
