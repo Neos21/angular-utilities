@@ -1,0 +1,13 @@
+.radio-buttons > label:not(:last-child) {
+  margin-right: 1em;
+}
+
+.textarea {
+  min-height: 20em;
+  white-space: pre;
+  resize: vertical;
+  
+  &[readonly] {
+    background: #fff;
+  }
+}

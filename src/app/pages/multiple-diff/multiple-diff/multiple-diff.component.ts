@@ -74,9 +74,12 @@ export class MultipleDiffComponent implements OnInit {
     this.execDiff();
   }
   
-  /** 全削除する */
+  /** 全削除する : デフォルトで2列作成 */
   public removeAll(): void {
-    this.texts = [];
+    this.texts = [
+      { name: '', raw: '' },
+      { name: '', raw: '' }
+    ];
   }
   
   /** 指定の列を削除する */
@@ -156,7 +159,7 @@ export class MultipleDiffComponent implements OnInit {
    * 
    * @param aIndex ベースにするデータの添字
    */
-  protected diff(aIndex: number): void {
+  private diff(aIndex: number): void {
     // 比較対象のデータの添字
     let bIndex = aIndex + 1;
     
@@ -206,7 +209,7 @@ export class MultipleDiffComponent implements OnInit {
    * 
    * @param index 対象の this.texts の添字
    */
-  protected getLines(index: number): any[] {
+  private getLines(index: number): any[] {
     return this.texts[index].raw.split('\n').map((line, lineIndex) => {
       return { text: line, rawIndex: lineIndex };
     });
@@ -218,7 +221,7 @@ export class MultipleDiffComponent implements OnInit {
    * @param index 対象の this.texts の添字
    * @param diffResult セットしたい Diff 結果データ
    */
-  protected setDiffResult(index: number, diffResult: any[]): void {
+  private setDiffResult(index: number, diffResult: any[]): void {
     if(this.texts[index].diffResult === undefined) {
       // 未定義の場合は直接今回の Diff 結果をセットする
       this.texts[index].diffResult = diffResult;
