@@ -8,6 +8,7 @@ import { CsvFileToTableModule } from './csv-file-to-table/csv-file-to-table.modu
 import { FontFamilyTesterModule } from './font-family-tester/font-family-tester.module';
 import { IndexModule } from './index/index.module';
 import { MultipleDiffModule } from './multiple-diff/multiple-diff.module';
+import { TextConverterModule } from './text-converter/text-converter.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { MultipleDiffModule } from './multiple-diff/multiple-diff.module';
     FontFamilyTesterModule,
     CsvFileToTableModule,
     TouchFriendlyDndModule,
-    MultipleDiffModule
+    MultipleDiffModule,
+    TextConverterModule
   ]
 })
 export class PagesModule { }
