@@ -1,8 +1,6 @@
-import { Component, Inject, Renderer } from '@angular/core';
+import { Component, Inject, OnInit, Renderer } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
-
-import { environment } from '../environments/environment';
 
 /**
  * アプリのルートコンポーネント
@@ -12,7 +10,7 @@ import { environment } from '../environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit  {
   /** サイドメニュー .menu の表示状況を管理するフラグ */
   public isShownMenu: boolean = false;
   
@@ -35,6 +33,23 @@ export class AppComponent {
         window.scrollTo(0, 0);
       }
     });
+  }
+  
+  /**
+   * 初期表示時の処理
+   */
+  ngOnInit(): void {
+    // SessionStorage より 404.html からのリダイレクト URL 情報が取得できたら対象のページに遷移する
+    const redirectUrl = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    if(redirectUrl && redirectUrl !== location.href) {
+      // ハッシュやパラメータ「#」「?」「;」を除去する (現状パラメータを利用するページはないので不要)
+      const pureUrl = redirectUrl.split(/#|\?|;/)[0];
+      window.history.replaceState(null, null, pureUrl);
+      // ドメイン・アプリルート部分を削除して遷移する
+      const navigateUrl = pureUrl.replace(/http.*:\/\/.*\/angular-utilities/, '');
+      this.router.navigate([navigateUrl]);
+    }
   }
   
   /**
