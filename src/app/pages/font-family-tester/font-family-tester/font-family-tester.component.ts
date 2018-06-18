@@ -101,7 +101,7 @@ export class FontFamilyTesterComponent {
    * 
    * @return this.previewFontList からプレビューするフォント名をカンマ区切りで列挙した文字列
    */
-  getFontList(): string {
+  public getFontList(): string {
     let fontFamily = '';
     
     this.previewFontList.forEach((font: { type: string; name: string }, index) => {
@@ -123,7 +123,7 @@ export class FontFamilyTesterComponent {
    * 
    * @param index 選択された要素の添字
    */
-  upFont(index: number): void {
+  public upFont(index: number): void {
     // 配列の先頭の要素では何もしない
     if(index === 0) {
       return;
@@ -139,7 +139,7 @@ export class FontFamilyTesterComponent {
    * 
    * @param index 選択された要素の添字
    */
-  downFont(index: number): void {
+  public downFont(index: number): void {
     // 配列の最後の要素では何もしない
     if(index === this.previewFontList.length - 1) {
       return;
@@ -157,7 +157,7 @@ export class FontFamilyTesterComponent {
    * 
    * @param index プレビューフォント一覧における、移動対象の要素の添字
    */
-  removeFont(index: number): void {
+  public removeFont(index: number): void {
     Array.prototype.push.apply(this.stockFontList, this.previewFontList.splice(index, 1));
   }
   
@@ -169,14 +169,14 @@ export class FontFamilyTesterComponent {
    * 
    * @param index 候補フォント一覧の配列における、移動対象の要素の添字
    */
-  addPreviewFontList(index: number): void {
+  public addPreviewFontList(index: number): void {
     Array.prototype.push.apply(this.previewFontList, this.stockFontList.splice(index, 1));
   }
   
   /**
    * フォントを独自に追加する
    */
-  addOriginalFont(): void {
+  public addOriginalFont(): void {
     // 空欄やスペースのみなら何もしない
     if(this.originalFont === '' || /^\s+$/g.test(this.originalFont)) {
       return;

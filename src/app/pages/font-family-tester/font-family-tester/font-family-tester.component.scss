@@ -41,8 +41,16 @@
 }
 
 // フォントプレビュー欄
-.preview {
-  height: 70px;
+#preview-wrapper {
+  // Stylish プラグインなどを利用していると font-family を上書きできない場合があったので
+  // #preview-wrapper にスタイルを当て、「inherit !important」と指定することで対応する
+  .preview {
+    height: 70px;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    font-style: inherit !important;
+    font-size: inherit !important;
+  }
 }
 
 // フォント一覧部分の間の余白を縮める

@@ -8,15 +8,13 @@
 
 <pre class="font-family-code">font-family : {{ getFontList() }} ;</pre>
 
-<p>
-  <textarea class="form-control preview"
-            placeholder="Please enter the text that you want to check font-family. フォント変更を確認するテキストを入力してください。"
-            [ngStyle]="{
-              'font-family': getFontList(),
-              'font-weight': previewTextSpec.weight ? 'bold'   : 'normal',
-              'font-style' : previewTextSpec.italic ? 'italic' : 'normal',
-              'font-size'  : previewTextSpec.size   ? '150%'   : '100%'
-            }"></textarea>
+<p id="preview-wrapper" [ngStyle]="{
+  'font-family': getFontList(),
+  'font-weight': previewTextSpec.weight ? 'bold'   : 'normal',
+  'font-style' : previewTextSpec.italic ? 'italic' : 'normal',
+  'font-size'  : previewTextSpec.size   ? '150%'   : '100%'
+}">
+  <textarea class="form-control preview" placeholder="Please enter the text that you want to check font-family. フォント変更を確認するテキストを入力してください。"></textarea>
 </p>
 
 <ul class="list-inline">
