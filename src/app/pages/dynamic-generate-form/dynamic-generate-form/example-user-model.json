@@ -1,0 +1,25 @@
+{
+  "modelName": "user",
+  "controls": [
+    {
+      "name": "name",
+      "label": "名前",
+      "type": "textbox"
+    },
+    {
+      "naame": "sex",
+      "label": "性別",
+      "type": "radio",
+      "radioValues": [
+        {
+          "value": "0",
+          "label": "男性"
+        },
+        {
+          "value": "1",
+          "label": "女性"
+        }
+      ]
+    }
+  ]
+}

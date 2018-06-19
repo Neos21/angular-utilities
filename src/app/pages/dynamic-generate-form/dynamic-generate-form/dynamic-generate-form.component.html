@@ -1,0 +1,25 @@
+<h2>Dynamic Generate Form</h2>
+
+<form [formGroup]="dynamicForm">
+  <div class="form-group" *ngFor="let control of model.controls">
+    <div *ngIf="control.type === 'textbox'">
+      <div>{{ control.label }}</div>
+      <input type="text" [formControlName]="control.name">
+    </div>
+    
+    <div *ngIf="control.type === 'radio'">
+      <div>{{ control.label }}</div>
+      <div *ngFor="let radioValue of control.radioValues">
+        <div><label><input type="radio" [formControlName]="control.name" [value]="radioValue.value"> {{ radioValue.label }}</label></div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<p>
+  <button type="button" class="btn btn-info" (click)="onSubmit()">データ確認</button>
+</p>
+
+<p>
+  <textarea class="form-control" [value]="preview"></textarea>
+</p>
