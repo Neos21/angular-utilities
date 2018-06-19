@@ -4,28 +4,28 @@
 
 <div class="form-horizontal">
   <div class="form-group">
-    <label class="col-xs-4 control-label">行番号の書式 :</label>
-    <div class="col-xs-8 radio-buttons">
+    <label class="col-sm-4 control-label">行番号の書式 :</label>
+    <div class="col-sm-8 radio-buttons">
       <label><input type="radio" [(ngModel)]="options.lineNumberStyle" name="optionsLineNumberStyle" value="none"> 整形なし</label>
       <label><input type="radio" [(ngModel)]="options.lineNumberStyle" name="optionsLineNumberStyle" value="zeroPadding"> 0 パディング</label>
       <label><input type="radio" [(ngModel)]="options.lineNumberStyle" name="optionsLineNumberStyle" value="alignRight"> 右寄せ</label>
     </div>
   </div>
   <div class="form-group">
-    <label class="col-xs-4 control-label">接頭辞 :</label>
-    <div class="col-xs-8"><input type="text" class="form-control" [(ngModel)]="options.prefix"></div>
+    <label class="col-sm-4 control-label">接頭辞 :</label>
+    <div class="col-sm-8"><input type="text" class="form-control" [(ngModel)]="options.prefix"></div>
   </div>
   <div class="form-group">
-    <label class="col-xs-4 control-label">デリミタ :</label>
-    <div class="col-xs-8"><input type="text" class="form-control" [(ngModel)]="options.delimiter"></div>
+    <label class="col-sm-4 control-label">デリミタ :</label>
+    <div class="col-sm-8"><input type="text" class="form-control" [(ngModel)]="options.delimiter"></div>
   </div>
   <div class="form-group">
-    <label class="col-xs-4 control-label">接尾辞 :</label>
-    <div class="col-xs-8"><input type="text" class="form-control" [(ngModel)]="options.suffix"></div>
+    <label class="col-sm-4 control-label">接尾辞 :</label>
+    <div class="col-sm-8"><input type="text" class="form-control" [(ngModel)]="options.suffix"></div>
   </div>
   <div class="form-group">
-    <label class="col-xs-4 control-label">行番号の出力位置 :</label>
-    <div class="col-xs-8 radio-buttons">
+    <label class="col-sm-4 control-label">行番号の出力位置 :</label>
+    <div class="col-sm-8 radio-buttons">
       <label><input type="radio" [(ngModel)]="options.lineNumberPosition" name="optionsLineNumberPosition" value="beforeSrc"> 入力値の前</label>
       <label><input type="radio" [(ngModel)]="options.lineNumberPosition" name="optionsLineNumberPosition" value="afterSrc"> 入力値の後</label>
       <label><input type="radio" [(ngModel)]="options.lineNumberPosition" name="optionsLineNumberPosition" value="none"> 出力しない</label>
@@ -34,10 +34,10 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-sm-6">
     <textarea class="form-control textarea" [(ngModel)]="src" placeholder="テキストを入力してください"></textarea>
   </div>
-  <div class="col-xs-6">
+  <div class="col-sm-6">
     <textarea class="form-control textarea" [value]="dest" readonly placeholder="変換後テキスト"></textarea>
   </div>
 </div>
