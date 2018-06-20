@@ -97,6 +97,13 @@ body {
   cursor: default;
 }
 
+table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
 dl {
   margin-top: 20px;
   
@@ -108,4 +115,13 @@ dl {
     margin-bottom: 20px;
     margin-left: 20px;
   }
+}
+
+
+// Custom Classes
+// --------------------------------------------------------------------------------
+
+// 背景色を暗くしない
+textarea.form-control[readonly].textarea-preview {
+  background: #fff;
 }

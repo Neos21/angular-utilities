@@ -1,0 +1,22 @@
+<h2>Case Converter</h2>
+
+<p>入力されたテキストを様々なケースに変換します。複数行の入力に対応しています。</p>
+
+<p>
+  <textarea class="form-control textarea-input" [(ngModel)]="input" placeholder="テキストを入力してください"></textarea>
+</p>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th class="col-xs-4">変換方法</th>
+      <th class="col-xs-8">変換結果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let key of results | keys">
+      <td class="toggle-collapse" (click)="results[key].isCollapsed = !results[key].isCollapsed">{{ results[key].title }}</td>
+      <td><textarea class="form-control textarea-preview" [ngStyle]="{ 'height': results[key].isCollapsed ? '2.5em' : '4em' }" [value]="results[key].value" [placeholder]="results[key].title" readonly></textarea></td>
+    </tr>
+  </tbody>
+</table>
