@@ -1,0 +1,28 @@
+<h2>Calculator</h2>
+
+<form [formGroup]="calcForm" class="form-horizontal">
+  <div class="form-group">
+    <label class="col-xs-3 control-label">計算式</label>
+    <div class="col-xs-9" [ngClass]="{
+      'has-success': calcForm.dirty && calcForm.get('input').valid && calcForm.get('input').value !== '',
+      'has-error'  : calcForm.dirty && calcForm.get('input').invalid
+    }">
+      <input type="text" formControlName="input" class="form-control font-family-monospace" placeholder="計算式を入力してください">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-xs-3 control-label">変換結果</label>
+    <div class="col-xs-9">
+      <input type="text" formControlName="transformed" class="form-control font-family-monospace" placeholder="計算式の変換結果が表示されます" readonly>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-xs-3 control-label">変換結果</label>
+    <div class="col-xs-9" [ngClass]="{
+      'has-success': !hasError && calcForm.get('output').value !== '',
+      'has-error': hasError
+    }">
+      <input type="text" formControlName="output" class="form-control font-family-monospace" placeholder="計算結果が表示されます" readonly>
+    </div>
+  </div>
+</form>

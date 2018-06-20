@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 
 import { TouchFriendlyDndModule } from 'app/pages/touch-friendly-dnd/touch-friendly-dnd.module';
+import { CalculatorModule } from './calculator/calculator.module';
 import { CsvFileToTableModule } from './csv-file-to-table/csv-file-to-table.module';
 import { FontFamilyTesterModule } from './font-family-tester/font-family-tester.module';
 import { IndexModule } from './index/index.module';
@@ -19,7 +20,8 @@ import { TextConverterModule } from './text-converter/text-converter.module';
     CsvFileToTableModule,
     TouchFriendlyDndModule,
     MultipleDiffModule,
-    TextConverterModule
+    TextConverterModule,
+    CalculatorModule
   ]
 })
 export class PagesModule { }
