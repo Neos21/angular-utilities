@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { AddLineNumberComponent } from './add-line-number/add-line-number.component';
 import { TextConverterRoutingModule } from './text-converter-routing.module';
+import { CaseConverterComponent } from './case-converter/case-converter.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { TextConverterRoutingModule } from './text-converter-routing.module';
     TextConverterRoutingModule
   ],
   declarations: [
-    AddLineNumberComponent
+    AddLineNumberComponent,
+    CaseConverterComponent
   ]
 })
 export class TextConverterModule { }
