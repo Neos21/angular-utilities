@@ -1,0 +1,150 @@
+{
+  "name": "user",
+  "label": "ユーザ情報",
+  "controls": [
+    {
+      "name": "name",
+      "label": "名前",
+      "type": "textbox",
+      "initialValue": "初期値",
+      "placeholder": "プレースホルダ"
+    },
+    {
+      "name": "zip-code",
+      "label": "郵便番号",
+      "type": "textbox",
+      "disabled": true
+    },
+    {
+      "name": "sex",
+      "label": "性別",
+      "type": "radio",
+      "options": [
+        {
+          "value": "0",
+          "label": "男性"
+        },
+        {
+          "value": "1",
+          "label": "女性",
+          "checked": true
+        },
+        {
+          "value": "2",
+          "label": "その他",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "name": "hobbies",
+      "label": "趣味",
+      "type": "checkbox",
+      "options": [
+        {
+          "value": "10",
+          "label": "音楽"
+        },
+        {
+          "value": "20",
+          "label": "映画",
+          "checked": true
+        },
+        {
+          "value": "30",
+          "label": "スポーツ",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "name": "age-group",
+      "label": "年齢層",
+      "type": "selectbox",
+      "options": [
+        {
+          "value": "",
+          "label": "未選択",
+          "selected": true
+        },
+        {
+          "value": "1019",
+          "label": "10代"
+        },
+        {
+          "value": "2029",
+          "label": "20代"
+        },
+        {
+          "value": "3039",
+          "label": "30代"
+        }
+      ]
+    },
+    {
+      "name": "languages",
+      "label": "言語",
+      "type": "selectbox",
+      "multiple": true,
+      "options": [
+        {
+          "value": "html",
+          "label": "HTML",
+          "selected": true
+        },
+        {
+          "value": "css",
+          "label": "CSS"
+        },
+        {
+          "value": "js",
+          "label": "JavaScript",
+          "selected": true
+        },
+        {
+          "value": "ruby",
+          "label": "Ruby"
+        }
+      ]
+    },
+    {
+      "name": "birth-month",
+      "label": "誕生月",
+      "type": "selectbox",
+      "disabled": true,
+      "options": [
+        {
+          "value": "",
+          "label": "未選択",
+          "selected": true
+        },
+        {
+          "value": "1",
+          "label": "1月"
+        },
+        {
+          "value": "2",
+          "label": "2月"
+        },
+        {
+          "value": "3",
+          "label": "3月",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "name": "profiles",
+      "label": "プロフィール",
+      "type": "textarea",
+      "initialValue": "テキストエリア初期値",
+      "placeholder": "テキストエリアプレースホルダ"
+    },
+    {
+      "name": "etc",
+      "label": "その他",
+      "type": "textarea",
+      "disabled": true
+    }
+  ]
+}
