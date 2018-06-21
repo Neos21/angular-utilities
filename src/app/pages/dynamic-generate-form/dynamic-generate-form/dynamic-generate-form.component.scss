@@ -2,10 +2,5 @@
   textarea {
     min-height: 10em;
     height: 15em;
-    resize: vertical;
-    
-    &[readonly] {
-      background: #fff;
-    }
   }
 }

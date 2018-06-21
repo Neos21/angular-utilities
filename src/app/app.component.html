@@ -13,14 +13,30 @@
 <div class="menu">
   <ul>
     <li [routerLinkActive]="['active']"><a [routerLink]="['/index']">Index</a></li>
+    <!-- 単品のツール系 -->
     <li [routerLinkActive]="['active']"><a [routerLink]="['/font-family-tester']">Font Family Tester</a></li>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['/multiple-diff']">Multiple Diff</a></li>
+    <li [routerLinkActive]="['active']"><a [routerLink]="['/calculator']">Calculator</a></li>
+    <!-- 1モジュールに複数コンポーネント持つツール -->
+    <li>
+      <span>Text Converter</span>
+      <ul>
+        <li [routerLinkActive]="['active']"><a [routerLink]="['/text-converter/add-line-number']">Add Line Number</a></li>
+        <li [routerLinkActive]="['active']"><a [routerLink]="['/text-converter/case-converter']">Case Converter</a></li>
+      </ul>
+    </li>
+    <li>
+      <span>Beautifier</span>
+      <ul>
+        <li [routerLinkActive]="['active']"><a [routerLink]="['/beautifier/javascript']">JavaScript Beautifier</a></li>
+        <li [routerLinkActive]="['active']"><a [routerLink]="['/beautifier/html']">HTML Beautifier</a></li>
+        <li [routerLinkActive]="['active']"><a [routerLink]="['/beautifier/css']">CSS Beautifier</a></li>
+      </ul>
+    </li>
+    <!-- 単品のサンプル系 -->
     <li [routerLinkActive]="['active']"><a [routerLink]="['/csv-file-to-table']">CSV File To Table</a></li>
     <li [routerLinkActive]="['active']"><a [routerLink]="['/touch-friendly-dnd']">Touch Friendly DnD</a></li>
-    <li [routerLinkActive]="['active']"><a [routerLink]="['/multiple-diff']">Multiple Diff</a></li>
-    <li [routerLinkActive]="['active']"><a [routerLink]="['/text-converter/add-line-number']">Add Line Number</a></li>
     <li [routerLinkActive]="['active']"><a [routerLink]="['/dynamic-generate-form']">Dynamic Generate Form</a></li>
-    <li [routerLinkActive]="['active']"><a [routerLink]="['/text-converter/case-converter']">Case Converter</a></li>
-    <li [routerLinkActive]="['active']"><a [routerLink]="['/calculator']">Calculator</a></li>
   </ul>
 </div>
 

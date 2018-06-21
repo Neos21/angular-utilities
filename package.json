@@ -34,6 +34,7 @@
     "classlist.js": "1.1.20150312",
     "core-js": "2.5.1",
     "font-awesome": "4.7.0",
+    "js-beautify": "1.7.5",
     "lodash": "4.17.10",
     "ngx-bootstrap": "1.9.3",
     "rxjs": "6.2.0",

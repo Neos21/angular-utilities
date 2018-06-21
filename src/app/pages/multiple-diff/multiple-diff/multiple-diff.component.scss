@@ -33,10 +33,6 @@
     thead tr:last-child th {
       border-bottom-width: 2px;
     }
-    
-    td {
-      vertical-align: top;
-    }
   }
 }
 
@@ -89,10 +85,7 @@
     border-width: 0;
     padding: .5em;
     line-height: 1.6;
-    white-space: pre;
-    word-wrap: normal;  // Edge でコレがないと折り返される
     overflow: scroll;
-    resize: vertical;
   }
 }
 

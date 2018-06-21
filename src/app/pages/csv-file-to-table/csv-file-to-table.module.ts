@@ -1,6 +1,4 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -9,8 +7,6 @@ import { CsvFileToTableComponent } from './csv-file-to-table/csv-file-to-table.c
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
     SharedModule,
     CsvFileToTableRoutingModule
   ],

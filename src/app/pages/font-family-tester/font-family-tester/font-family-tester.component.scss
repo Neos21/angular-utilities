@@ -34,12 +34,6 @@
   @include btn-icon($brand-danger);
 }
 
-// コードプレビューの表示欄
-.font-family-code {
-  overflow-x: scroll;
-  overflow-y: hidden;
-}
-
 // フォントプレビュー欄
 #preview-wrapper {
   // Stylish プラグインなどを利用していると font-family を上書きできない場合があったので
