@@ -10,6 +10,7 @@ import { DynamicGenerateFormModule } from './dynamic-generate-form/dynamic-gener
 import { FontFamilyTesterModule } from './font-family-tester/font-family-tester.module';
 import { IndexModule } from './index/index.module';
 import { MultipleDiffModule } from './multiple-diff/multiple-diff.module';
+import { RegExpModule } from './regexp/regexp.module';
 import { TextConverterModule } from './text-converter/text-converter.module';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TextConverterModule } from './text-converter/text-converter.module';
     MultipleDiffModule,
     TextConverterModule,
     DynamicGenerateFormModule,
-    CalculatorModule
+    CalculatorModule,
+    RegExpModule
   ]
 })
 export class PagesModule { }

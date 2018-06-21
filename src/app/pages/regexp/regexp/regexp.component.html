@@ -1,0 +1,18 @@
+<h2>RegExp</h2>
+
+<p>正規表現による置換を試せます。</p>
+
+<p>
+  <textarea class="form-control" [(ngModel)]="inputText" placeholder="置換対象のテキストを入力してください"></textarea>
+</p>
+
+<p>
+  <input type="text" class="form-control" [(ngModel)]="inputRegExp" placeholder="検索文字列を入力してください">
+</p>
+<p>
+  <input type="text" class="form-control" [(ngModel)]="inputReplace" placeholder="置換文字列を入力してください">
+</p>
+
+<p>
+  <textarea class="form-control textarea-preview" [value]="output" placeholder="置換文字列が表示されます"></textarea>
+</p>
