@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { NgxDnDModule } from '@swimlane/ngx-dnd';
@@ -10,9 +9,8 @@ import { TouchFriendlyDndComponent } from './touch-friendly-dnd/touch-friendly-d
 
 @NgModule({
   imports: [
-    CommonModule,
-    SharedModule,
     NgxDnDModule,
+    SharedModule,
     TouchFriendlyDndRoutingModule
   ],
   declarations: [

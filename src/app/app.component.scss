@@ -49,6 +49,7 @@ a {
     overflow: hidden;
     opacity: 1;
     transition: opacity $menu-transition, visibility $menu-transition;
+    outline: 0;
     
     // 幅が広い時は非表示にする
     @media (min-width: $screen-lg-min) {
@@ -112,22 +113,33 @@ a {
   left: -$menu-width;  // メニューの幅の分だけネガティブ指定して画面外に出しておく
   width: $menu-width;
   height: calc( 100% - #{$header-height} );  // SCSS 変数と CSS3 calc() を併用する
+  overflow-y: auto;
   background: $theme-bg-color;
   transition: left $menu-transition;
   z-index: 99999;
   
   ul {
-    margin: 15px 0 0;
+    margin: 15px 0;
     padding: 0;
     list-style: none;
+    color: darken($theme-color, 20%);
+    font-size: $font-size-large;
+    font-weight: bold;
+    
+    ul {
+      margin: 0;
+      padding-left: 15px;
+    }
+    
+    span {
+      display: block;
+      padding: 0 15px 5px;
+      color: darken($theme-color, 35%);
+    }
     
     a {
       display: block;
-      padding: 15px;
-      color: darken($theme-color, 20%);
-      font-size: $font-size-large;
-      font-family: Verdana, Helvetica, Arial, sans-serif;
-      font-weight: bold;
+      padding: 0 15px 15px;
     }
     
     .active a,

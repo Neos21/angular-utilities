@@ -4,11 +4,4 @@
 
 .textarea {
   min-height: 20em;
-  white-space: pre;
-  word-wrap: normal;  // Edge でコレがないと折り返される
-  resize: vertical;
-  
-  &[readonly] {
-    background: #fff;
-  }
 }
