@@ -12,7 +12,7 @@ import * as jsBeautify from 'js-beautify';
 })
 export class HtmlBeautifierComponent implements DoCheck {
   /** 入力値 */
-  public input: string = `<html><head></head><body><p>a</p></body></html>`;  // TODO
+  public input: string = '';
   /** 出力値 */
   public output: string = '';
   
