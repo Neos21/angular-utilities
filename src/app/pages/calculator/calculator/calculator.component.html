@@ -1,5 +1,7 @@
 <h2>Calculator</h2>
 
+<p>数式を入力すると計算できます。全角文字や全角記号 (「÷」など) にも対応しています。</p>
+
 <form [formGroup]="calcForm" class="form-horizontal">
   <div class="form-group">
     <label class="col-xs-3 control-label">計算式</label>
@@ -17,7 +19,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-xs-3 control-label">変換結果</label>
+    <label class="col-xs-3 control-label">計算結果</label>
     <div class="col-xs-9" [ngClass]="{
       'has-success': !hasError && calcForm.get('output').value !== '',
       'has-error': hasError

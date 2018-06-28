@@ -20,7 +20,7 @@ export class RegExpComponent implements DoCheck {
   
   /** テキストを置換する */
   public ngDoCheck(): void {
-    if(!this.inputText || !this.inputRegExp || !this.inputReplace) {
+    if(!this.inputText || !this.inputRegExp) {
       this.output = '';
       
       return;
