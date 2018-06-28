@@ -17,39 +17,33 @@ export class CaseConverterComponent implements DoCheck {
   public input: string = '';
   
   /**
-   * 結果
+   * 様々なケースに変換するオブジェクトたち
    * 
    * - title : 画面に表示する「変換方法」
    * - value : テキストエリアに表示する「変換結果」
-   * - data : 変換したのデータを行ごとに格納した配列
    * - transform : 行データを変換し返却する関数
    * - isCollapsed : 行を縮小表示するかどうか
    */
-  // tslint:disable:max-line-length
-  public results: any = {
-    pascal    : { title: 'パスカルケース',         value: '', data: [], transform: (line) => { return _.upperFirst(_.camelCase(line)); }, isCollapsed: false },
-    camel     : { title: 'キャメルケース',         value: '', data: [], transform: (line) => { return _.camelCase(line);               }, isCollapsed: false },
-    kebab     : { title: 'ハイフンケース',         value: '', data: [], transform: (line) => { return _.kebabCase(line);               }, isCollapsed: false },
-    snake     : { title: 'スネークケース',         value: '', data: [], transform: (line) => { return _.snakeCase(line);               }, isCollapsed: false },
-    upperSnake: { title: 'アッパースネークケース', value: '', data: [], transform: (line) => { return _.toUpper(_.snakeCase(line));    }, isCollapsed: false },
-    lower     : { title: 'ロウワーケース',         value: '', data: [], transform: (line) => { return _.lowerCase(line);               }, isCollapsed: false },
-    upper     : { title: 'アッパーケース',         value: '', data: [], transform: (line) => { return _.upperCase(line);               }, isCollapsed: false }
+  // tslint:disable:arrow-parens
+  public cases: any = {
+    pascal    : { title: 'パスカルケース',         value: '', transform: line => _.upperFirst(_.camelCase(line)), isCollapsed: false },
+    camel     : { title: 'キャメルケース',         value: '', transform: line => _.camelCase(line)              , isCollapsed: false },
+    kebab     : { title: 'ハイフンケース',         value: '', transform: line => _.kebabCase(line)              , isCollapsed: false },
+    snake     : { title: 'スネークケース',         value: '', transform: line => _.snakeCase(line)              , isCollapsed: false },
+    upperSnake: { title: 'アッパースネークケース', value: '', transform: line => _.toUpper(_.snakeCase(line))   , isCollapsed: false },
+    lower     : { title: 'ロウワーケース',         value: '', transform: line => _.lowerCase(line)              , isCollapsed: false },
+    upper     : { title: 'アッパーケース',         value: '', transform: line => _.upperCase(line)              , isCollapsed: false }
   };
-  // tslint:enable
   
   /**
    * 変更を監視してケースを変換する
    */
   public ngDoCheck(): void {
-    this.input.split('\n').forEach((line) => {
-      Object.keys(this.results).forEach((key) => {
-        this.results[key].data.push(this.results[key].transform(line));
-      });
-    });
-    
-    Object.keys(this.results).forEach((key) => {
-      this.results[key].value = this.results[key].data.join('\n');
-      this.results[key].data = [];
+    const lines = this.input.split('\n');
+    Object.keys(this.cases).forEach((key) => {
+      this.cases[key].value = lines.map((line) => {
+        return this.cases[key].transform(line);
+      }).join('\n');
     });
   }
 }

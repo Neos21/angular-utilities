@@ -14,9 +14,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let key of results | keys">
-      <td class="pointer" (click)="results[key].isCollapsed = !results[key].isCollapsed">{{ results[key].title }}</td>
-      <td><textarea class="form-control textarea-preview" [ngStyle]="{ 'height': results[key].isCollapsed ? '2.5em' : '4em' }" [value]="results[key].value" [placeholder]="results[key].title" readonly></textarea></td>
+    <tr *ngFor="let key of cases | keys">
+      <td class="pointer" (click)="cases[key].isCollapsed = !cases[key].isCollapsed">{{ cases[key].title }}</td>
+      <td><textarea class="form-control textarea-preview" [ngStyle]="{ 'height': cases[key].isCollapsed ? '2.5em' : '4em' }" [value]="cases[key].value" [placeholder]="cases[key].title" readonly></textarea></td>
     </tr>
   </tbody>
 </table>
