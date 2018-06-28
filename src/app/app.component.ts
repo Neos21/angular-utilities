@@ -10,7 +10,7 @@ import { NavigationEnd, Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit  {
+export class AppComponent implements OnInit {
   /** サイドメニュー .menu の表示状況を管理するフラグ */
   public isShownMenu: boolean = false;
   
