@@ -48,7 +48,11 @@ export class AppComponent implements OnInit  {
       window.history.replaceState(null, null, pureUrl);
       // ドメイン・アプリルート部分を削除して遷移する
       const navigateUrl = pureUrl.replace(/http.*:\/\/.*\/angular-utilities/, '');
-      this.router.navigate([navigateUrl]);
+      this.router.navigate([navigateUrl])
+        .catch(() => {
+          // エラー時 (受け取った URL が不正だった場合など) はルートに遷移する
+          this.router.navigate(['']);
+        });
     }
   }
   
