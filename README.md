@@ -7,7 +7,7 @@ __[Enter This Website.](https://neos21.github.io/angular-utilities/)__
 
 ## Author
 
-[Neo](http://neo.s21.xrea.com/) ([@Neos21](https://twitter.com/neos21))
+[Neo](http://neo.s21.xrea.com/) ([@Neos21](https://twitter.com/Neos21))
 
 
 ## Links
