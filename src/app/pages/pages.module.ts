@@ -9,6 +9,7 @@ import { CalculatorModule } from './calculator/calculator.module';
 import { ColourConverterModule } from './colour-converter/colour-converter.module';
 import { CsvFileToTableModule } from './csv-file-to-table/csv-file-to-table.module';
 import { DynamicGenerateFormModule } from './dynamic-generate-form/dynamic-generate-form.module';
+import { EpochTimeConverterModule } from './epoch-time-converter/epoch-time-converter.module';
 import { FontFamilyTesterModule } from './font-family-tester/font-family-tester.module';
 import { IndexModule } from './index/index.module';
 import { MultipleDiffModule } from './multiple-diff/multiple-diff.module';
@@ -28,7 +29,8 @@ import { TextConverterModule } from './text-converter/text-converter.module';
     CalculatorModule,
     BeautifierModule,
     RegExpModule,
-    ColourConverterModule
+    ColourConverterModule,
+    EpochTimeConverterModule
   ]
 })
 export class PagesModule { }

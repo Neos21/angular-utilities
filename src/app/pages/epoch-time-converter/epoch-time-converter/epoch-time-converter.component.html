@@ -1,0 +1,28 @@
+<h2>Epoch Time Converter</h2>
+
+<p>実時間 (UTC) と UNIX 時間を相互変換します。</p>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Epoch Time</h3>
+    <p>
+      <input type="text" [(ngModel)]="unix" class="form-control unix" (input)="toUtc()" placeholder="1514862245">
+    </p>
+  </div>
+  <div class="col-sm-6">
+    <h3>UTC</h3>
+    <p class="utc-container">
+      <input type="text" [(ngModel)]="year"   class="form-control year"   placeholder="YYYY" (input)="toUnix()" maxlength="4">
+      -
+      <input type="text" [(ngModel)]="month"  class="form-control month"  placeholder="MM"   (input)="toUnix()" maxlength="2" (blur)="onZeroPad('month')">
+      -
+      <input type="text" [(ngModel)]="date"   class="form-control date"   placeholder="DD"   (input)="toUnix()" maxlength="2" (blur)="onZeroPad('date')">
+      T
+      <input type="text" [(ngModel)]="hour"   class="form-control hour"   placeholder="HH"   (input)="toUnix()" maxlength="2" (blur)="onZeroPad('hour')">
+      :
+      <input type="text" [(ngModel)]="minute" class="form-control minute" placeholder="mm"   (input)="toUnix()" maxlength="2" (blur)="onZeroPad('minute')">
+      :
+      <input type="text" [(ngModel)]="second" class="form-control second" placeholder="ss"   (input)="toUnix()" maxlength="2" (blur)="onZeroPad('second')">
+    </p>
+  </div>
+</div>
