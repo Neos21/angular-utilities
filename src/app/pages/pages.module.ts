@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { TouchFriendlyDndModule } from 'app/pages/touch-friendly-dnd/touch-friendly-dnd.module';
 import { BeautifierModule } from './beautifier/beautifier.module';
 import { CalculatorModule } from './calculator/calculator.module';
+import { ColourConverterModule } from './colour-converter/colour-converter.module';
 import { CsvFileToTableModule } from './csv-file-to-table/csv-file-to-table.module';
 import { DynamicGenerateFormModule } from './dynamic-generate-form/dynamic-generate-form.module';
 import { FontFamilyTesterModule } from './font-family-tester/font-family-tester.module';
@@ -26,7 +27,8 @@ import { TextConverterModule } from './text-converter/text-converter.module';
     DynamicGenerateFormModule,
     CalculatorModule,
     BeautifierModule,
-    RegExpModule
+    RegExpModule,
+    ColourConverterModule
   ]
 })
 export class PagesModule { }

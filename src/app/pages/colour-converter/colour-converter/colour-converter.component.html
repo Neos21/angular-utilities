@@ -1,0 +1,41 @@
+<h2>Colour Converter</h2>
+
+<p>カラーコードと RGB 値を相互変換します。拙作の <code>@neos21/ccc</code> を利用しています。</p>
+
+<form [formGroup]="colourForm" class="form-horizontal">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Colour Code</h3>
+      <p [ngClass]="{ 'has-error': colourForm.get('colourCode').invalid }">
+        <input type="text" class="form-control" formControlName="colourCode" placeholder="ex. #ff00ff or #f0f" (focus)="onFocus('colourCode')" (blur)="onBlur()">
+      </p>
+    </div>
+    <div class="col-sm-6">
+      <h3>RGB</h3>
+      <div class="form-group">
+        <div class="col-sm-6">
+          <label class="control-label">Red</label>
+        </div>
+        <div class="col-sm-6" [ngClass]="{ 'has-error': colourForm.get('red').invalid }">
+          <input type="number" class="form-control" formControlName="red" placeholder="Red Colour : 0 to 255" min="0" max="255" (focus)="onFocus('red')" (blur)="onBlur()">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-6">
+          <label class="control-label">Green</label>
+        </div>
+        <div class="col-sm-6" [ngClass]="{ 'has-error': colourForm.get('green').invalid }">
+          <input type="number" class="form-control" formControlName="green" placeholder="Green Colour : 0 to 255" min="0" max="255" (focus)="onFocus('green')" (blur)="onBlur()">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-6">
+          <label class="control-label">Blue</label>
+        </div>
+        <div class="col-sm-6" [ngClass]="{ 'has-error': colourForm.get('blue').invalid }">
+          <input type="number" class="form-control" formControlName="blue" placeholder="Blue Colour : 0 to 255" min="0" max="255" (focus)="onFocus('blue')" (blur)="onBlur()">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
