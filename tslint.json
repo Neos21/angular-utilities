@@ -347,8 +347,8 @@
     "space-within-parens": false,
     // boolean 式を厳格にしない (false) : 要 --type-check
     "strict-boolean-expressions": false,
-    // 常に true or false になる式を許容しない (true) : 要 --type-check
-    "strict-type-predicates": true,
+    // 常に true or false になる式を許容する (false) : 要 --type-check・tsconfig.json で strictNullChecks を有効にする必要があるため無効化
+    "strict-type-predicates": false,
     // switch 文には default case があること (true)
     "switch-default": true,
     // switch 文の最後は break で終わること (true)
@@ -443,15 +443,12 @@
       "app",
       "camelCase"
     ],
-    "invoke-injectable": true,
     "use-host-property-decorator": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
-    "no-access-missing-member": true,
     "no-input-rename": true,
     "no-output-rename": true,
     "use-life-cycle-interface": true,
-    "use-pipe-transform-interface": true,
-    "templates-use-public": true
+    "use-pipe-transform-interface": true
   }
 }

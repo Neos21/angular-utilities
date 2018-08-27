@@ -97,7 +97,7 @@ export class CsvFileToTableComponent {
     
     // ファイルを読み込んだらテーブルデータとして分割しセットする
     reader.onload = () => {
-      const rows = reader.result.split('\n');
+      const rows = (reader.result as any).split('\n');
       this.tableData = rows.map((row) => {
         return row.split(',');
       });

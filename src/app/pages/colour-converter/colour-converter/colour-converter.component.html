@@ -1,6 +1,6 @@
 <h2>Colour Converter</h2>
 
-<p>カラーコードと RGB 値を相互変換します。拙作の <code>@neos21/ccc</code> を利用しています。</p>
+<p>カラーコードと RGB 値を相互変換します。拙作の <a href="https://github.com/Neos21/ccc" target="_blank"><code>@neos21/ccc</code></a> を利用しています。</p>
 
 <form [formGroup]="colourForm" class="form-horizontal">
   <div class="row">
@@ -9,6 +9,10 @@
       <p [ngClass]="{ 'has-error': colourForm.get('colourCode').invalid }">
         <input type="text" class="form-control" formControlName="colourCode" placeholder="ex. #ff00ff or #f0f" (focus)="onFocus('colourCode')" (blur)="onBlur()">
       </p>
+      <h3>Result</h3>
+      <div class="result" [ngStyle]="{ 'background-color': result }">
+        <span [hidden]="result !== null && result !== undefined && result !== '' && result !== 'transparent'">(Transparent)</span>
+      </div>
     </div>
     <div class="col-sm-6">
       <h3>RGB</h3>

@@ -1,15 +1,22 @@
 <h2>Epoch Time Converter</h2>
 
-<p>実時間 (UTC) と UNIX 時間を相互変換します。</p>
-
 <div class="row">
   <div class="col-sm-6">
+    <p>実時間 (UTC) と UNIX 時間 (秒単位) を相互変換します。</p>
+  </div>
+  <div class="col-sm-6 text-right">
+    <p><button type="button" class="btn btn-primary" (click)="useCurrentTime()">現在時刻を設定する</button></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-5">
     <h3>Epoch Time</h3>
     <p>
       <input type="text" [(ngModel)]="unix" class="form-control unix" (input)="toUtc()" placeholder="1514862245">
     </p>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-7">
     <h3>UTC</h3>
     <p class="utc-container">
       <input type="text" [(ngModel)]="year"   class="form-control year"   placeholder="YYYY" (input)="toUnix()" maxlength="4">

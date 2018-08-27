@@ -1,0 +1,26 @@
+<h2>Encoder Decoder</h2>
+
+<p>入力文字列をエンコードしたりデコードしたりします。</p>
+
+<p><textarea class="form-control" [(ngModel)]="input" placeholder="テキストを入力してください"></textarea></p>
+<p><button type="button" class="btn btn-primary btn-block" (click)="exec()">エンコード / デコード</button></p>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th class="col-xs-4">種類</th>
+      <th class="col-xs-4">エンコード結果</th>
+      <th class="col-xs-4">デコード結果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let executor of executors">
+      <td>
+        <div><strong>{{ executor.title }}</strong></div>
+        <div>{{ executor.description }}</div>
+      </td>
+      <td><textarea class="form-control textarea-preview" readonly [value]="executor.encoded"></textarea></td>
+      <td><textarea class="form-control textarea-preview" readonly [value]="executor.decoded"></textarea></td>
+    </tr>
+  </tbody>
+</table>

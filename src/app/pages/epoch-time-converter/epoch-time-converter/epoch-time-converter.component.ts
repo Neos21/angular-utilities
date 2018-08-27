@@ -49,6 +49,9 @@ export class EpochTimeConverterComponent {
     this.second = this.zeroPad(result.second());
   }
   
+  /**
+   * UTC を UNIX 時間に変換する
+   */
   public toUnix(): void {
     if(!this.isValidNumber(this.year) || !this.isValidNumber(this.month) || !this.isValidNumber(this.date)
        || !this.isValidNumber(this.hour) || !this.isValidNumber(this.minute) || !this.isValidNumber(this.second)) {
@@ -77,6 +80,15 @@ export class EpochTimeConverterComponent {
     if(this[propertyName] !== undefined && this[propertyName] !== '') {
       this[propertyName] = this.zeroPad(this[propertyName]);
     }
+  }
+  
+  /**
+   * 現在時刻を設定する
+   */
+  public useCurrentTime(): void {
+    const current = moment().unix();
+    this.unix = `${current}`;
+    this.toUtc();
   }
   
   /**

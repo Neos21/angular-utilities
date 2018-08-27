@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit, Renderer } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit, Renderer, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 /**
@@ -18,12 +18,12 @@ export class AppComponent implements OnInit {
    * コンストラクタ
    * 
    * @param router 画面遷移を検知するために使用する
-   * @param renderer body 要素に class を付与する際に使用する
+   * @param renderer2 body 要素に class を付与する際に使用する
    * @param document body 要素を指定するために使用する
    */
   constructor(
     private router: Router,
-    private renderer: Renderer,
+    private renderer2: Renderer2,
     @Inject(DOCUMENT) private document: any
   ) {
     this.router.events.subscribe((event) => {
@@ -38,10 +38,10 @@ export class AppComponent implements OnInit {
   /**
    * 初期表示時の処理
    */
-  ngOnInit(): void {
+  public ngOnInit(): void {
     // SessionStorage より 404.html からのリダイレクト URL 情報が取得できたら対象のページに遷移する
-    const redirectUrl = sessionStorage.redirect;
-    delete sessionStorage.redirect;
+    const redirectUrl = (sessionStorage as any).redirect;
+    delete (sessionStorage as any).redirect;
     if(redirectUrl && redirectUrl !== location.href) {
       // ハッシュやパラメータ「#」「?」「;」を除去する (現状パラメータを利用するページはないので不要)
       const pureUrl = redirectUrl.split(/#|\?|;/)[0];
@@ -61,9 +61,9 @@ export class AppComponent implements OnInit {
    * 
    * @param isShown サイドメニューを強制的に開く場合は true・強制的に閉じる場合は false を指定する
    */
-  toggleMenu(isShown?: boolean): void {
+  public toggleMenu(isShown?: boolean): void {
     // 引数が指定されていれば引数に従って操作、そうでなければ現在の状態を反転させる
     this.isShownMenu = typeof isShown !== 'undefined' ? isShown : !this.isShownMenu;
-    this.renderer.setElementClass(this.document.body, 'show-menu', this.isShownMenu);
+    this.renderer2[this.isShownMenu ? 'addClass' : 'removeClass'](this.document.body, 'show-menu');
   }
 }

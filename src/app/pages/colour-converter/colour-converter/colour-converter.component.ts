@@ -20,6 +20,8 @@ export class ColourConverterComponent implements OnInit, DoCheck {
   public colourForm: FormGroup;
   /** 操作中の FormControl 名 */
   public editingFormControlName: string = '';
+  /** 結果表示欄 */
+  public result: string = 'transparent';
   
   /**
    * コンストラクタ
@@ -40,6 +42,9 @@ export class ColourConverterComponent implements OnInit, DoCheck {
   
   /** 相互変換 */
   public ngDoCheck(): void {
+    // 変換後のカラーサンプル表示用・変換できたらその値を利用する
+    let nextResult = 'transparent';
+    
     if(!this.editingFormControlName) {
       return;
     }
@@ -51,6 +56,7 @@ export class ColourConverterComponent implements OnInit, DoCheck {
           this.colourForm.get('red').setValue(result[0]);
           this.colourForm.get('green').setValue(result[1]);
           this.colourForm.get('blue').setValue(result[2]);
+          nextResult = `#${this.colourForm.get('colourCode').value.replace(/#/, '')}`;
         }
       }
     }
@@ -60,8 +66,11 @@ export class ColourConverterComponent implements OnInit, DoCheck {
       const result = ccc([this.colourForm.get('red').value, this.colourForm.get('green').value, this.colourForm.get('blue').value]);
       if(result !== null) {
         this.colourForm.get('colourCode').setValue(result);
+        nextResult = result;
       }
     }
+    
+    this.result = nextResult;
   }
   
   /**
