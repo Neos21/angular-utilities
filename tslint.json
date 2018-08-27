@@ -136,8 +136,8 @@
         ]
       }
     ],
-    // ステートメントにおける return 文の手前に空行を開ける (true) : return 文のみのブロックの場合は空行が開かない
-    "newline-before-return": true,
+    // ステートメントにおける return 文の手前に空行を開けない (false) : return 文のみのブロックの場合は空行が開かない
+    "newline-before-return": false,
     // new の前後のカッコにスペースを開ける (true)
     "new-parens": true,
     // <Type> より as Type と書かせる (true)
