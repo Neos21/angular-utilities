@@ -1,0 +1,52 @@
+<h2>Detect Character</h2>
+
+<p>紛らわしい文字を区別します。</p>
+
+<p><input type="text" class="form-control" [(ngModel)]="input" placeholder="テキストを入力してください"></p>
+
+<div class="table-responsive" *ngIf="output && output.length">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let item of output; index as i">{{ i + 1 }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="lead text-center">
+        <td *ngFor="let item of output">
+          <div class="font-family-serif"><strong>{{ item.char }}</strong></div>
+          <div class="font-family-monospace"><strong>{{ item.char }}</strong></div>
+        </td>
+      </tr>
+      <tr>
+        <td *ngFor="let item of output">{{ item.description || '&nbsp;' }}</td>
+      </tr>
+      <tr>
+        <td *ngFor="let item of output">{{ item.ref || '&nbsp;' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<accordion>
+  <accordion-group heading="検証用辞書" panelClass="panel-info" [isOpen]="false">
+    <p>区別するための辞書は以下のとおり。追加して欲しい文字があればご連絡ください。</p>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th class="col-xs-2" colspan="2">文字</th>
+          <th class="col-xs-2">数値参照</th>
+          <th class="col-xs-8">説明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dictionary">
+          <td class="lead text-center font-family-serif"><strong>{{ item.char }}</strong></td>
+          <td class="lead text-center font-family-monospace"><strong>{{ item.char }}</strong></td>
+          <td>{{ item.ref }}</td>
+          <td>{{ item.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </accordion-group>
+</accordion>

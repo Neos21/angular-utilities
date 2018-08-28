@@ -1,0 +1,18 @@
+.table-responsive {
+  margin-bottom: 25px;
+  overflow-x: scroll;
+  
+  .table {
+    width: auto;
+    margin-bottom: 0;
+    
+    td,
+    th {
+      white-space: nowrap;
+    }
+  }
+}
+
+.table-condensed {
+  margin-bottom: 0;
+}

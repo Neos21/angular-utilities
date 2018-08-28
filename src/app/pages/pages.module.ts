@@ -8,6 +8,7 @@ import { BeautifierModule } from './beautifier/beautifier.module';
 import { CalculatorModule } from './calculator/calculator.module';
 import { ColourConverterModule } from './colour-converter/colour-converter.module';
 import { CsvFileToTableModule } from './csv-file-to-table/csv-file-to-table.module';
+import { DetectCharacterModule } from './detect-character/detect-character.module';
 import { DynamicGenerateFormModule } from './dynamic-generate-form/dynamic-generate-form.module';
 import { EncoderDecoderModule } from './encoder-decoder/encoder-decoder.module';
 import { EpochTimeConverterModule } from './epoch-time-converter/epoch-time-converter.module';
@@ -32,7 +33,8 @@ import { TextConverterModule } from './text-converter/text-converter.module';
     RegExpModule,
     ColourConverterModule,
     EpochTimeConverterModule,
-    EncoderDecoderModule
+    EncoderDecoderModule,
+    DetectCharacterModule
   ]
 })
 export class PagesModule { }
