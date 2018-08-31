@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AddLineNumberComponent } from './add-line-number/add-line-number.component';
 import { CaseConverterComponent } from './case-converter/case-converter.component';
+import { NormalizeToNfcComponent } from './normalize-to-nfc/normalize-to-nfc.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
     children: [
       { path: 'add-line-number', component: AddLineNumberComponent },
       { path: 'case-converter', component: CaseConverterComponent },
+      { path: 'normalize-to-nfc', component: NormalizeToNfcComponent },
       { path: '', redirectTo: '/', pathMatch: 'full' }
     ]
   }

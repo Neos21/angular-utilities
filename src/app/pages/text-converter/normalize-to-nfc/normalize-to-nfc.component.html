@@ -1,0 +1,52 @@
+<h2>Normalize To NFC</h2>
+
+<p>いわゆる <dfn title="主に Mac 環境で濁点・半濁点を別文字に分けて表現する方式">NFD 文字</dfn>を NFC に変換します。</p>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>入力値</h3>
+    <div><input type="text" class="form-control" [(ngModel)]="input"></div>
+  </div>
+  <div class="col-sm-6">
+    <h3>変換結果</h3>
+    <div class="input-group">
+      <input type="text" class="form-control textbox-preview" [value]="output" readonly>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" (click)="copy()">Copy</button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>入力値 検証</h3>
+    <ol *ngIf="inputCodes && inputCodes.length">
+      <li *ngFor="let inputCode of inputCodes" class="codes">
+        <div class="row">
+          <div class="col-xs-6">{{ inputCode.char }}</div>
+          <div class="col-xs-6">{{ inputCode.code }}</div>
+        </div>
+      </li>
+    </ol>
+  </div>
+  <div class="col-sm-6">
+    <h3>変換結果 検証</h3>
+    <ol *ngIf="outputCodes && outputCodes.length">
+      <li *ngFor="let outputCode of outputCodes" class="codes">
+        <div class="row">
+          <div class="col-xs-6">{{ outputCode.char }}</div>
+          <div class="col-xs-6">{{ outputCode.code }}</div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<p><button type="button" class="btn btn-success" (click)="setExample()">サンプル文字列挿入</button></p>
+<ul>
+  <li><label><input type="radio" name="example" [(ngModel)]="example" [value]="0" checked> ひらがなの NFD 文字 (がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽゔ)</label></li>
+  <li><label><input type="radio" name="example" [(ngModel)]="example" [value]="1"> カタカナの NFD 文字 (ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴ)</label></li>
+  <li><label><input type="radio" name="example" [(ngModel)]="example" [value]="2"> 1文字目に NFD 濁点 (&amp;#x3099;) がある</label></li>
+  <li><label><input type="radio" name="example" [(ngModel)]="example" [value]="3"> 1文字目に NFD 半濁点 (&amp;#x309A;) がある</label></li>
+</ul>
