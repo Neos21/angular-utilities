@@ -63,7 +63,6 @@ export class DynamicGenerateFormComponent implements OnInit {
   
   /** データ確認 */
   public onPreview(): void {
-    console.log(this.dynamicForm);
     this.preview = JSON.stringify(this.dynamicForm.value, null, '  ');
   }
   

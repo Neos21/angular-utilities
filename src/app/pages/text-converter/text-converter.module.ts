@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 
+import { ClipboardModule } from 'ngx-clipboard';
+
 import { SharedModule } from '../../shared/shared.module';
 
 import { AddLineNumberComponent } from './add-line-number/add-line-number.component';
@@ -10,7 +12,8 @@ import { TextConverterRoutingModule } from './text-converter-routing.module';
 @NgModule({
   imports: [
     SharedModule,
-    TextConverterRoutingModule
+    TextConverterRoutingModule,
+    ClipboardModule
   ],
   declarations: [
     AddLineNumberComponent,

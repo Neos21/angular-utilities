@@ -1,4 +1,7 @@
+// tslint:disable:no-magic-numbers
+
 import { Component, DoCheck } from '@angular/core';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-normalize-to-nfc',
@@ -14,10 +17,11 @@ export class NormalizeToNfcComponent implements DoCheck {
   public inputCodes: any[] = [];
   /** 出力値の文字とコードの配列 */
   public outputCodes: any[] = [];
+  /** 単独の NFD 濁点・半濁点を通常の濁点・半濁点に置換する */
+  public isConvertSingleMarks: boolean = true;
   /** 挿入するサンプル文字列の指定 */
   public example: number = 0;
   
-  // tslint:disable:no-magic-numbers
   /** 清音文字の辞書 : 濁音文字の配置と揃えることで、同じ index 値で参照できるようにしておく */
   private uncombinedKanaDict: number[] = [
     0x304B, 0x304D, 0x304F, 0x3051, 0x3053,  // かきくけこ
@@ -48,9 +52,17 @@ export class NormalizeToNfcComponent implements DoCheck {
     0x30D1, 0x30D4, 0x30D7, 0x30DA, 0x30DD,  // パピプペポ
     0x30F4                                   // ヴ
   ];
-  /** 濁点・半濁点 : ゛(0x309B)・゜(0x309C)・ﾞ(0xFF9E)・ﾟ(0xFF9F) とは別物 */
+  /** NFD 濁点・半濁点 : ゛(0x309B)・゜(0x309C)・ﾞ(0xFF9E)・ﾟ(0xFF9F) とは別物 */
   private sonantMarks: number[] = [0x3099, 0x309A];
-  // tslint:enable:no-magic-numbers
+  /** 通常の濁点・半濁点 */
+  private normalSonantMarks: number[] = [0x309B, 0x309C];
+  
+  /**
+   * コンストラクタ
+   * 
+   * @param clipboardService ClipboardService
+   */
+  constructor(private clipboardService: ClipboardService) { }
 
   /** 入力値を変換し結果を表示する */
   public ngDoCheck(): void {
@@ -64,7 +76,6 @@ export class NormalizeToNfcComponent implements DoCheck {
   public setExample(): void {
     let codeArray = [];
     
-    // tslint:disable:no-magic-numbers
     if(this.example === 0) {
       codeArray = [
         0x304B, 0x3099, 0x304D, 0x3099, 0x304F, 0x3099, 0x3051, 0x3099, 0x3053, 0x3099,
@@ -91,9 +102,13 @@ export class NormalizeToNfcComponent implements DoCheck {
     else if(this.example === 3) {
       codeArray = [0x309A, 0x3099, 0x309A, 0x3099];
     }
-    // tslint:enable:no-magic-numbers
     
     this.input = this.createExampleString(codeArray);
+  }
+  
+  /** 変換結果文字列をコピーする */
+  public copy(): void {
+    this.clipboardService.copyFromContent(this.output);
   }
   
   /**
@@ -142,6 +157,21 @@ export class NormalizeToNfcComponent implements DoCheck {
       destArray.push(nfcCurrentChar);
       // 次の文字は濁音・半濁音記号なので、ループ処理を飛ばすよう i をインクリメントする
       i++;
+    }
+    
+    // 単独の NFD 濁点・半濁点を変換する場合
+    if(this.isConvertSingleMarks) {
+      destArray.forEach((char, index, array) => {
+        const sonantMarkIndex = this.sonantMarks.findIndex((sonantMark) => {
+          return sonantMark === char.charCodeAt(0);
+        });
+        
+        if(sonantMarkIndex < 0) {
+          return;
+        }
+        
+        array[index] = String.fromCharCode(this.normalSonantMarks[sonantMarkIndex]);
+      });
     }
     
     // 文字列として結合して返す

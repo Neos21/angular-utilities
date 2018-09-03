@@ -92,20 +92,6 @@ export class DetectCharacterComponent implements DoCheck {
     return item;
   });
   
-  /* 辞書の整合性チェック用
-  constructor() {
-    const radix = 16;
-    this.dictionary.forEach((item) => {
-      if(`&#x${item.char.charCodeAt(0).toString(radix)};` !== item.ref) {
-        console.log('文字を数値参照にすると ref と異なる値になった', item.char);
-      }
-      if(String.fromCharCode(+`0x${item.ref.replace(/&#x/, '').replace(/;/g, '')}`) !== item.char) {
-        console.log('数値参照を文字にすると char と異なる値になった', item.char);
-      }
-    });
-  }
-   */
-  
   /** テキスト入力ごとに処理する */
   public ngDoCheck(): void {
     // 1文字ずつ検証し結果を配列にして設定する

@@ -2,7 +2,7 @@
 
 <p>いわゆる <dfn title="主に Mac 環境で濁点・半濁点を別文字に分けて表現する方式">NFD 文字</dfn>を NFC に変換します。</p>
 
-<div class="row">
+<div class="row form-group">
   <div class="col-sm-6">
     <h3>入力値</h3>
     <div><input type="text" class="form-control" [(ngModel)]="input"></div>
@@ -18,10 +18,10 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-6">
+<div class="row form-group" *ngIf="inputCodes && inputCodes.length && outputCodes && outputCodes.length">
+  <div class="col-sm-6" *ngIf="inputCodes && inputCodes.length">
     <h3>入力値 検証</h3>
-    <ol *ngIf="inputCodes && inputCodes.length">
+    <ol>
       <li *ngFor="let inputCode of inputCodes" class="codes">
         <div class="row">
           <div class="col-xs-6">{{ inputCode.char }}</div>
@@ -30,9 +30,9 @@
       </li>
     </ol>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6" *ngIf="outputCodes && outputCodes.length">
     <h3>変換結果 検証</h3>
-    <ol *ngIf="outputCodes && outputCodes.length">
+    <ol>
       <li *ngFor="let outputCode of outputCodes" class="codes">
         <div class="row">
           <div class="col-xs-6">{{ outputCode.char }}</div>
@@ -43,10 +43,15 @@
   </div>
 </div>
 
-<p><button type="button" class="btn btn-success" (click)="setExample()">サンプル文字列挿入</button></p>
-<ul>
-  <li><label><input type="radio" name="example" [(ngModel)]="example" [value]="0" checked> ひらがなの NFD 文字 (がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽゔ)</label></li>
-  <li><label><input type="radio" name="example" [(ngModel)]="example" [value]="1"> カタカナの NFD 文字 (ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴ)</label></li>
-  <li><label><input type="radio" name="example" [(ngModel)]="example" [value]="2"> 1文字目に NFD 濁点 (&amp;#x3099;) がある</label></li>
-  <li><label><input type="radio" name="example" [(ngModel)]="example" [value]="3"> 1文字目に NFD 半濁点 (&amp;#x309A;) がある</label></li>
-</ul>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="checkbox"><label><input type="checkbox" [(ngModel)]="isConvertSingleMarks"> NFD 濁点・NFD 半濁点が単独で存在する場合、通常の濁点・半濁点 (&amp;#xx309B;・&amp;#x309C;) に変換する</label></div>
+  </div>
+  <div class="col-sm-6">
+    <p><button type="button" class="btn btn-success" (click)="setExample()">サンプル文字列挿入</button></p>
+    <div class="radio"><label><input type="radio" name="example" [(ngModel)]="example" [value]="0" checked> ひらがなの NFD 文字 (がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽゔ)</label></div>
+    <div class="radio"><label><input type="radio" name="example" [(ngModel)]="example" [value]="1"> カタカナの NFD 文字 (ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴ)</label></div>
+    <div class="radio"><label><input type="radio" name="example" [(ngModel)]="example" [value]="2"> 1文字目に NFD 濁点 (&amp;#x3099;) がある</label></div>
+    <div class="radio"><label><input type="radio" name="example" [(ngModel)]="example" [value]="3"> 1文字目に NFD 半濁点 (&amp;#x309A;) がある</label></div>
+  </div>
+</div>
