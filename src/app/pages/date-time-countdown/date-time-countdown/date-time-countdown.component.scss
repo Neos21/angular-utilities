@@ -1,0 +1,31 @@
+.date-time-container {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.year {
+  display: inline-block;
+  width: 5.5rem;
+  text-align: center;
+}
+
+.month,
+.date,
+.hour,
+.minute,
+.second {
+  display: inline-block;
+  width: 4rem;
+  text-align: center;
+}
+
+.unit-year,
+.unit-month,
+.unit-date,
+.unit-hour,
+.unit-minute,
+.unit-second {
+  display: inline-block;
+  width: 2.6em;
+  text-align: center;
+}

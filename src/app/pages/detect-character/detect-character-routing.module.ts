@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { DetectCharacterComponent } from './detect-character/detect-character.component';
 
 const routes: Routes = [

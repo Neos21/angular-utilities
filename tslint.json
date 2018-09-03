@@ -63,8 +63,7 @@
     "forin": true,
     // import したくないものを指定する (true)
     "import-blacklist": [
-      true,
-      "rxjs"
+      true
     ],
     // import ステートメントの間にスペースがあること (true)
     "import-spacing": true,

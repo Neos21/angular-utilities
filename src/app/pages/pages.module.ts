@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
@@ -8,6 +7,7 @@ import { BeautifierModule } from './beautifier/beautifier.module';
 import { CalculatorModule } from './calculator/calculator.module';
 import { ColourConverterModule } from './colour-converter/colour-converter.module';
 import { CsvFileToTableModule } from './csv-file-to-table/csv-file-to-table.module';
+import { DateTimeCountdownModule } from './date-time-countdown/date-time-countdown.module';
 import { DetectCharacterModule } from './detect-character/detect-character.module';
 import { DynamicGenerateFormModule } from './dynamic-generate-form/dynamic-generate-form.module';
 import { EncoderDecoderModule } from './encoder-decoder/encoder-decoder.module';
@@ -34,7 +34,8 @@ import { TextConverterModule } from './text-converter/text-converter.module';
     ColourConverterModule,
     EpochTimeConverterModule,
     EncoderDecoderModule,
-    DetectCharacterModule
+    DetectCharacterModule,
+    DateTimeCountdownModule
   ]
 })
 export class PagesModule { }

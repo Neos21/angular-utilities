@@ -1,0 +1,49 @@
+<h2>Date Time Countdown</h2>
+
+<p>現在日時と指定日時を比較してカウントダウン表示します。</p>
+
+<h3>現在日時</h3>
+<p class="date-time-container">
+  <input type="text" [value]="current.year"   class="form-control year"   tabindex="-1" readonly>
+  <span class="unit-year">-</span>
+  <input type="text" [value]="current.month"  class="form-control month"  tabindex="-1" readonly>
+  <span class="unit-month">-</span>
+  <input type="text" [value]="current.date"   class="form-control date"   tabindex="-1" readonly>
+  <span class="unit-date">T</span>
+  <input type="text" [value]="current.hour"   class="form-control hour"   tabindex="-1" readonly>
+  <span class="unit-hour">:</span>
+  <input type="text" [value]="current.minute" class="form-control minute" tabindex="-1" readonly>
+  <span class="unit-minute">:</span>
+  <input type="text" [value]="current.second" class="form-control second" tabindex="-1" readonly>
+</p>
+
+<h3>指定日時</h3>
+<p class="date-time-container">
+  <input type="text" [(ngModel)]="target.year"   class="form-control year"   placeholder="YYYY" maxlength="4" (input)="onInputTarget()">
+  <span class="unit-year">-</span>
+  <input type="text" [(ngModel)]="target.month"  class="form-control month"  placeholder="MM"   maxlength="2" (input)="onInputTarget()" (blur)="onZeroPad('month')">
+  <span class="unit-month">-</span>
+  <input type="text" [(ngModel)]="target.date"   class="form-control date"   placeholder="DD"   maxlength="2" (input)="onInputTarget()" (blur)="onZeroPad('date')">
+  <span class="unit-date">T</span>
+  <input type="text" [(ngModel)]="target.hour"   class="form-control hour"   placeholder="HH"   maxlength="2" (input)="onInputTarget()" (blur)="onZeroPad('hour')">
+  <span class="unit-hour">:</span>
+  <input type="text" [(ngModel)]="target.minute" class="form-control minute" placeholder="mm"   maxlength="2" (input)="onInputTarget()" (blur)="onZeroPad('minute')">
+  <span class="unit-minute">:</span>
+  <input type="text" [(ngModel)]="target.second" class="form-control second" placeholder="ss"   maxlength="2" (input)="onInputTarget()" (blur)="onZeroPad('second')">
+</p>
+
+<h3 [ngClass]="{ 'text-danger': duration.isAfter, 'text-primary': !duration.isAfter }">{{ duration.isAfter ? '指定日時から ' : '指定日時まで ' }}</h3>
+<p>
+  <input type="text" [value]="duration.years"   class="form-control textbox-preview year"   tabindex="-1" readonly>
+  <span class="unit-year">年</span>
+  <input type="text" [value]="duration.months"  class="form-control textbox-preview month"  tabindex="-1" readonly>
+  <span class="unit-month">ヶ月</span>
+  <input type="text" [value]="duration.days"    class="form-control textbox-preview date"   tabindex="-1" readonly>
+  <span class="unit-date">日</span>
+  <input type="text" [value]="duration.hours"   class="form-control textbox-preview hour"   tabindex="-1" readonly>
+  <span class="unit-hour">時間</span>
+  <input type="text" [value]="duration.minutes" class="form-control textbox-preview minute" tabindex="-1" readonly>
+  <span class="unit-minute">分</span>
+  <input type="text" [value]="duration.seconds" class="form-control textbox-preview second" tabindex="-1" readonly>
+  <span class="unit-second">秒</span>
+</p>
