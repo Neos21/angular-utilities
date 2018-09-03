@@ -1,7 +1,7 @@
 // tslint:disable:no-magic-numbers
 
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn } from '@angular/forms';
 
 import * as ccc from '@neos21/ccc';
 
