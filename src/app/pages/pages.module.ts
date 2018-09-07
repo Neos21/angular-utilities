@@ -9,6 +9,7 @@ import { ColourConverterModule } from './colour-converter/colour-converter.modul
 import { CsvFileToTableModule } from './csv-file-to-table/csv-file-to-table.module';
 import { DateTimeCountdownModule } from './date-time-countdown/date-time-countdown.module';
 import { DetectCharacterModule } from './detect-character/detect-character.module';
+import { DrawTriangleSvgModule } from './draw-triangle-svg/draw-triangle-svg.module';
 import { DynamicGenerateFormModule } from './dynamic-generate-form/dynamic-generate-form.module';
 import { EncoderDecoderModule } from './encoder-decoder/encoder-decoder.module';
 import { EpochTimeConverterModule } from './epoch-time-converter/epoch-time-converter.module';
@@ -35,7 +36,8 @@ import { TextConverterModule } from './text-converter/text-converter.module';
     EpochTimeConverterModule,
     EncoderDecoderModule,
     DetectCharacterModule,
-    DateTimeCountdownModule
+    DateTimeCountdownModule,
+    DrawTriangleSvgModule
   ]
 })
 export class PagesModule { }
