@@ -1,0 +1,62 @@
+<h2>Guitar Scale Generator</h2>
+
+<table class="table table-condensed">
+  <tbody>
+    <tr>
+      <th>Note Name</th>
+      <td><label><input type="checkbox" [(ngModel)]="selected.isFlat"> {{ selected.isFlat ? 'Flat' : 'Sharp' }}</label></td>
+    </tr>
+    <tr>
+      <th>Frets</th>
+      <td>
+        <select [(ngModel)]="selected.frets">
+          <option *ngFor="let fretsOption of constants.frets" [value]="fretsOption">{{ fretsOption }}F</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>Strings</th>
+      <td>
+        <select [(ngModel)]="selected.strings">
+          <option *ngFor="let stringsOption of constants.strings" [value]="stringsOption">{{ stringsOption }} Strings</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>Tuning Preset</th>
+      <td>
+        <select [(ngModel)]="selected.tuningPresetKey">
+          <option *ngFor="let tuningPreset of constants.tuningPresets" [value]="tuningPreset.key">{{ tuningPreset.name }}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>Key</th>
+      <td>
+        <select [(ngModel)]="selected.keyId">
+          <option *ngFor="let note of constants.notes" [value]="note.id">{{ selected.isFlat ? note.flat : note.sharp }}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>Scale</th>
+      <td>
+        <select [(ngModel)]="selected.scaleKey">
+          <option *ngFor="let scale of constants.scales" [value]="scale.key">{{ scale.name }}</option>
+        </select>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><button type="button" class="btn btn-primary" (click)="onGenerate()">Generate</button></p>
+
+<table class="scale font-family-monospace" *ngIf="output">
+  <tbody>
+    <tr *ngFor="let line of output">
+      <th>{{ line.tune }}</th>
+      <td *ngFor="let note of line.notes">
+        <i *ngIf="note" class="note">{{ note }}</i>
+      </td>
+    </tr>
+  </tbody>
+</table>

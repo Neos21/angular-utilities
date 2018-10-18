@@ -1,0 +1,56 @@
+.scale {
+  border: 1px solid #ccc;
+  
+  td,
+  th {
+    position: relative;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    line-height: 1;
+    vertical-align: middle;
+  }
+  
+  td {
+    // 開放弦 (0フレット)
+    &:first-of-type {
+      background: linear-gradient(to bottom, #ccc, transparent 1px) 0% 100% / 100% 50% no-repeat, #eee;
+    }
+    
+    // 1フレット以降
+    &:not(:first-of-type) {
+      background: linear-gradient(to bottom, #ccc, transparent 1px) 0% 100% / 100% 50% no-repeat, transparent;
+    }
+  }
+  
+  // ポジションマーク
+  // - 3・5・7・9F : 3・4弦の間
+  // - 12F : 本来は2・5弦に重なるが、それだと見づらいので、2・3弦と4・5弦の間に置く
+  tr:nth-child(4) td:nth-of-type(12n +  4)::before,
+  tr:nth-child(4) td:nth-of-type(12n +  6)::before,
+  tr:nth-child(4) td:nth-of-type(12n +  8)::before,
+  tr:nth-child(4) td:nth-of-type(12n + 10)::before,
+  tr:nth-child(3) td:nth-of-type(12n + 13)::before,
+  tr:nth-child(5) td:nth-of-type(12n + 13)::before {
+    content: "●";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: rgba(0, 0, 0, .5);
+    z-index: -1;
+    transform: translateY(-50%);
+  }
+}
+
+// 押さえる位置の音階名
+.note {
+  display: inline-block;
+  overflow: hidden;
+  padding: .25em .5em;
+  border-radius: 50%;
+  font-style: normal;
+  background: rgba(200, 255, 255, .5);
+}
