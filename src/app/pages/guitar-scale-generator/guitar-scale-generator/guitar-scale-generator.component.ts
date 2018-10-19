@@ -20,13 +20,13 @@ export class GuitarScaleGeneratorComponent implements OnInit {
     frets: [21, 22, 24, 27],
     /** 弦数 */
     strings: [6, 7, 8],
-    /** チューニングプリセット : tuning は1弦からの開放弦を notes.id で示す (8弦分まで用意) */
+    /** チューニングプリセット : tuning は1弦からの開放弦を notes.id で示す (6弦分まで用意) */
     tuningPresets: [
-      { key: 'standard'     , name: 'Standard'       , tuning: [ 4, 11,  7,  2,  9,  4, 11,  7] },
-      { key: 'halfStepDown' , name: 'Half Step Down' , tuning: [ 3, 10,  6,  1,  8,  3, 10,  6] },
-      { key: 'wholeStepDown', name: 'Whole Step Down', tuning: [ 2,  9,  5,  0,  7,  2,  9,  5] },
-      { key: 'dropD'        , name: 'Drop D'         , tuning: [ 4, 11,  7,  2,  9,  2, 11,  7] },
-      { key: 'custom'       , name: 'Custom'         , tuning: null                             }
+      { key: 'standard'     , name: 'Standard'       , tuning: [ 4, 11,  7,  2,  9,  4] },
+      { key: 'halfStepDown' , name: 'Half Step Down' , tuning: [ 3, 10,  6,  1,  8,  3] },
+      { key: 'wholeStepDown', name: 'Whole Step Down', tuning: [ 2,  9,  5,  0,  7,  2] },
+      { key: 'dropD'        , name: 'Drop D'         , tuning: [ 4, 11,  7,  2,  9,  2] },
+      { key: 'custom'       , name: 'Custom'         , tuning: null                     }
     ],
     /** 音階名定義 :  */
     notes: [
@@ -148,7 +148,7 @@ export class GuitarScaleGeneratorComponent implements OnInit {
       frets          : [this.constants.frets[2]],
       strings        : [this.constants.strings[0]],
       tuningPresetKey: [this.constants.tuningPresets[0].key],
-      tuning         : this.formBuilder.array(Array.from(Array(6)).map((_value, index) => {
+      tuning         : this.formBuilder.array(Array.from(Array(this.constants.strings[0])).map((_value, index) => {
         return this.formBuilder.control(this.constants.tuningPresets[0].tuning[index]);
       })),
       keyId          : [this.constants.notes[0].id],
@@ -323,15 +323,19 @@ export class GuitarScaleGeneratorComponent implements OnInit {
       selectedTuningPresetTuning = this.constants.tuningPresets[0].tuning;
     }
     
+    // 減らす
     if(this.creatingScaleFormTuning.length > strings) {
-      // 減らす
       this.creatingScaleFormTuning.controls.splice(strings);
       return;
     }
     
     // 増やす
     while(this.creatingScaleFormTuning.length < strings) {
-      this.creatingScaleFormTuning.push(this.formBuilder.control(selectedTuningPresetTuning[this.creatingScaleFormTuning.length]));
+      const length = this.creatingScaleFormTuning.length;
+      // 7弦以降は1弦からの値を使い回すため、6で割った余りを利用する
+      const index = (length < 6) ? length : length % 6 + 1;
+      // 存在しなければ C を割り当てる
+      this.creatingScaleFormTuning.push(this.formBuilder.control(selectedTuningPresetTuning[index] || 0));
     }
   }
   
@@ -349,8 +353,11 @@ export class GuitarScaleGeneratorComponent implements OnInit {
     }
     
     // 各弦のフォームにチューニング定義を設定していく
-    this.creatingScaleFormTuning.controls.forEach((control, index) => {
-      control.setValue(selectedTuningPresetTuning[index]);
+    this.creatingScaleFormTuning.controls.forEach((control, controlIndex) => {
+      // 7弦以降は1弦からの値を使い回すため、6で割った余りを利用する
+      const index = (controlIndex < 6) ? controlIndex : controlIndex % 6 + 1;
+      // 存在しなければ C を割り当てる
+      control.setValue(selectedTuningPresetTuning[index] || 0);
     });
   }
   
@@ -368,8 +375,11 @@ export class GuitarScaleGeneratorComponent implements OnInit {
       }
       
       // 選択されたチューニングごとに定数と比較する
-      return tuning.every((tune, index) => {
-        return tune === tuningPreset.tuning[index];
+      return tuning.every((tune, tuningIndex) => {
+        // 7弦以降は1弦からの値を使い回すため、6で割った余りを利用する
+        const index = (tuningIndex < 6) ? tuningIndex : tuningIndex % 6 + 1;
+        // 存在しなければ C を割り当てる
+        return tune === (tuningPreset.tuning[index] || 0);
       });
     });
     
