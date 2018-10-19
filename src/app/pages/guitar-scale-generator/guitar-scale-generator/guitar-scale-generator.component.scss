@@ -1,12 +1,55 @@
+@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+
+// フォームの間隔を狭める
+.form-group {
+  margin-bottom: 5px;
+}
+
+// チューニングの select 要素間を開ける
+.form-tuning select:not(:last-of-type) {
+  margin-right: .4em;
+}
+
+// アイコンボタン
+.btn-icon {
+  float: right;
+  padding: 0;
+  border: 0;
+  color: $brand-danger;
+  font-size: $font-size-large;
+  line-height: 1.4;
+  vertical-align: initial;  // .btn の middle 指定を解除
+  background: transparent;
+  
+  // ブランドカラー
+  &:hover {
+    color: darken($brand-danger, 15%);
+  }
+}
+
+// スケール図のラッパー
+.scales {
+  overflow-x: auto;
+}
+
+// スケール図のテーブル
 .scale {
+  margin-bottom: 1em;
   border: 1px solid #ccc;
+  table-layout: fixed;
+  
+  caption {
+    padding-left: .25em;
+    font-weight: bold;
+  }
   
   td,
   th {
     position: relative;
     border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
-    width: 2em;
+    width: 2.1em;
+    min-width: 2.1em;
     height: 2em;
     text-align: center;
     line-height: 1;
@@ -16,6 +59,7 @@
   td {
     // 開放弦 (0フレット)
     &:first-of-type {
+      border-right-width: 2px;
       background: linear-gradient(to bottom, #ccc, transparent 1px) 0% 100% / 100% 50% no-repeat, #eee;
     }
     
@@ -43,6 +87,16 @@
     z-index: -1;
     transform: translateY(-50%);
   }
+  
+  .fret-num {
+    td,
+    th {
+      border-top: 1px solid #ccc;
+      border-right-width: 0;
+      border-left-width: 0;
+      background: transparent;
+    }
+  }
 }
 
 // 押さえる位置の音階名
@@ -52,5 +106,9 @@
   padding: .25em .5em;
   border-radius: 50%;
   font-style: normal;
-  background: rgba(200, 255, 255, .5);
+  background: rgba(200, 255, 255, .4);
+  
+  &.root-note {
+    background: rgba(255, 200, 200, .4);
+  }
 }
