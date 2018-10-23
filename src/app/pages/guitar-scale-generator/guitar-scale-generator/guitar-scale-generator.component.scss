@@ -1,0 +1,114 @@
+@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+
+// フォームの間隔を狭める
+.form-group {
+  margin-bottom: 5px;
+}
+
+// チューニングの select 要素間を開ける
+.form-tuning select:not(:last-of-type) {
+  margin-right: .4em;
+}
+
+// アイコンボタン
+.btn-icon {
+  float: right;
+  padding: 0;
+  border: 0;
+  color: $brand-danger;
+  font-size: $font-size-large;
+  line-height: 1.4;
+  vertical-align: initial;  // .btn の middle 指定を解除
+  background: transparent;
+  
+  // ブランドカラー
+  &:hover {
+    color: darken($brand-danger, 15%);
+  }
+}
+
+// スケール図のラッパー
+.scales {
+  overflow-x: auto;
+}
+
+// スケール図のテーブル
+.scale {
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  table-layout: fixed;
+  
+  caption {
+    padding-left: .25em;
+    font-weight: bold;
+  }
+  
+  td,
+  th {
+    position: relative;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    width: 2.1em;
+    min-width: 2.1em;
+    height: 2em;
+    text-align: center;
+    line-height: 1;
+    vertical-align: middle;
+  }
+  
+  td {
+    // 開放弦 (0フレット)
+    &:first-of-type {
+      border-right-width: 2px;
+      background: linear-gradient(to bottom, #ccc, transparent 1px) 0% 100% / 100% 50% no-repeat, #eee;
+    }
+    
+    // 1フレット以降
+    &:not(:first-of-type) {
+      background: linear-gradient(to bottom, #ccc, transparent 1px) 0% 100% / 100% 50% no-repeat, transparent;
+    }
+  }
+  
+  // ポジションマーク
+  // - 3・5・7・9F : 3・4弦の間
+  // - 12F : 本来は2・5弦に重なるが、それだと見づらいので、2・3弦と4・5弦の間に置く
+  tr:nth-child(4) td:nth-of-type(12n +  4)::before,
+  tr:nth-child(4) td:nth-of-type(12n +  6)::before,
+  tr:nth-child(4) td:nth-of-type(12n +  8)::before,
+  tr:nth-child(4) td:nth-of-type(12n + 10)::before,
+  tr:nth-child(3) td:nth-of-type(12n + 13)::before,
+  tr:nth-child(5) td:nth-of-type(12n + 13)::before {
+    content: "●";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: rgba(0, 0, 0, .5);
+    z-index: -1;
+    transform: translateY(-50%);
+  }
+  
+  .fret-num {
+    td,
+    th {
+      border-top: 1px solid #ccc;
+      border-right-width: 0;
+      border-left-width: 0;
+      background: transparent;
+    }
+  }
+}
+
+// 押さえる位置の音階名
+.note {
+  display: inline-block;
+  overflow: hidden;
+  padding: .25em .5em;
+  border-radius: 50%;
+  font-style: normal;
+  background: rgba(200, 255, 255, .4);
+  
+  &.root-note {
+    background: rgba(255, 200, 200, .4);
+  }
+}

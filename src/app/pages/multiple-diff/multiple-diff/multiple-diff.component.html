@@ -15,7 +15,7 @@
     <thead>
       <tr>
         <th *ngFor="let text of texts; let i = index">
-          <button type="button" class="btn btn-icon btn-icon-danger" (click)="removeColumn(i)">
+          <button type="button" class="btn btn-icon" (click)="removeColumn(i)">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </button>
           <input type="text" class="text-name" [(ngModel)]="text.name" placeholder="ファイル名">

@@ -14,6 +14,7 @@ import { DynamicGenerateFormModule } from './dynamic-generate-form/dynamic-gener
 import { EncoderDecoderModule } from './encoder-decoder/encoder-decoder.module';
 import { EpochTimeConverterModule } from './epoch-time-converter/epoch-time-converter.module';
 import { FontFamilyTesterModule } from './font-family-tester/font-family-tester.module';
+import { GuitarScaleGeneratorModule } from './guitar-scale-generator/guitar-scale-generator.module';
 import { IndexModule } from './index/index.module';
 import { MultipleDiffModule } from './multiple-diff/multiple-diff.module';
 import { RegExpModule } from './regexp/regexp.module';
@@ -37,7 +38,8 @@ import { TextConverterModule } from './text-converter/text-converter.module';
     EncoderDecoderModule,
     DetectCharacterModule,
     DateTimeCountdownModule,
-    DrawTriangleSvgModule
+    DrawTriangleSvgModule,
+    GuitarScaleGeneratorModule
   ]
 })
 export class PagesModule { }

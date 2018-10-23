@@ -1,0 +1,94 @@
+<h2>Guitar Scale Generator</h2>
+
+<form [formGroup]="creatingScaleForm" class="form-horizontal">
+  <div class="form-group">
+    <label class="col-xs-3 control-label">Note Name</label>
+    <div class="col-xs-9">
+      <label><input type="checkbox" formControlName="isFlat"> {{ creatingScaleForm.value.isFlat ? 'Flat' : 'Sharp' }}</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-xs-3 control-label">Frets</label>
+    <div class="col-xs-9">
+      <select formControlName="frets">
+        <option *ngFor="let fretsOption of constants.frets" [value]="fretsOption">{{ fretsOption }}F</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-xs-3 control-label">Strings</label>
+    <div class="col-xs-9">
+      <select formControlName="strings">
+        <option *ngFor="let stringsOption of constants.strings" [value]="stringsOption">{{ stringsOption }} Strings</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-xs-3 control-label">Tuning</label>
+    <div class="col-xs-9">
+      <div class="row">
+        <div class="col-sm-4">
+          <select formControlName="tuningPresetKey">
+            <option *ngFor="let tuningPresetOption of constants.tuningPresets" [value]="tuningPresetOption.key">{{ tuningPresetOption.name }}</option>
+          </select>
+        </div>
+        <div class="col-sm-8 form-tuning">
+          <ng-container formArrayName="tuning" *ngFor="let line of creatingScaleFormTuning.controls; index as i">
+            <select [formControlName]="i">
+              <option *ngFor="let note of constants.notes" [value]="note.id">{{ creatingScaleForm.value.isFlat ? note.flat : note.sharp }}</option>
+            </select>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-xs-3 control-label">Key</label>
+    <div class="col-xs-9">
+      <select formControlName="keyId">
+        <option *ngFor="let note of constants.notes" [value]="note.id">{{ creatingScaleForm.value.isFlat ? note.flat : note.sharp }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-xs-3 control-label">Scale</label>
+    <div class="col-xs-9">
+      <select formControlName="scaleKey">
+        <option *ngFor="let scale of constants.scales" [value]="scale.key">{{ scale.name }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-6">
+      <button type="button" class="btn btn-primary" (click)="onGenerate()">Generate</button>
+    </div>
+    <div class="col-xs-6 text-right">
+      <button type="button" class="btn btn-danger" (click)="onRemoveAllScales()">Remove All Scales</button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="scales && scales.length" class="scales">
+  <table *ngFor="let scale of scales; index as i" class="scale font-family-monospace">
+    <caption>
+      {{ scale.key }} {{ scale.name }}
+      <button type="button" class="btn btn-icon" (click)="onRemoveScale(i)">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
+    </caption>
+    <tbody>
+      <tr *ngFor="let line of scale.scale">
+        <th>{{ line.tune }}</th>
+        <td *ngFor="let note of line.notes">
+          <i *ngIf="note" class="note" [ngClass]="{ 'root-note': note === scale.key }">{{ note }}</i>
+        </td>
+      </tr>
+      <tr class="fret-num text-muted">
+        <th></th>
+        <td *ngFor="let note of scale.scale[0].notes; index as fretNum">
+          {{ fretNum }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
