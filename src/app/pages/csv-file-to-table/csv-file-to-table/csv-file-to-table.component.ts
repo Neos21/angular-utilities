@@ -14,7 +14,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class CsvFileToTableComponent {
   /** パース後のテーブルデータ */
-  public tableData: Array<string> = [];
+  public tableData: string[][] = [];
   /** サンプル CSV ファイルの URL (ダウンロード用) */
   public exampleFileUrl: SafeUrl = '';
   
@@ -87,7 +87,7 @@ export class CsvFileToTableComponent {
     this.tableData = [];
     
     if(file.type !== 'text/csv') {
-      alert('CSV ファイルを選択してください');
+      alert(`CSV ファイルを選択してください (${file.type})`);
       
       return;
     }
@@ -97,7 +97,7 @@ export class CsvFileToTableComponent {
     
     // ファイルを読み込んだらテーブルデータとして分割しセットする
     reader.onload = () => {
-      const rows = reader.result.split('\n');
+      const rows = (reader.result as string).split('\n');
       this.tableData = rows.map((row) => {
         return row.split(',');
       });
