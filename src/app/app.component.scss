@@ -1,25 +1,29 @@
-@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_mixins';
+@import '~bootstrap/scss/_variables';
+
 
 // 変数
 // --------------------------------------------------------------------------------
 
-$theme-bg-color: #1c002c;
-$theme-color: #fff;
+$theme-bg-colour: #1c002c;
+$theme-colour: #fff;
 
 $header-height: 60px;
 $menu-width: 270px;
 
 $menu-transition: .3s;
 
+
 // 全体
 // --------------------------------------------------------------------------------
 
 a {
-  color: darken($theme-color, 12%);
+  color: darken($theme-colour, 12%);
   text-decoration: none;
   
   &:hover {
-    color: $theme-color;
+    color: $theme-colour;
   }
 }
 
@@ -33,7 +37,7 @@ a {
   left: 0;
   width: 100%;
   height: $header-height;
-  background: $theme-bg-color;
+  background: $theme-bg-colour;
   z-index: 99999;
   
   // ハンバーガメニュー
@@ -45,14 +49,15 @@ a {
     height: $header-height;
     padding: 0 15px;
     border: 0;
-    background: $theme-bg-color;
+    background: $theme-bg-colour;
     overflow: hidden;
     opacity: 1;
     transition: opacity $menu-transition, visibility $menu-transition;
     outline: 0;
+    cursor: pointer;
     
     // 幅が広い時は非表示にする
-    @media (min-width: $screen-lg-min) {
+    @include media-breakpoint-up(lg) {
       & {
         opacity: 0;
         visibility: hidden;
@@ -63,7 +68,7 @@ a {
     &:focus,
     &:active {
       .icon-bar {
-        background: $theme-color;
+        background: $theme-colour;
       }
     }
     
@@ -72,7 +77,7 @@ a {
       width: 22px;
       height: 2px;
       border-radius: 1px;
-      background: darken($theme-color, 12%);
+      background: darken($theme-colour, 12%);
     }
     
     .icon-bar + .icon-bar {
@@ -85,7 +90,7 @@ a {
     text-align: center;
     
     a {
-      font-size: $font-size-large;
+      font-size: $font-size-lg;
       font-weight: bold;
       line-height: $header-height;
     }
@@ -114,7 +119,7 @@ a {
   width: $menu-width;
   height: calc( 100% - #{$header-height} );  // SCSS 変数と CSS3 calc() を併用する
   overflow-y: auto;
-  background: $theme-bg-color;
+  background: $theme-bg-colour;
   transition: left $menu-transition;
   z-index: 99999;
   
@@ -122,8 +127,8 @@ a {
     margin: 15px 0;
     padding: 0;
     list-style: none;
-    color: darken($theme-color, 20%);
-    font-size: $font-size-large;
+    color: darken($theme-colour, 20%);
+    font-size: $font-size-lg;
     font-weight: bold;
     
     ul {
@@ -134,7 +139,7 @@ a {
     span {
       display: block;
       padding: 0 15px 5px;
-      color: darken($theme-color, 35%);
+      color: darken($theme-colour, 35%);
     }
     
     a {
@@ -144,14 +149,14 @@ a {
     
     .active a,
     a:hover {
-      color: $theme-color;
+      color: $theme-colour;
       text-shadow: rgba(255, 255, 255, .4) 0 0 16px;
     }
   }
 }
 
 // ハンバーガメニューが表示される時はメニューを閉じておく
-@media (min-width: $screen-lg-min) {
+@include media-breakpoint-up(lg) {
   .menu {
     left: 0;
   }
@@ -173,7 +178,7 @@ a {
   z-index: 1;
   
   // メニュー表示時はメニュー幅分の余白を開ける
-  @media (min-width: $screen-lg-min) {
+  @include media-breakpoint-up(lg) {
     & {
       margin-left: $menu-width;
     }
@@ -182,7 +187,7 @@ a {
 
 // 画面幅が狭い時にメニューを表示したらスライドさせる
 // スライドさせるとコンテンツ幅が狭くなりすぎる場合は隠れるようにする
-@media (min-width: $screen-xs-max) {
+@include media-breakpoint-up(sm) {
   :host-context(.show-menu) .contents {
     margin-left: $menu-width;
   }
