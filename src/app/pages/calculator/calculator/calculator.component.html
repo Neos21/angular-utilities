@@ -2,29 +2,29 @@
 
 <p>数式を入力すると計算できます。全角文字や全角記号 (「÷」など) にも対応しています。</p>
 
-<form [formGroup]="calcForm" class="form-horizontal">
-  <div class="form-group">
-    <label class="col-xs-3 control-label">計算式</label>
-    <div class="col-xs-9" [ngClass]="{
-      'has-success': calcForm.dirty && calcForm.get('input').valid && calcForm.get('input').value !== '',
-      'has-error'  : calcForm.dirty && calcForm.get('input').invalid
-    }">
-      <input type="text" formControlName="input" class="form-control" placeholder="計算式を入力してください">
+<form [formGroup]="calcForm">
+  <div class="row form-group">
+    <label class="col-3 col-form-label">計算式</label>
+    <div class="col-9">
+      <input type="text" formControlName="input" class="form-control" placeholder="計算式を入力してください" [ngClass]="{
+        'is-valid'  : calcForm.dirty && calcForm.get('input').valid && calcForm.get('input').value !== '',
+        'is-invalid': calcForm.dirty && calcForm.get('input').invalid
+      }">
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-xs-3 control-label">変換結果</label>
-    <div class="col-xs-9">
+  <div class="row form-group">
+    <label class="col-3 col-form-label">変換結果</label>
+    <div class="col-9">
       <input type="text" formControlName="transformed" class="form-control textbox-preview" placeholder="計算式の変換結果が表示されます" readonly>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-xs-3 control-label">計算結果</label>
-    <div class="col-xs-9" [ngClass]="{
-      'has-success': !hasError && calcForm.get('output').value !== '',
-      'has-error': hasError
-    }">
-      <input type="text" formControlName="output" class="form-control textbox-preview" placeholder="計算結果が表示されます" readonly>
+  <div class="row form-group">
+    <label class="col-3 col-form-label">計算結果</label>
+    <div class="col-9">
+      <input type="text" formControlName="output" class="form-control textbox-preview" placeholder="計算結果が表示されます" readonly [ngClass]="{
+        'is-valid': !hasError && calcForm.get('output').value !== '',
+        'is-invalid': hasError
+      }">
     </div>
   </div>
 </form>

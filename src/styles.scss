@@ -162,7 +162,7 @@ textarea {
 // 背景色を暗くしない
 textarea.form-control[readonly].textarea-preview,
 input[readonly].textbox-preview {
-  background: #fff;
+  background: $white;
 }
 
 .pointer {
