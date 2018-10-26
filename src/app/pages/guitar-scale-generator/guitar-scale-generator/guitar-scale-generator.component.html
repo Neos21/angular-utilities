@@ -27,12 +27,12 @@
     <label class="col-3 col-form-label">Tuning</label>
     <div class="col-9">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3 form-tuning-preset">
           <select formControlName="tuningPresetKey" class="custom-select">
             <option *ngFor="let tuningPresetOption of constants.tuningPresets" [value]="tuningPresetOption.key">{{ tuningPresetOption.name }}</option>
           </select>
         </div>
-        <div class="col-sm-8 text-right form-tuning">
+        <div class="col-sm-9 text-right form-tuning">
           <ng-container formArrayName="tuning" *ngFor="let line of creatingScaleFormTuning.controls; index as i">
             <select [formControlName]="i" class="custom-select">
               <option *ngFor="let note of constants.notes" [value]="note.id">{{ creatingScaleForm.value.isFlat ? note.flat : note.sharp }}</option>

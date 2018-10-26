@@ -2,13 +2,26 @@
 @import '~bootstrap/scss/_mixins';
 @import '~bootstrap/scss/_variables';
 
-// 各弦のチューニングの select 要素
-.form-tuning select {
-  width: auto;
+// チューニングプリセット
+.form-tuning-preset {
+  @include media-breakpoint-up(sm) {
+    padding-right: .4em;
+  }
+}
+
+// 各弦のチューニング
+.form-tuning {
+  @include media-breakpoint-up(sm) {
+    padding-left: 0;
+  }
   
-  // 要素間を開ける
-  &:not(:last-of-type) {
-    margin-right: .4em;
+  select {
+    width: auto;
+    
+    // 要素間を開ける
+    &:not(:first-of-type) {
+      margin-left: .4em;
+    }
   }
 }
 
