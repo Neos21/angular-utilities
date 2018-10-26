@@ -4,30 +4,30 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <form [formGroup]="triangleForm" class="form-horizontal">
-      <div class="form-group">
-        <label class="col-xs-2 control-label">辺 A :</label>
-        <div class="col-xs-10"><input type="number" class="form-control" formControlName="sideA" placeholder="辺 A"></div>
+    <form [formGroup]="triangleForm">
+      <div class="row form-group">
+        <label class="col-3 col-form-label">辺 A :</label>
+        <div class="col-9"><input type="number" class="form-control" formControlName="sideA" placeholder="辺 A"></div>
       </div>
-      <div class="form-group">
-        <label class="col-xs-2 control-label">辺 B :</label>
-        <div class="col-xs-10"><input type="number" class="form-control" formControlName="sideB" placeholder="辺 B"></div>
+      <div class="row form-group">
+        <label class="col-3 col-form-label">辺 B :</label>
+        <div class="col-9"><input type="number" class="form-control" formControlName="sideB" placeholder="辺 B"></div>
       </div>
-      <div class="form-group">
-        <label class="col-xs-2 control-label">辺 C :</label>
-        <div class="col-xs-10"><input type="number" class="form-control" formControlName="sideC" placeholder="辺 C"></div>
+      <div class="row form-group">
+        <label class="col-3 col-form-label">辺 C :</label>
+        <div class="col-9"><input type="number" class="form-control" formControlName="sideC" placeholder="辺 C"></div>
       </div>
     </form>
   </div>
   <div class="col-sm-6">
     <h3>結果</h3>
     <div *ngIf="triangle.points; else invalidTriangle" class="row">
-      <div class="col-xs-8">
+      <div class="col-8">
         <svg [attr.width]="width" [attr.height]="triangle.peakY">
           <polygon id="triangle-polygon" [attr.points]="triangle.points" />
         </svg>
       </div>
-      <div class="col-xs-4">
+      <div class="col-4">
         <p>{{ triangle.sideA }} - {{ triangle.sideB }} - {{ triangle.sideC }}</p>
         <p>種類 : {{ triangle.type }}三角形</p>
       </div>

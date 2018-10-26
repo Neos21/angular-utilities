@@ -1,7 +1,5 @@
-/* tslint:disable:newline-before-return */
-
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import * as exampleUserModel from './example-user-model.json';
 
@@ -34,10 +32,9 @@ export class DynamicGenerateFormComponent implements OnInit {
   
   /** 初期表示時の処理 */
   public ngOnInit(): void {
-    // JSON に default プロパティが混じるので消しておく
+    // JSON の整形
     const defaultModel = exampleUserModel;
-    delete defaultModel.default;
-    this.model = JSON.stringify(defaultModel, null, '  ');
+    this.model = JSON.stringify(defaultModel.default, null, '  ');
     // this.model を利用しフォームを生成する
     this.onGenerateForm();
   }

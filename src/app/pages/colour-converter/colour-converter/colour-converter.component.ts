@@ -90,6 +90,8 @@ export class ColourConverterComponent implements OnInit, DoCheck {
 
 /**
  * 未入力か、カラーコードの書式のみ許容するバリデータ
+ * 
+ * @return Validator Function
  */
 function colourCodeValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
@@ -114,6 +116,8 @@ function colourCodeValidator(): ValidatorFn {
 
 /**
  * 未入力か、0 から 255 までの整数のみ許容するバリデータ
+ * 
+ * @return Validator Function
  */
 function decimalCodeValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {

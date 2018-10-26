@@ -2,7 +2,7 @@
 
 <p>CSV ファイルを選択するかドラッグ &amp; ドロップすると、HTML テーブル形式で出力します。</p>
 
-<div class="row row-buttons">
+<div class="row mb-4">
   <div class="col-sm-7">
     <a [href]="exampleFileUrl" download="example.csv" class="btn btn-success" (click)="onDownloadExampleFile()">サンプル CSV をダウンロード</a>
   </div>
@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-sm-4">
     <div class="file-input">
-      <input type="file" (change)="onSelectFile($event)">
+      <input type="file" class="form-control-file" (change)="onSelectFile($event)">
     </div>
   </div>
   <div class="col-sm-4">

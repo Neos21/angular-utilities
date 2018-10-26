@@ -15,25 +15,23 @@
 }
 
 
-// Bootstrap-Sass
+// Bootstrap 4
 // --------------------------------------------------------------------------------
 
-// Glyphicon のフォントファイルのパスを修正する
-$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/" !default;
-// デフォルトフォントサイズを 16px にする
-$font-size-base: 16px !default;
 // 行間を広めに
-$line-height-base: 1.6 !default;
+$line-height-lg  : 1.6;
+$line-height-sm  : 1.6;
+$line-height-base: 1.6;
 
 // ゴシック体
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "游ゴシック体", YuGothic, "Yu Gothic M", "游ゴシック Medium", "Yu Gothic Medium", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN W3", HiraKakuProN-W3, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif !default;
-// 明朝体
-$font-family-serif: "游明朝体", "YuMincho", "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN W3", HiraMinProN-W3, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", "MS PMincho", serif !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "游ゴシック体", YuGothic, "Yu Gothic M", "游ゴシック Medium", "Yu Gothic Medium", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN W3", HiraKakuProN-W3, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "Segoe UI", Roboto, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 // 等幅
-$font-family-monospace: MeiryoKe_Gothic, "Ricty Diminished", "Osaka－等幅", "Osaka-等幅", Osaka-mono, "ＭＳ ゴシック", "MS Gothic", "Courier New", Courier, Monaco, Menlo, Consolas, "Lucida Console", monospace !default;
+$font-family-monospace: MeiryoKe_Gothic, "Ricty Diminished", "Osaka－等幅", "Osaka-等幅", Osaka-mono, "ＭＳ ゴシック", "MS Gothic", "Courier New", Courier, Monaco, Menlo, Consolas, "Lucida Console", monospace;
+// 明朝体 (独自変数)
+$font-family-serif: "游明朝体", "YuMincho", "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN W3", HiraMinProN-W3, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", "MS PMincho", serif;
 
-// Bootstrap-Sass を読み込む
-@import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
+// Bootstrap 4 を読み込む
+@import '~bootstrap/scss/bootstrap';
 
 // 各フォント用クラス
 .font-family-sans-serif { font-family: $font-family-sans-serif; }
@@ -41,14 +39,27 @@ $font-family-monospace: MeiryoKe_Gothic, "Ricty Diminished", "Osaka－等幅", "
 .font-family-monospace  { font-family: $font-family-monospace ; }
 
 
-// Font-Awesome
+// Bootstrap 3 Glyphicons
 // --------------------------------------------------------------------------------
 
 // フォントファイルのパスを修正する
-$fa-font-path: '../node_modules/font-awesome/fonts';
+$icon-font-path: '~@neos21/bootstrap3-glyphicons/assets/fonts/';
+
+// Bootstrap 3 Glyphicons を読み込む
+@import '~@neos21/bootstrap3-glyphicons';
+
+
+// Font Awesome 5
+// --------------------------------------------------------------------------------
+
+// フォントファイルのパスを修正する
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
 // Font-Awesome を読み込む
-@import '../node_modules/font-awesome/scss/font-awesome';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 
 
 // Dragula (@swimlane/ngx-dnd)
@@ -126,17 +137,17 @@ dfn {
   text-decoration: underline dotted;
   
   &[title]:hover::after {
-    content: "(" attr(title) ")";
+    content: " (" attr(title) ") ";
   }
   
-  @media (max-width: $screen-xs-max) {
+  @include media-breakpoint-down(xs) {
     &::after {
-      content: "(" attr(title) ")";
+      content: " (" attr(title) ") ";
     }
   }
 }
 
-input[type="text"], textarea, pre, code, kbd, samp, var {
+input, textarea, pre, code, kbd, samp, var {
   font-family: $font-family-monospace;
 }
 
@@ -147,8 +158,9 @@ textarea {
   resize: vertical;
 }
 
-.contents h2:first-child {
-  margin-top: 0;
+// 下線切れを直す
+a, ins, u {
+  text-decoration-skip-ink: none;
 }
 
 
@@ -157,8 +169,8 @@ textarea {
 
 // 背景色を暗くしない
 textarea.form-control[readonly].textarea-preview,
-input[type="text"][readonly].textbox-preview {
-  background: #fff;
+input[readonly].textbox-preview {
+  background: $white;
 }
 
 .pointer {

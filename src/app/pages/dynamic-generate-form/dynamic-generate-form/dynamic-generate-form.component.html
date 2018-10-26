@@ -24,21 +24,21 @@
     
     <div *ngIf="control.type === 'radio'">
       <div>Radio : {{ control.label }}</div>
-      <div *ngFor="let option of control.options">
-        <div><label><input type="radio" [formControlName]="control.name" [value]="option.value" [checked]="option.checked" [attr.disabled]="option.disabled"> {{ option.label }}</label></div>
+      <div *ngFor="let option of control.options" class="form-check">
+        <label><input type="radio" [formControlName]="control.name" [value]="option.value" [checked]="option.checked" [attr.disabled]="option.disabled" class="form-check-input"> {{ option.label }}</label>
       </div>
     </div>
     
     <div *ngIf="control.type === 'checkbox'">
       <div>Checkbox : {{ control.label }}</div>
-      <div *ngFor="let checkboxControl of dynamicForm.controls[control.name].controls; let i = index">
-        <div><label><input type="checkbox" [formControl]="checkboxControl"> {{ control.options[i].label }}</label></div>
+      <div *ngFor="let checkboxControl of dynamicForm.controls[control.name].controls; let i = index" class="form-check">
+        <label><input type="checkbox" [formControl]="checkboxControl" class="form-check-input"> {{ control.options[i].label }}</label>
       </div>
     </div>
     
     <div *ngIf="control.type === 'selectbox'">
       <div>Selectbox : {{ control.label }}</div>
-      <select [formControlName]="control.name" [multiple]="control.multiple" [size]="control.multiple ? 5 : 1" [attr.disabled]="control.disabled">
+      <select [formControlName]="control.name" [multiple]="control.multiple" [size]="control.multiple ? 5 : 1" [attr.disabled]="control.disabled" class="custom-select">
         <option *ngFor="let option of control.options" [value]="option.value" [selected]="option.disabled" [attr.disabled]="option.disabled">{{ option.label }}</option>
       </select>
     </div>

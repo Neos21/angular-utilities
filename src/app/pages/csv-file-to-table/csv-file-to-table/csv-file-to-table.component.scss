@@ -1,9 +1,3 @@
-@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
-
-.row-buttons {
-  margin-bottom: 20px;
-}
-
 // input[type="file"] がはみ出ないようにする
 .file-input {
   overflow: hidden;
@@ -16,7 +10,7 @@
   height: 300px;
   border: 5px dashed #ccc;
   color: #ccc;
-  font-size: $font-size-h2;
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   line-height: 300px;

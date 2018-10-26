@@ -1,4 +1,6 @@
-@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_mixins';
+@import '~bootstrap/scss/_variables';
 
 .btn.btn-danger {
   margin-left: 6px;
@@ -41,15 +43,15 @@
   float: right;
   padding: 0;
   border: 0;
-  color: $brand-danger;
-  font-size: $font-size-large;
+  color: $danger;
+  font-size: $font-size-lg;
   line-height: 1.6;
   vertical-align: initial;  // .btn の middle 指定を解除
   background: transparent;
   
   // ブランドカラー
   &:hover {
-    color: darken($brand-danger, 15%);
+    color: darken($danger, 15%);
   }
   
   .glyphicon {
