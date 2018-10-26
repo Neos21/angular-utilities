@@ -15,7 +15,7 @@
 }
 
 
-// Bootstrap-Sass
+// Bootstrap 4
 // --------------------------------------------------------------------------------
 
 // 行間を広めに
@@ -30,7 +30,7 @@ $font-family-monospace: MeiryoKe_Gothic, "Ricty Diminished", "Osaka－等幅", "
 // 明朝体 (独自変数)
 $font-family-serif: "游明朝体", "YuMincho", "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN W3", HiraMinProN-W3, "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", "MS PMincho", serif;
 
-// Bootstrap-Sass を読み込む
+// Bootstrap 4 を読み込む
 @import '~bootstrap/scss/bootstrap';
 
 // 各フォント用クラス
@@ -39,24 +39,27 @@ $font-family-serif: "游明朝体", "YuMincho", "游明朝", "Yu Mincho", "ヒ�
 .font-family-monospace  { font-family: $font-family-monospace ; }
 
 
-// Bootstrap3 Glyphicons
+// Bootstrap 3 Glyphicons
 // --------------------------------------------------------------------------------
 
 // フォントファイルのパスを修正する
 $icon-font-path: '~@neos21/bootstrap3-glyphicons/assets/fonts/';
 
-// Bootstrap3 Glyphicons を読み込む
+// Bootstrap 3 Glyphicons を読み込む
 @import '~@neos21/bootstrap3-glyphicons';
 
 
-// Font-Awesome
+// Font Awesome 5
 // --------------------------------------------------------------------------------
 
 // フォントファイルのパスを修正する
-$fa-font-path: '~font-awesome/fonts';
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
 // Font-Awesome を読み込む
-@import '~font-awesome/scss/font-awesome';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 
 
 // Dragula (@swimlane/ngx-dnd)
@@ -153,6 +156,11 @@ textarea {
   white-space: pre;
   word-wrap: normal;  // Edge でコレがないと折り返される
   resize: vertical;
+}
+
+// 下線切れを直す
+a, ins, u {
+  text-decoration-skip-ink: none;
 }
 
 

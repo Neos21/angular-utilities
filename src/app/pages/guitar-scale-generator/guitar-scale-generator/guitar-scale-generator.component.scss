@@ -1,13 +1,15 @@
-@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_mixins';
+@import '~bootstrap/scss/_variables';
 
-// フォームの間隔を狭める
-.form-group {
-  margin-bottom: 5px;
-}
-
-// チューニングの select 要素間を開ける
-.form-tuning select:not(:last-of-type) {
-  margin-right: .4em;
+// 各弦のチューニングの select 要素
+.form-tuning select {
+  width: auto;
+  
+  // 要素間を開ける
+  &:not(:last-of-type) {
+    margin-right: .4em;
+  }
 }
 
 // アイコンボタン
@@ -15,15 +17,15 @@
   float: right;
   padding: 0;
   border: 0;
-  color: $brand-danger;
-  font-size: $font-size-large;
+  color: $danger;
+  font-size: $font-size-lg;
   line-height: 1.4;
   vertical-align: initial;  // .btn の middle 指定を解除
   background: transparent;
   
   // ブランドカラー
   &:hover {
-    color: darken($brand-danger, 15%);
+    color: darken($danger, 15%);
   }
 }
 
@@ -48,8 +50,9 @@
     position: relative;
     border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
-    width: 2.1em;
-    min-width: 2.1em;
+    width: 2.15em;
+    min-width: 2.15em;
+    max-width: 2.15em;
     height: 2em;
     text-align: center;
     line-height: 1;

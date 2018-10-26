@@ -20,9 +20,9 @@
 </p>
 
 <ul class="list-inline">
-  <li><label><input type="checkbox" [(ngModel)]="previewTextSpec.weight"> 太字</label></li>
-  <li><label><input type="checkbox" [(ngModel)]="previewTextSpec.italic"> 斜体</label></li>
-  <li><label><input type="checkbox" [(ngModel)]="previewTextSpec.size"> サイズ</label></li>
+  <li class="list-inline-item"><label><input type="checkbox" [(ngModel)]="previewTextSpec.weight"> 太字</label></li>
+  <li class="list-inline-item"><label><input type="checkbox" [(ngModel)]="previewTextSpec.italic"> 斜体</label></li>
+  <li class="list-inline-item"><label><input type="checkbox" [(ngModel)]="previewTextSpec.size"> サイズ</label></li>
 </ul>
 
 <div class="row">
@@ -55,7 +55,7 @@
     <h3>Fonts Stock</h3>
     <accordion>
       
-      <accordion-group heading="sans-serif : ゴシック体" panelClass="panel-primary" [isOpen]="true">
+      <accordion-group heading="sans-serif : ゴシック体" [isOpen]="true">
         <div class="list-group-wrapper">
           <div class="list-group-container">
             <ul class="list-group">
@@ -69,7 +69,7 @@
         </div>
       </accordion-group>
       
-      <accordion-group heading="serif : 明朝体" panelClass="panel-info" [isOpen]="false">
+      <accordion-group heading="serif : 明朝体" [isOpen]="false">
         <div class="list-group-wrapper">
           <div class="list-group-container">
             <ul class="list-group">
@@ -83,7 +83,7 @@
         </div>
       </accordion-group>
       
-      <accordion-group heading="monospace : 等幅" [panelClass]="'panel-success'" [isOpen]="false">
+      <accordion-group heading="monospace : 等幅" [isOpen]="false">
         <div class="list-group-wrapper">
           <div class="list-group-container">
             <ul class="list-group">
@@ -97,11 +97,11 @@
         </div>
       </accordion-group>
       
-      <accordion-group heading="Original : 独自" [panelClass]="'panel-default'" [isOpen]="true">
-        <div class="form-inline">
-          <div class="form-group">
-            <input type="text" class="form-control" [(ngModel)]="originalFont">
-            <button class="btn btn-default" (click)="addOriginalFont()">Add</button>
+      <accordion-group heading="Original : 独自" [isOpen]="true">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" [(ngModel)]="originalFont">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="addOriginalFont()">Add</button>
           </div>
         </div>
         <div class="list-group-wrapper">

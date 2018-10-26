@@ -1,7 +1,9 @@
-@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_mixins';
+@import '~bootstrap/scss/_variables';
 
 /* .btn-icon の mixin : .close チックに Glyphicon を組み合わせる想定のボタン用 */
-@mixin btn-icon($color: $gray) {
+@mixin btn-icon($color: $gray-700) {
   color: $color;
   &:hover {
     color: darken($color, 15%);
@@ -11,7 +13,7 @@
 .btn-icon {
   padding: 0;
   border: 0;
-  font-size: $font-size-large;
+  font-size: $font-size-lg;
   line-height: 1;
   vertical-align: initial;  // .btn の middle 指定を解除
   background: transparent;
@@ -19,19 +21,19 @@
 }
 // ブランドカラー
 .btn-icon-primary {
-  @include btn-icon($brand-primary);
+  @include btn-icon($primary);
 }
 .btn-icon-success {
-  @include btn-icon($brand-success);
+  @include btn-icon($success);
 }
 .btn-icon-info {
-  @include btn-icon($brand-info);
+  @include btn-icon($info);
 }
 .btn-icon-warning {
-  @include btn-icon($brand-warning);
+  @include btn-icon($warning);
 }
 .btn-icon-danger {
-  @include btn-icon($brand-danger);
+  @include btn-icon($danger);
 }
 
 // フォントプレビュー欄
@@ -39,7 +41,6 @@
   // Stylish プラグインなどを利用していると font-family を上書きできない場合があったので
   // #preview-wrapper にスタイルを当て、「inherit !important」と指定することで対応する
   .preview {
-    height: 70px;
     font-family: inherit !important;
     font-weight: inherit !important;
     font-style: inherit !important;
@@ -47,26 +48,19 @@
   }
 }
 
-// フォント一覧部分の間の余白を縮める
-.row {
-  .col-sm-6 {
-    &:first-child {
-      padding-right: 7.5px;
-    }
-    &:last-child {
-      padding-left: 7.5px;
-    }
-  }
+// accordion コンポーネントが出力するパネル
+.panel {
+  margin-bottom: 1rem;
 }
 
 // 縦スクロール用ラッパー
 .list-group-wrapper {
-  max-height: 411px;
+  max-height: 401px;
   overflow-y: scroll;
   
   // リストが1つもなくなった時のプレースホルダを持つためのコンテナ
   .list-group-container {
-    min-height: 42px;
+    min-height: 51px;
     border-radius: 4px;
     background: #ddd;
     
@@ -91,15 +85,5 @@
         }
       }
     }
-  }
-}
-
-// 独自追加するフォントの入力欄
-.form-inline > .form-group {
-  margin-bottom: 0;
-  
-  .form-control,
-  .btn {
-    margin-bottom: 10px;
   }
 }

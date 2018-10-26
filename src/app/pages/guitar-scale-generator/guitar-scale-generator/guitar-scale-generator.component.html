@@ -1,40 +1,40 @@
 <h2>Guitar Scale Generator</h2>
 
-<form [formGroup]="creatingScaleForm" class="form-horizontal">
-  <div class="form-group">
-    <label class="col-xs-3 control-label">Note Name</label>
-    <div class="col-xs-9">
+<form [formGroup]="creatingScaleForm">
+  <div class="row">
+    <label class="col-3 col-form-label">Note Name</label>
+    <div class="col-9">
       <label><input type="checkbox" formControlName="isFlat"> {{ creatingScaleForm.value.isFlat ? 'Flat' : 'Sharp' }}</label>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-xs-3 control-label">Frets</label>
-    <div class="col-xs-9">
-      <select formControlName="frets">
+  <div class="row">
+    <label class="col-3 col-form-label">Frets</label>
+    <div class="col-9">
+      <select formControlName="frets" class="custom-select">
         <option *ngFor="let fretsOption of constants.frets" [value]="fretsOption">{{ fretsOption }}F</option>
       </select>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-xs-3 control-label">Strings</label>
-    <div class="col-xs-9">
-      <select formControlName="strings">
+  <div class="row">
+    <label class="col-3 col-form-label">Strings</label>
+    <div class="col-9">
+      <select formControlName="strings" class="custom-select">
         <option *ngFor="let stringsOption of constants.strings" [value]="stringsOption">{{ stringsOption }} Strings</option>
       </select>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-xs-3 control-label">Tuning</label>
-    <div class="col-xs-9">
+  <div class="row">
+    <label class="col-3 col-form-label">Tuning</label>
+    <div class="col-9">
       <div class="row">
         <div class="col-sm-4">
-          <select formControlName="tuningPresetKey">
+          <select formControlName="tuningPresetKey" class="custom-select">
             <option *ngFor="let tuningPresetOption of constants.tuningPresets" [value]="tuningPresetOption.key">{{ tuningPresetOption.name }}</option>
           </select>
         </div>
-        <div class="col-sm-8 form-tuning">
+        <div class="col-sm-8 text-right form-tuning">
           <ng-container formArrayName="tuning" *ngFor="let line of creatingScaleFormTuning.controls; index as i">
-            <select [formControlName]="i">
+            <select [formControlName]="i" class="custom-select">
               <option *ngFor="let note of constants.notes" [value]="note.id">{{ creatingScaleForm.value.isFlat ? note.flat : note.sharp }}</option>
             </select>
           </ng-container>
@@ -42,27 +42,27 @@
       </div>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-xs-3 control-label">Key</label>
-    <div class="col-xs-9">
-      <select formControlName="keyId">
+  <div class="row">
+    <label class="col-3 col-form-label">Key</label>
+    <div class="col-9">
+      <select formControlName="keyId" class="custom-select">
         <option *ngFor="let note of constants.notes" [value]="note.id">{{ creatingScaleForm.value.isFlat ? note.flat : note.sharp }}</option>
       </select>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-xs-3 control-label">Scale</label>
-    <div class="col-xs-9">
-      <select formControlName="scaleKey">
+  <div class="row form-group">
+    <label class="col-3 col-form-label">Scale</label>
+    <div class="col-9">
+      <select formControlName="scaleKey" class="custom-select">
         <option *ngFor="let scale of constants.scales" [value]="scale.key">{{ scale.name }}</option>
       </select>
     </div>
   </div>
-  <div class="form-group">
-    <div class="col-xs-6">
+  <div class="row form-group">
+    <div class="col-6">
       <button type="button" class="btn btn-primary" (click)="onGenerate()">Generate</button>
     </div>
-    <div class="col-xs-6 text-right">
+    <div class="col-6 text-right">
       <button type="button" class="btn btn-danger" (click)="onRemoveAllScales()">Remove All Scales</button>
     </div>
   </div>

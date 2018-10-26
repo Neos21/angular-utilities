@@ -11,8 +11,8 @@
     <h3>変換結果</h3>
     <div class="input-group">
       <input type="text" class="form-control textbox-preview" [value]="output" readonly>
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default" (click)="copy()">Copy</button>
+      <span class="input-group-append">
+        <button type="button" class="btn btn-outline-secondary" (click)="copy()">Copy</button>
       </span>
     </div>
   </div>
@@ -24,8 +24,8 @@
     <ol>
       <li *ngFor="let inputCode of inputCodes" class="codes">
         <div class="row">
-          <div class="col-xs-6">{{ inputCode.char }}</div>
-          <div class="col-xs-6">{{ inputCode.code }}</div>
+          <div class="col-6">{{ inputCode.char }}</div>
+          <div class="col-6">{{ inputCode.code }}</div>
         </div>
       </li>
     </ol>
@@ -35,23 +35,26 @@
     <ol>
       <li *ngFor="let outputCode of outputCodes" class="codes">
         <div class="row">
-          <div class="col-xs-6">{{ outputCode.char }}</div>
-          <div class="col-xs-6">{{ outputCode.code }}</div>
+          <div class="col-6">{{ outputCode.char }}</div>
+          <div class="col-6">{{ outputCode.code }}</div>
         </div>
       </li>
     </ol>
   </div>
 </div>
 
-<div class="row">
+<div class="row form-group">
   <div class="col-sm-6">
-    <div class="checkbox"><label><input type="checkbox" [(ngModel)]="isConvertSingleMarks"> NFD 濁点・NFD 半濁点が単独で存在する場合、通常の濁点・半濁点 (&amp;#xx309B;・&amp;#x309C;) に変換する</label></div>
+    <div class="form-check">
+      <input type="checkbox" id="is-convert-single-marks" [(ngModel)]="isConvertSingleMarks" class="form-check-input">
+      <label class="form-check-label" for="is-convert-single-marks">NFD 濁点・NFD 半濁点が単独で存在する場合、通常の濁点・半濁点 (&amp;#xx309B;・&amp;#x309C;) に変換する</label>
+    </div>
   </div>
   <div class="col-sm-6">
     <p><button type="button" class="btn btn-success" (click)="setExample()">サンプル文字列挿入</button></p>
-    <div class="radio"><label><input type="radio" name="example" [(ngModel)]="example" [value]="0" checked> ひらがなの NFD 文字 (がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽゔ)</label></div>
-    <div class="radio"><label><input type="radio" name="example" [(ngModel)]="example" [value]="1"> カタカナの NFD 文字 (ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴ)</label></div>
-    <div class="radio"><label><input type="radio" name="example" [(ngModel)]="example" [value]="2"> 1文字目に NFD 濁点 (&amp;#x3099;) がある</label></div>
-    <div class="radio"><label><input type="radio" name="example" [(ngModel)]="example" [value]="3"> 1文字目に NFD 半濁点 (&amp;#x309A;) がある</label></div>
+    <div class="form-check"><input type="radio" id="example-0" class="form-check-input" name="example" [(ngModel)]="example" [value]="0" checked> <label class="form-check-label" for="example-0">ひらがなの NFD 文字 (がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽゔ)</label></div>
+    <div class="form-check"><input type="radio" id="example-1" class="form-check-input" name="example" [(ngModel)]="example" [value]="1">         <label class="form-check-label" for="example-1">カタカナの NFD 文字 (ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴ)</label></div>
+    <div class="form-check"><input type="radio" id="example-2" class="form-check-input" name="example" [(ngModel)]="example" [value]="2">         <label class="form-check-label" for="example-2">1文字目に NFD 濁点 (&amp;#x3099;) がある</label></div>
+    <div class="form-check"><input type="radio" id="example-3" class="form-check-input" name="example" [(ngModel)]="example" [value]="3">         <label class="form-check-label" for="example-3">1文字目に NFD 半濁点 (&amp;#x309A;) がある</label></div>
   </div>
 </div>

@@ -390,8 +390,6 @@
         "variable-declaration": "nospace"
       }
     ],
-    // typeof 演算子を使用する時は文字列との比較をすること (true)
-    "typeof-compare": true,
     // union か optional/rest で統合できるオーバーロードを警告する (true)
     "unified-signatures": true,
     // 明示的に指定された型引数がその型パラメータのデフォルトである場合に警告する (true) : 要 --type-check

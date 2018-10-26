@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<div class="multiple-diff-wrapper" *ngIf="texts.length > 0">
+<div class="multiple-diff-wrapper" *ngIf="texts && texts.length">
   <table class="table-multiple-diff">
     <thead>
       <tr>
@@ -24,7 +24,7 @@
       <tr>
         <th *ngFor="let text of texts; let i = index">
           <div class="file-wrapper">
-            <input type="file" (change)="loadFile($event, i)" *ngIf="!text.file">
+            <input type="file" (change)="loadFile($event, i)" *ngIf="!text.file" class="form-control-file">
           </div>
         </th>
       </tr>
