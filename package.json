@@ -34,7 +34,7 @@
     "core-js": "2.5.7",
     "font-awesome": "4.7.0",
     "js-beautify": "1.8.8",
-    "lodash": "4.17.11",
+    "lodash": "4.17.15",
     "moment": "2.22.2",
     "ngx-bootstrap": "3.0.1",
     "ngx-clipboard": "11.1.9",
