@@ -1,6 +1,7 @@
 {
   "name": "angular-utilities",
   "description": "The Utilities Made With Angular",
+  "private": true,
   "scripts": {
     "?info": "echo 'Show npm-scripts info.'",
     "info": "npm-scripts-info",
@@ -14,6 +15,20 @@
     "build": "ng build --base-href ./ --prod",
     "?deploy": "echo 'Publish with GitHub Pages. `npm run build` must run before this script.'",
     "deploy": "gh-pages -d dist"
+  },
+  "author": "Neos21 <neos21@gmail.com> (http://neo.s21.xrea.com/)",
+  "license": "MIT",
+  "homepage": "https://Neos21.github.io/angular-utilities/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neos21/angular-utilities.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Neos21/angular-utilities/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/Neos21"
   },
   "dependencies": {
     "@angular/animations": "7.0.0",
@@ -56,16 +71,5 @@
     "ts-node": "7.0.1",
     "tslint": "5.11.0",
     "typescript": "3.1.3"
-  },
-  "private": true,
-  "license": "MIT",
-  "author": "Neos21 <neos21@gmail.com> (http://neo.s21.xrea.com/)",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Neos21/angular-utilities.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Neos21/angular-utilities/issues"
-  },
-  "homepage": "https://Neos21.github.io/angular-utilities/"
+  }
 }

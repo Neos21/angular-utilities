@@ -38,11 +38,12 @@ export class FontFamilyTesterComponent {
     { type: 'sans-serif', name: `Verdana`                        },
     { type: 'sans-serif', name: `"游ゴシック体"`                 },  // 游ゴシック
     { type: 'sans-serif', name: `YuGothic`                       },
-    { type: 'sans-serif', name: `"Yu Gothic M"`                  },  // @font-face 使用
     { type: 'sans-serif', name: `"游ゴシック Medium"`            },
     { type: 'sans-serif', name: `"Yu Gothic Medium"`             },
     { type: 'sans-serif', name: `"游ゴシック"`                   },
     { type: 'sans-serif', name: `"Yu Gothic"`                    },
+    { type: 'sans-serif', name: `"Hiragino Sans"`                },  // ヒラギノ角ゴシック
+    { type: 'sans-serif', name: `"ヒラギノ角ゴシック"`           },
     { type: 'sans-serif', name: `"ヒラギノ角ゴ ProN W3"`         },  // ヒラギノ・メイリオ
     { type: 'sans-serif', name: `"Hiragino Kaku Gothic ProN W3"` },
     { type: 'sans-serif', name: `HiraKakuProN-W3`                },
