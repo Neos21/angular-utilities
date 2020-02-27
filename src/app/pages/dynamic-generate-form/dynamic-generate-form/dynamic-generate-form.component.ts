@@ -34,7 +34,7 @@ export class DynamicGenerateFormComponent implements OnInit {
   public ngOnInit(): void {
     // JSON の整形
     const defaultModel = exampleUserModel;
-    this.model = JSON.stringify(defaultModel.default, null, '  ');
+    this.model = JSON.stringify(defaultModel['default'], null, '  ');
     // this.model を利用しフォームを生成する
     this.onGenerateForm();
   }

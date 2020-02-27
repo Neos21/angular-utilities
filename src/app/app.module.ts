@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
@@ -14,6 +15,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CoreModule,
     SharedModule,
     PagesModule,

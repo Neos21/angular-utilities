@@ -15,7 +15,7 @@
     "charset": "utf8",
     // コンパイルに含めるライブラリの指定
     "lib": [
-      "es2017",  // "es2016",
+      "es2018",
       "dom"
     ],
     // モジュールのパス・マッピング : 指定しない
@@ -37,8 +37,8 @@
 
     // コンパイル方法
     // --------------------------------------------------------------------------------
-    // for of によるイテレーションをサポートさせない (false)
-    "downlevelIteration": false,
+    // for of によるイテレーションをサポートさせる (true)
+    "downlevelIteration": true,
     // ES7 の Decorator Metadata のサポートを有効にする (true) : Angular で DI を行うために必要
     "emitDecoratorMetadata": true,
     // ES7 の Decorators のサポートを有効化する (true)
@@ -47,8 +47,8 @@
     "importHelpers": false,
     // JSX を使用する際のファクトリ関数
     // "jsx": "preserve",
-    // モジュールの方式 : 指定しない
-    // "module": "commonjs",
+    // モジュールの方式
+    "module": "esnext",
     // モジュールの名前解決の方法を指定する
     "moduleResolution": "node",
     // 生成コードの改行コードを指定する
@@ -63,6 +63,8 @@
     "preserveSymlinks": false,
     // 「/*!」で始まるコメント以外を除去する (true)
     "removeComments": true,
+    // JSON ファイルを読み込めるようにする
+    "resolveJsonModule": true,
 
     // 生成物
     // --------------------------------------------------------------------------------
@@ -89,7 +91,7 @@
     // ソースマップを生成する (true)
     "sourceMap": true,
     // 出力する ECMAScript のバージョンを指定する
-    "target": "es5",
+    "target": "es2015",
 
     // コンパイル時のチェッカ
     // --------------------------------------------------------------------------------
