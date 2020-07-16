@@ -47,7 +47,7 @@
     "classlist.js": "1.1.20150312",
     "core-js": "2.6.5",
     "js-beautify": "1.10.3",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "moment": "2.24.0",
     "ngx-bootstrap": "5.3.2",
     "ngx-clipboard": "13.0.0",
