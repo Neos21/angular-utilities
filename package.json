@@ -16,7 +16,7 @@
     "?deploy": "echo 'Publish with GitHub Pages. `npm run build` must run before this script.'",
     "deploy": "gh-pages -d dist"
   },
-  "author": "Neos21 <neos21@gmail.com> (http://neo.s21.xrea.com/)",
+  "author": "Neos21 <neos21@gmail.com> (https://neos21.net/)",
   "license": "MIT",
   "homepage": "https://Neos21.github.io/angular-utilities/",
   "repository": {
