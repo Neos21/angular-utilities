@@ -8,6 +8,7 @@ import { AddLineNumberComponent } from './add-line-number/add-line-number.compon
 import { CaseConverterComponent } from './case-converter/case-converter.component';
 import { NormalizeToNfcComponent } from './normalize-to-nfc/normalize-to-nfc.component';
 import { TextConverterRoutingModule } from './text-converter-routing.module';
+import { ShuffleLinesComponent } from './shuffle-lines/shuffle-lines.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { TextConverterRoutingModule } from './text-converter-routing.module';
   declarations: [
     AddLineNumberComponent,
     CaseConverterComponent,
-    NormalizeToNfcComponent
+    NormalizeToNfcComponent,
+    ShuffleLinesComponent
   ]
 })
 export class TextConverterModule { }
