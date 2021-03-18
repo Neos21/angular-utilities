@@ -84,7 +84,7 @@ export class CalculatorComponent implements OnInit, DoCheck {
  */
 function numberValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
-    if(control.value === undefined || control.value === null || control.value.trim() === '') {
+    if(control.value == null || control.value.trim() === '') {
       return null;
     }
     

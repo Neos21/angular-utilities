@@ -12,7 +12,7 @@
     "?lint": "echo 'Lint TypeScript files.'",
     "lint": "ng lint angular-utilities --type-check",
     "?build": "echo 'Production build.'",
-    "build": "ng build --base-href ./ --prod",
+    "build": "ng build --base-href ./ --prod && node ./build-for-gh-pages.js",
     "?deploy": "echo 'Publish with GitHub Pages. `npm run build` must run before this script.'",
     "deploy": "gh-pages -d dist"
   },

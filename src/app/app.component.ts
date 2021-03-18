@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   ) {
     this.router.events.subscribe((event) => {
       // ページ遷移時はサイドメニューを閉じ、ページトップに遷移させる
-      if (event instanceof NavigationEnd) {
+      if(event instanceof NavigationEnd) {
         this.toggleMenu(false);
         window.scrollTo(0, 0);
       }

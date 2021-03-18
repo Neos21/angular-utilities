@@ -81,9 +81,7 @@ export class DateTimeCountdownComponent implements OnInit, OnDestroy {
   /** 指定日時の変更に合わせて処理する */
   public onInputTarget(): void {
     // 未入力があれば無視する
-    if(Object.keys(this.target).some((property) => {
-      return (this.target[property] === undefined || this.target[property] === null || this.target[property] === '');
-    })) {
+    if(Object.keys(this.target).some(prop => this.target[prop] == null || this.target[prop] === '')) {
       return;
     }
     

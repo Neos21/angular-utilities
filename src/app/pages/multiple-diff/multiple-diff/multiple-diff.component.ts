@@ -186,7 +186,7 @@ export class MultipleDiffComponent implements OnInit {
         }
         
         // 検索未済で、B がまだ同じ行と判定されておらず、A と B の行が同じなら印を付ける
-        if (!isSearched && bLine.isDiffPrev && aLine.text === bLine.text) {
+        if(!isSearched && bLine.isDiffPrev && aLine.text === bLine.text) {
           // A から見た B・B から見た A でともに差分なしと設定する
           aLine.isDiffNext = bLine.isDiffPrev = false;
           // 差分なしの行同士がどれだけ離れているかを保存する (今のところ用途なし)

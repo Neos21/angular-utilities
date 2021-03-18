@@ -95,7 +95,7 @@ export class ColourConverterComponent implements OnInit, DoCheck {
  */
 function colourCodeValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
-    if(control.value === undefined || control.value === null || control.value === '') {
+    if(control.value == null || control.value === '') {
       return null;
     }
     
@@ -105,8 +105,7 @@ function colourCodeValidator(): ValidatorFn {
       value = value.slice(1);
     }
     
-    if((value.length === 3 || value.length === 6)
-       && value === value.replace(/[^0-9a-f]/g, '')) {
+    if((value.length === 3 || value.length === 6) && value === value.replace(/[^0-9a-f]/g, '')) {
       return null;
     }
     
@@ -121,8 +120,7 @@ function colourCodeValidator(): ValidatorFn {
  */
 function decimalCodeValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
-    if(control.value === undefined || control.value === null || control.value === ''
-       || (/^\d*$/.test(control.value) && Number(control.value) <= 255)) {
+    if(control.value == null || control.value === '' || (/^\d*$/.test(control.value) && Number(control.value) <= 255)) {
       return null;
     }
     
